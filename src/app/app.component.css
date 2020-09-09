@@ -1,0 +1,15 @@
+
+
+#title{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 3em;
+}
+
+#dedicace{
+    font-family: cursive;
+    position:fixed;
+    bottom:0;
+    right:1em;
+    
+}
