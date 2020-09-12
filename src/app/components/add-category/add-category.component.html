@@ -1,6 +1,23 @@
 <div id="displayArea">
-    <div id="clickToAddCategory" (click)="addCategory()">
-        Add a category
+    <div id="clickToAddCategory">
+        <form>
+            <input [(ngModel)]="category_input_name" name="category_input_name"
+            type="text" aria-label="Name of the category to add" 
+            required/>
+            <button  aria-label="Button to click to add the category" (click)="addCategory()">
+                Add the category
+            </button>
+        </form>
+        
+        <br>
+        {{category_input_name}}
     </div>
-
+    <div id="displayCategories">
+        <ul>
+            <li *ngFor="let category of categories">{{category.name}}</li>
+        </ul>
+        
+    </div>
 </div>
+
+

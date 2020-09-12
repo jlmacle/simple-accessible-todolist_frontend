@@ -1,5 +1,5 @@
 export class Variables {
-    static base_url="localhost:8080";
+    static base_url="http://localhost:8080"; //CORS issue for omitting http://
 
 
 }
