@@ -20,11 +20,12 @@ export class AddCategoryComponent implements OnInit {
 
   addCategory(){
     let category = new Category();
-    category.id = 1;
+    //category.id = 1;
     category.name = this.category_input_name;
     //this.categories.push(category);
     this.categoryService.addCategory(category);  
     console.log("addCategory() called; category:",category.id+" , "+category.name);  
+    this.getCategories();
   }
 
   getCategories(){
@@ -32,6 +33,11 @@ export class AddCategoryComponent implements OnInit {
       data => {this.categories  = data; console.log("Getting the categories from the promise.");},
       error => { console.log("Issue with getting the categories from the promise.");}
     )
+  }
+
+  deleteCategory(id:number){
+    this.categoryService.deleteCategory(id);
+    this.getCategories();
   }
 
 }

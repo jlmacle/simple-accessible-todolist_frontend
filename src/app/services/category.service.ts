@@ -20,5 +20,8 @@ export class CategoryService {
     return this.http.get(Variables.base_url+"/categories").toPromise();
   }
 
-
+  deleteCategory(id:number){
+    this.http.delete(Variables.base_url+"/categories/"+id);
+    console.log("HTTP DELETE to: "+Variables.base_url+"/categories/"+id);
+  }
 }

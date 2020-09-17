@@ -14,7 +14,9 @@
     </div>
     <div id="displayCategories">
         <ul>
-            <li *ngFor="let category of categories">{{category.name}}</li>
+            <li *ngFor="let category of categories" id={{category.name}}{{category.id}} value={{category.id}}><i class="fas fa-trash-alt" style="font-size:0.65em;" #category (click)="deleteCategory(category.id)"></i> 
+                &nbsp;&nbsp;{{category.name}}                
+            </li>
         </ul>
         
     </div>
