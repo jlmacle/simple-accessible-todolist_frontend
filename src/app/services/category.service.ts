@@ -11,9 +11,10 @@ export class CategoryService {
 
   constructor(private http:HttpClient) { }
 
-  addCategory(category:Category){
-    this.http.post(Variables.base_url+"/category",category).toPromise();
+  addCategory(category:Category):Promise<any>{
     console.log("HTTP POST to: "+Variables.base_url+"/category");
+    return this.http.post(Variables.base_url+"/category",category).toPromise();
+    
   }
 
   getCategories():Promise<any>{

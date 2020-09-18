@@ -23,9 +23,12 @@ export class AddCategoryComponent implements OnInit {
     //category.id = 1;
     category.name = this.category_input_name;
     //this.categories.push(category);
-    this.categoryService.addCategory(category);  
-    console.log("addCategory() called; category:",category.id+" , "+category.name);  
-    this.getCategories();
+    this.categoryService.addCategory(category).then(
+      data => {console.log("addCategory() called; category:",category.id+" , "+category.name);
+              this.getCategories();},
+      error => {console.log("Issue while adding a category.");}      
+    );  
+    
   }
 
   getCategories(){
