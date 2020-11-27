@@ -8,3 +8,17 @@
     text-align: center;
     font-size: 2em;
 }
+
+.toggleItem{    
+    visibility: hidden;
+    display: none;
+    position:relative;
+    left:2.3em;
+
+}
+
+span:hover {
+    background-color:rgb(255,255,255,0.75);
+    border-radius: 1rem;
+
+}

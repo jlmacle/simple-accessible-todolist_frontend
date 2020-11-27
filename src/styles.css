@@ -3,3 +3,11 @@ body{
     background-image: url(./assets/pictures/pexels-chevanon-photography-1108099.jpg);
     background-size: cover;
 }
+
+input{
+    border-radius: 2em;
+}
+
+button{
+    border-radius: 2em;
+}
