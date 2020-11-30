@@ -4,21 +4,28 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddCategoryComponent } from './components/add-category/add-category.component';
-import { DisplayCategoriesComponent } from './components/display-categories/display-categories.component';
+import { ToDoListPageComponent } from './components/TodoListPage/TodoListPage.component';
+//imports used while using mat-form-field
+import  {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddCategoryComponent,
-    DisplayCategoriesComponent
+    ToDoListPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    BrowserAnimationsModule
+    
   ],
+    
   providers: [],
   bootstrap: [AppComponent]
 })

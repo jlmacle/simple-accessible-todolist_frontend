@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddCategoryComponent } from './components/add-category/add-category.component';
+import { ToDoListPageComponent } from "./components/TodoListPage/TodoListPage.component";
 
 const routes: Routes = [
-  {path:'',component:AddCategoryComponent}
+  {path:'',component:ToDoListPageComponent}
 ];
 
 @NgModule({
