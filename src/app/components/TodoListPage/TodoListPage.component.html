@@ -5,7 +5,8 @@
             <input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
             type="text" aria-label="Name of the category to add" 
             required/>
-            <button  aria-label="Button to click to add the category" (click)="addCategory()">
+            <button  aria-label="Button to click to add the category" 
+            (click)="addCategory()" id="add_category_button">
                 Add a category
             </button>
         </form>
