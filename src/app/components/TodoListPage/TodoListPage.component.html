@@ -36,7 +36,7 @@
     <div id="displayCategories">
         <ul>
             <li *ngFor="let category of categories" id={{category.name}}{{category.id}} value={{category.id}}
-                aria-label="List displaying all the categories available">
+                aria-label="one item of all available categories">
                 <i class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteCategory(category.id)"></i> 
                 &nbsp; 
                 <!-- Large clickable area, tabfocus, captions   -->

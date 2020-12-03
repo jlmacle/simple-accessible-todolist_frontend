@@ -1,0 +1,77 @@
+{
+  "id": "20a6f340-54ea-43ee-9158-7a42f0a49952",
+  "version": "2.0",
+  "name": "Accessible ToDo List_End to end testing",
+  "url": "http://localhost:4200",
+  "tests": [{
+    "id": "b6749907-79d0-420d-9d23-bdd804cc07fe",
+    "name": "Creation of a test category",
+    "commands": [{
+      "id": "070c613b-240d-453e-b22a-a700a19b51d6",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d721a770-c04c-4ba7-8a09-03fa6d02983a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x696",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "df7a473d-a6b7-468f-8c7f-3678d91b470b",
+      "comment": "",
+      "command": "click",
+      "target": "id=new_category_input_field",
+      "targets": [
+        ["id=new_category_input_field", "id"],
+        ["name=category_input_name", "name"],
+        ["css=#new_category_input_field", "css:finder"],
+        ["xpath=//input[@id='new_category_input_field']", "xpath:attributes"],
+        ["xpath=//div[@id='clickToAddCategory']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0ba61b41-0e8c-42da-8f42-803ddf5f2071",
+      "comment": "",
+      "command": "type",
+      "target": "id=new_category_input_field",
+      "targets": [
+        ["id=new_category_input_field", "id"],
+        ["name=category_input_name", "name"],
+        ["css=#new_category_input_field", "css:finder"],
+        ["xpath=//input[@id='new_category_input_field']", "xpath:attributes"],
+        ["xpath=//div[@id='clickToAddCategory']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Protractor Test Category"
+    }, {
+      "id": "8b24e645-34e5-410a-8ad4-06556eae73c6",
+      "comment": "",
+      "command": "click",
+      "target": "id=add_category_button",
+      "targets": [
+        ["id=add_category_button", "id"],
+        ["css=#add_category_button", "css:finder"],
+        ["xpath=//button[@id='add_category_button']", "xpath:attributes"],
+        ["xpath=//div[@id='clickToAddCategory']/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Add a category')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "a4149893-1b72-4ffe-83f1-f7f7346cda18",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["b6749907-79d0-420d-9d23-bdd804cc07fe"]
+  }],
+  "urls": ["http://localhost:4200/"],
+  "plugins": []
+}
