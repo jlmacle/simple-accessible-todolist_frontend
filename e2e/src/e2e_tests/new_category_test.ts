@@ -42,8 +42,8 @@ describe('Testing the adding of a new category and item.',
                                         let cssValue_value:string;
 
                                         element.getText().then(
-                                            data => {
-                                                text=data;
+                                            text_data => {
+                                                text=text_data;
                                                 console.log("**  1. Found text:"+text);
                                             },
                                             error => {
