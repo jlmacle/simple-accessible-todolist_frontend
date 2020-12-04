@@ -1,5 +1,4 @@
 import { browser, by, WebElement } from "protractor";
-import { DriverProvider } from 'protractor/built/driverProviders';
 
 describe('Testing the adding of a new category and item.', 
             function(){
