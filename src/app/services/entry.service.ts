@@ -41,6 +41,12 @@ export class EntryService {
     console.log("HTTP GET to: "+url);
     return this.http.get(url).toPromise();
   }
+
+  deleteItem(id:number):Promise<any>{
+    let url = Variables.base_url+"/items/"+id;
+    console.log("HTTP DELETE to: "+url);
+    return this.http.delete(url).toPromise();    
+  }
   
 
 }

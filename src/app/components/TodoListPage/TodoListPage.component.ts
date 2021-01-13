@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {Router} from '@angular/router';
 import { Item } from 'src/app/models/item';
 import {Category} from '../../models/category';
 import {EntryService} from '../../services/entry.service';
@@ -9,27 +10,33 @@ import {EntryService} from '../../services/entry.service';
   styleUrls: ['./TodoListPage.component.css']
 })
 
-export class ToDoListPageComponent implements OnInit {
+export class ToDoListPageComponent implements OnInit, OnChanges {
 
-  constructor(private entryService:EntryService) { }
+  constructor(private entryService:EntryService, private router:Router) { }
+  
   //used to define a new category
   category_input_name="";
   //used to define a new item
-  selected_category_id:number;  
+  selected_category_id=1;  
   //todo: remove selected when done 
   selected="by default";
   item_input_name="";
 
   //used to display existing categories and items
   categories:Array<Category>;
-  all_items:Array<Item>=[];
-  
+  all_items:Array<Item>=[];  
   items_sorted_by_category = new Map();
-  items_for_a_specific_category:Array<Item>; 
+  
 
   ngOnInit(): void {
     this.getCategories();
+    this.getItems();
   }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getItems();    
+  }
+  
 
   addCategory(){
     //Creating a category object that will be later on translated to JSON and transmitted in an HTTP request.
@@ -59,8 +66,7 @@ export class ToDoListPageComponent implements OnInit {
     );    
   }
 
-  foldUnfoldCategory(category_id:number){    
-    console.log("Looking for element with id:"+"itemsForCategory"+category_id)
+  foldUnfoldCategory(category_id:number){      
     let toggledElement = document.getElementById("itemsForCategory"+category_id);    
     if (toggledElement.style.getPropertyValue('visibility')=='hidden'){
       this.unfoldCategory(category_id);
@@ -69,7 +75,8 @@ export class ToDoListPageComponent implements OnInit {
       this.foldCategory(category_id);
     }
     //Query to get all the items, to group them by category id and to affect the value of items_sorted_by_category
-    this.get_items_for_category_id(category_id);    
+    //this.get_items_for_category_id(category_id);    
+    
   }
 
   unfoldCategory(category_id:number)
@@ -92,49 +99,63 @@ export class ToDoListPageComponent implements OnInit {
     item.name = this.item_input_name;
     item.categoryId = categoryId;
     this.entryService.addItem(item, categoryId).then(
-      data => {console.log("Item Added to category id: "+categoryId);},
+      data => {
+        console.log("Item Added to category id: "+categoryId);
+        this.getItems();
+        this.router.navigate(['.']);
+        //TODO: resetting fields
+        document.getElementById("item_input_name").innerText="";
+
+    },
       error => {console.log("Error while adding an item: ",error);}
     )
-    //TODO: update the list of items and display them if the list was not displayed
-    this.get_items_for_category_id(categoryId);
-    /*
-    let toggledElement = document.getElementById("items"+categoryId);    
-    if (toggledElement.style.getPropertyValue('visibility')=='hidden'){
-      this.unfoldCategory(categoryId);
-    }
-    */
-
-
-  }
-//Variable numbers of categories. Gettting all items at once. Then sorting them by category id.
-  get_items_for_category_id(category_id:number){
-    //re-initializing the item list
-    this.items_sorted_by_category = new Map();
-    this.items_for_a_specific_category = [];    
     
+    
+  }
+
+  getItems(){
     let goal = "the list of items.";
     this.entryService.getItems().then(      
-      (data) => {this.all_items=data; console.log("Getting "+goal);}, 
-      (error) => {console.log("Error getting "+goal);}
-    );
-    console.log("Item list:"+this.all_items);
-    //Sorting by category id  and storing the items in separated arrays.
-    this.all_items.forEach(item => 
-      {
-        if (this.items_sorted_by_category.has(item.categoryId)){
-          let items_for_this_category = this.items_sorted_by_category.get(item.categoryId);
-          //Getting the array of items already existing for item.categoryId
-          (this.items_sorted_by_category.get(item.categoryId)).push(item);   
+      (data) => {
+        this.all_items=data;console.log("Getting the list of items:");
+        console.log("Get items: Display of the list of items. Found: "+this.all_items.length);
+        this.all_items.forEach(element => {
+          console.log("Element in the list", "id: "+element.id, "name: "+element.name, "categoryId: "+element.categoryId);      
+        });
+         //Sorting by category id  and storing the items in separated arrays.
+        this.items_sorted_by_category = new Map();
+        this.all_items.forEach(item => 
+          {
+            if (this.items_sorted_by_category.has(item.categoryId)){
+              //let items_for_this_category = this.items_sorted_by_category.get(item.categoryId);
+              //Getting the array of items already existing for item.categoryId
+              (this.items_sorted_by_category.get(item.categoryId)).push(item);          
 
-        }
-        else{
-          //Creating a new structure, and adding 
-          let items_for_one_category:Array<Item> = [];
-          items_for_one_category.push(item);
-          (this.items_sorted_by_category).set(item.categoryId,items_for_one_category);
-        }      
-      });
-    //After all the elements have been sorted, the value of items_for_a_specific_category is being assigned.
-    this.items_for_a_specific_category = (this.items_sorted_by_category).get(category_id);
+            }
+            else{
+              //Creating a new structure, and adding 
+              let items_for_one_category:Array<Item> = [];
+              items_for_one_category.push(item);
+              (this.items_sorted_by_category).set(item.categoryId,items_for_one_category);
+            }      
+          });
+          console.log("this.items_sorted_by_category",this.items_sorted_by_category);
+
+
+    
+    }, 
+      (error) => {console.log("Error getting "+goal)+" : "+error}
+    );
+   
   }
+
+  deleteItem(id:number){
+    this.entryService.deleteItem(id).then(
+      data => {console.log("Item deleted. id:"+id);
+              //Calling on getCategories() to display the updated list.
+              this.getItems();},
+      error =>{console.log("Issue while deleting a category.");}
+    );    
+  }
+
 }

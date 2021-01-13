@@ -8,16 +8,21 @@
     text-align: center;
     font-size: 2em;
 }
-
+/*
+#foldUnfoldClickArea{
+    
+}
+*/
 .toggleItem{    
-    visibility: hidden;
-    display: none;
+    visibility: visible;
+    display: block;
     position:relative;
     left:2.3em;
 }
 
-span:hover {
-    background-color:rgb(255,255,255,0.75);
+
+#foldUnfoldClickArea:hover {
+    background-color:rgb(255,255,255,0.75);    
     border-radius: 1rem;
 }
 

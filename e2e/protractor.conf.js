@@ -15,6 +15,8 @@ exports.config = {
   ],
   capabilities: {
     browserName: 'chrome'
+    //browserName: 'firefox',
+    //browserName: 'edge'
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',

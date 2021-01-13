@@ -3,33 +3,33 @@
         <form>
          <!-- Definition of a new category -->
             <input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
-            type="text" aria-label="Name of the category to add" 
+            type="text" aria-label="Name of the category to add" minlength="1"
             required/>
             <button  aria-label="Button to click to add the category" 
             (click)="addCategory()" id="add_category_button">
                 Add a category
             </button>
         </form>
-        <!-- Adding an item -->
-        <form>
-            
-            <!-- TODO: find the issue in the code: The Please select doesn't appear by default.  -->
-            <select [(ngModel)]="selected_category_id" name="selected_category_id" id="category_to_select_field"
-                    aria-label="When adding an item, name of the category the item is related to.">
-                <option *ngFor="let category of categories" value={{category.id}}> {{category.name}}
-                </option>
-            </select>      
 
+
+        <!-- Adding an item -->
+        <form>            
+            <!-- TODO: find the issue in the code: The Please select doesn't appear by default.  -->            
+            <select [(ngModel)]="selected_category_id" name="selected_category_id" id="category_to_select_field"
+                    aria-label="When adding an item, name of the category the item is related to." required>  
+                <option value="1" selected disabled>Please select a category</option>
+                <option *ngFor="let category of categories" value={{category.id}}> {{category.name}}
+                </option>                
+            </select>      
             <!-- Input for the item to add to the selected category -->
             <!-- TODO: The item label should not be sent if no category has been selected -->
-            <input [(ngModel)]="item_input_name" name="item_input_name"
+            <input [(ngModel)]="item_input_name" name="item_input_name" id="item_input_name"
             type="text" aria-label="Name of the item to add" 
             required/>                        
-            <button aria-label="Button to click to add an item to this category" 
-            (click)="addItem(selected_category_id)">
-                Add an item to the category
-            </button>
-            
+            <input type="submit"  value="Add an item to the category" 
+            aria-label="Button to click to add an item to this category" id="add_item_button"
+            (click)="addItem(selected_category_id)"/>
+                      
         </form>        
     </div>    
 
@@ -40,22 +40,26 @@
                 <i class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteCategory(category.id)"></i> 
                 &nbsp; 
                 <!-- Large clickable area, tabfocus, captions   -->
-                <span id='foldUnfoldClickArea' (click)="foldUnfoldCategory(category.id)" aria-role="clickable area"  aria-roledescription="clickable area that unfolds and folds the items contained in the category">
+                <span (click)="foldUnfoldCategory(category.id)" aria-role="clickable area"  aria-roledescription="clickable area that unfolds and folds the items contained in the category">
                      <i class="fas fa-plus-circle" style="font-size:0.65em;"></i>
                     {{category.name}}
+                    <div id=itemsForCategory{{category.id}} class="toggleItem">
+                        <!-- TODO: why filling the text field and pressing enter is not sufficient 
+                        for the data to be submitted. Doing so is sufficient to add a new category. -->
+                        
+                        <!-- Displaying the previously registered items -->
+                                       
+                        
+                        <ul style="list-style-type:none">                                                  
+                            <li *ngFor="let item of items_sorted_by_category.get(category.id)" id={{item.name}}{{item.id}}  value={{item.id}}
+                                aria-label="List displaying the items for a given category" >
+                                <i class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteItem(item.id)"></i> 
+                                {{item.name}} 
+                            </li>                            
+                        </ul>                    
+                    </div>   
                 </span>
-                <div id=itemsForCategory{{category.id}} class="toggleItem">
-                    <!-- TODO: why filling the text field and pressing enter is not sufficient 
-                    for the data to be submitted. Doing so is sufficient to add a new category. -->
-                    
-                    <!-- Displaying the previously registered items -->
-                    <ul>
-                        <li *ngFor="let item of items_for_a_specific_category" id={{item.name}}{{item.id}}  value={{item.id}}
-                            aria-label="List displaying the items for a given category">
-                            {{item.name}}
-                        </li>
-                    </ul>                    
-                </div>               
+                            
             </li>
         </ul>
         

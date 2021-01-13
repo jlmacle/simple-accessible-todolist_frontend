@@ -1,20 +1,27 @@
-import { browser, by, WebElement } from "protractor";
+import { browser, by, WebDriver, WebElement } from "protractor";
 
 describe('Testing the adding of a new category and item.', 
             function(){
                 it('Testing the adding of a new category.', 
                     function() {                        
-                        browser.driver.get("http://localhost:4200");
+                        let promise = browser.driver.get("http://localhost:4200");
+                        let document;
+                        promise.then(
+                            data=>{document=data;                               
+                            let all_nodes  = browser.document.querySelectorAll("SPAN");
+                            console.log("all_nodes: "+all_nodes);},
+                            error=>{console.log("Error while retrieving the page");}
+                        )
+
                         browser.waitForAngular();
                         browser.driver.sleep(10000);
                         //attempt to avoid a stale elements issue
                         browser.navigate().refresh();
                         browser.driver.findElement(by.id("new_category_input_field")).sendKeys("Protractor test category");
                         browser.driver.findElement(by.id("add_category_button")).click();                        
-                                               
                         
                         let all_span_elements_Promise = browser.driver.findElements(by.tagName('span'));  
-                        
+                    
                                                
                         let all_span_elements:WebElement[];
                         let protractor_test_category_is_found = false;    
