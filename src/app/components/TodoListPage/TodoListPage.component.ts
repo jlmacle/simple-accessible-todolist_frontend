@@ -154,9 +154,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
       data => {console.log("Item deleted. id:"+item_id);
               //Calling on getItems() to display the updated list.
               this.getItems();
-              let element = document.getElementById("itemsForCategory"+category_id);
-              element.style.setProperty('visibility',"visible");
-              element.style.setProperty("display","block");
+              this.unfoldCategory(category_id);
             },
       error =>{console.log("Issue while deleting a category.");}
     );    
