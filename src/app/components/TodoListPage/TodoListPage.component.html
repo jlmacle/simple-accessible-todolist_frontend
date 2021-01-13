@@ -53,7 +53,7 @@
                         <ul style="list-style-type:none">                                                  
                             <li *ngFor="let item of items_sorted_by_category.get(category.id)" id={{item.name}}{{item.id}}  value={{item.id}}
                                 aria-label="List displaying the items for a given category" >
-                                <i class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteItem(item.id)"></i> 
+                                <i class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteItem(item.id,category.id)"></i> 
                                 {{item.name}} 
                             </li>                            
                         </ul>                    

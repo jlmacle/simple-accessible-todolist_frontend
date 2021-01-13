@@ -104,7 +104,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
         this.getItems();
         this.router.navigate(['.']);
         //TODO: resetting fields
-        document.getElementById("item_input_name").innerText="";
+        document.getElementById("item_input_name").setAttribute("value","");
 
     },
       error => {console.log("Error while adding an item: ",error);}
@@ -149,11 +149,15 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
    
   }
 
-  deleteItem(id:number){
-    this.entryService.deleteItem(id).then(
-      data => {console.log("Item deleted. id:"+id);
-              //Calling on getCategories() to display the updated list.
-              this.getItems();},
+  deleteItem(item_id:number, category_id:number){
+    this.entryService.deleteItem(item_id).then(
+      data => {console.log("Item deleted. id:"+item_id);
+              //Calling on getItems() to display the updated list.
+              this.getItems();
+              let element = document.getElementById("itemsForCategory"+category_id);
+              element.style.setProperty('visibility',"visible");
+              element.style.setProperty("display","block");
+            },
       error =>{console.log("Issue while deleting a category.");}
     );    
   }
