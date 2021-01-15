@@ -43,11 +43,14 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
     let category = new Category();
     //category.id is left undefined
     category.name = this.category_input_name;
-    this.entryService.addCategory(category).then(
-      data => {console.log("addCategory() called; category object:",category.id+" , "+category.name);
-              this.getCategories();},
-      error => {console.log("Issue while adding a category.");}      
-    );      
+    if (this.category_input_name != "")
+    {
+      this.entryService.addCategory(category).then(
+        data => {console.log("addCategory() called; category object:",category.id+" , "+category.name);
+                this.getCategories();},
+        error => {console.log("Issue while adding a category.");}      
+      );
+    }
   }
 
   getCategories(){
@@ -98,17 +101,19 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
     item.id=1;//TODO: see if/why that's an issue to leave the id undefined.
     item.name = this.item_input_name;
     item.categoryId = categoryId;
-    this.entryService.addItem(item, categoryId).then(
-      data => {
-        console.log("Item Added to category id: "+categoryId);
-        this.getItems();
-        this.router.navigate(['.']);
-        //TODO: resetting fields
-        this.item_input_name = '';        
-
-    },
-      error => {console.log("Error while adding an item: ",error);}
-    )
+    if (item.name != ""){
+      this.entryService.addItem(item, categoryId).then(
+        data => {
+          console.log("Item Added to category id: "+categoryId);
+          this.getItems();
+          this.router.navigate(['.']);
+          //TODO: resetting fields
+          this.item_input_name = '';   
+      },
+        error => {console.log("Error while adding an item: ",error);}
+      );
+    }
+    
     
     
   }
