@@ -104,7 +104,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
         this.getItems();
         this.router.navigate(['.']);
         //TODO: resetting fields
-        document.getElementById("item_input_name").setAttribute("value","");
+        this.item_input_name = '';        
 
     },
       error => {console.log("Error while adding an item: ",error);}
