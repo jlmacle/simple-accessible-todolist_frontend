@@ -1,7 +1,0 @@
-version: 2.1
-orbs:
-  pa11yci: nebulab/pa11yci@1.0.0
-workflows:
-  pa11yci:
-    jobs:
-      pa11yci/test
