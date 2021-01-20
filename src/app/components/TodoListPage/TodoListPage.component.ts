@@ -16,7 +16,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
   
   //used to define a new category
   category_input_name="";
-  
+
   //used to define a new item
   selected_category_id=1;    
   item_input_name="";
@@ -124,8 +124,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
         this.items_sorted_by_category = new Map();
         this.all_items.forEach(item => 
           {
-            if (this.items_sorted_by_category.has(item.categoryId)){
-              //let items_for_this_category = this.items_sorted_by_category.get(item.categoryId);
+            if (this.items_sorted_by_category.has(item.categoryId)){              
               //Getting the array of items already existing for item.categoryId
               (this.items_sorted_by_category.get(item.categoryId)).push(item);          
 
