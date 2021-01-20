@@ -16,6 +16,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
   
   //used to define a new category
   category_input_name="";
+  
   //used to define a new item
   selected_category_id=1;    
   item_input_name="";
