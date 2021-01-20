@@ -22,7 +22,6 @@
                 </option>                
             </select>      
             <!-- Input for the item to add to the selected category -->
-            <!-- TODO: The item label should not be sent if no category has been selected -->
             <input [(ngModel)]="item_input_name" name="item_input_name" id="item_input_name"
             type="text" aria-label="Name of the item to add" 
             required/>                        
@@ -43,11 +42,8 @@
                 <span (click)="foldUnfoldCategory(category.id)" aria-role="clickable area"  aria-roledescription="clickable area that unfolds and folds the items contained in the category">
                      <i class="fas fa-plus-circle" style="font-size:0.65em;"></i>
                     {{category.name}}
-                    <div id=itemsForCategory{{category.id}} class="toggleItem">
-                        <!-- TODO: why filling the text field and pressing enter is not sufficient 
-                        for the data to be submitted. Doing so is sufficient to add a new category. -->                        
-                        <!-- Displaying the previously registered items -->                           
-                        
+                    <div id=itemsForCategory{{category.id}} class="toggleItem">                        
+                        <!-- Displaying the previously registered items --> 
                         <ul style="list-style-type:none">                                                  
                             <li *ngFor="let item of items_sorted_by_category.get(category.id)" id={{item.name}}{{item.id}}  value={{item.id}}
                                 aria-label="List displaying the items for a given category" >
@@ -62,8 +58,7 @@
         </ul>
         
     </div>
-
-    <!-- TODO: modification of the code to avoid overlapping of credits and todo list display   -->
+    
     <div id="credits"><u>Credits:</u> 
         <ul><!--TODO: to finish -->
             <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://fontawesome.com/icons/trash-alt?style=solid" style="color:black;"><i class="fas fa-trash-alt"></i></a> <a aria-label="link to the page where the plus in a circle comes from" href="https://fontawesome.com/v4.7.0/icon/plus-circle"  style="color:black;"><i class="fas fa-plus-circle"></i></a> by FontAwesome, under a <a aria  href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. No changes were made to the icons.</li>
