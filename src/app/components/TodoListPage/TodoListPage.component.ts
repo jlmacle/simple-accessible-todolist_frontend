@@ -76,9 +76,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
     }
     else{
       this.foldCategory(category_id);
-    }
-    //Query to get all the items, to group them by category id and to affect the value of items_sorted_by_category
-    //this.get_items_for_category_id(category_id);    
+    }    
     
   }
 
@@ -107,7 +105,6 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
           console.log("Item Added to category id: "+categoryId);
           this.getItems();
           this.router.navigate(['.']);
-          //TODO: resetting fields
           this.item_input_name = '';   
       },
         error => {console.log("Error while adding an item: ",error);}
