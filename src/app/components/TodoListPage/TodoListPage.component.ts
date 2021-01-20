@@ -17,9 +17,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
   //used to define a new category
   category_input_name="";
   //used to define a new item
-  selected_category_id=1;  
-  //todo: remove selected when done 
-  selected="by default";
+  selected_category_id=1;    
   item_input_name="";
 
   //used to display existing categories and items
@@ -96,7 +94,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
   addItem(categoryId:number){
     console.log("Add item for the category: "+categoryId);
     let item = new Item();
-    item.id=1;//TODO: see if/why that's an issue to leave the id undefined.
+    item.id=1;//weakness in the code/understanding.
     item.name = this.item_input_name;
     item.categoryId = categoryId;
     if (item.name != ""){
@@ -110,9 +108,6 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
         error => {console.log("Error while adding an item: ",error);}
       );
     }
-    
-    
-    
   }
 
   getItems(){
