@@ -34,18 +34,18 @@
         <ul>
             <li *ngFor="let category of categories" id={{category.name}}{{category.id}} value={{category.id}}
                 aria-label="one item of all available categories">
-                <i class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteCategory(category.id)"></i> 
+                <em class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteCategory(category.id)"></em> 
                 &nbsp; 
                 <!-- Large clickable area, tabfocus, captions   -->
                 <span (click)="foldUnfoldCategory(category.id)" aria-role="clickable area"  aria-roledescription="clickable area that unfolds and folds the items contained in the category">
-                     <i class="fas fa-plus-circle" style="font-size:0.65em;"></i>
+                     <em class="fas fa-plus-circle" style="font-size:0.65em;"></em>
                     {{category.name}}
                     <div id=itemsForCategory{{category.id}} class="toggleItem">                        
                         <!-- Displaying the previously registered items --> 
                         <ul style="list-style-type:none">                                                  
                             <li *ngFor="let item of items_sorted_by_category.get(category.id)" id={{item.name}}{{item.id}}  value={{item.id}}
                                 aria-label="List displaying the items for a given category" >
-                                <i class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteItem(item.id,category.id)"></i> 
+                                <em class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteItem(item.id,category.id)"></em> 
                                 {{item.name}} 
                             </li>                            
                         </ul>                    
@@ -59,7 +59,7 @@
     
     <div id="credits"><u>Credits:</u> 
         <ul>
-            <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://fontawesome.com/icons/trash-alt?style=solid" style="color:black;"><i class="fas fa-trash-alt"></i></a> <a aria-label="link to the page where the plus in a circle comes from" href="https://fontawesome.com/v4.7.0/icon/plus-circle"  style="color:black;"><i class="fas fa-plus-circle"></i></a> by FontAwesome, under a <a aria  href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. No changes were made to the icons.</li>
+            <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://fontawesome.com/icons/trash-alt?style=solid" style="color:black;"><em class="fas fa-trash-alt"></em></a> <a aria-label="link to the page where the plus in a circle comes from" href="https://fontawesome.com/v4.7.0/icon/plus-circle"  style="color:black;"><i class="fas fa-plus-circle"></i></a> by FontAwesome, under a <a aria  href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. No changes were made to the icons.</li>
             <li>Retriever puppies picture by <a aria-label="Credit link to the author of the background picture, Chevanon photography" href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">Chevanon photography.</a></li>
         </ul>
     </div>
