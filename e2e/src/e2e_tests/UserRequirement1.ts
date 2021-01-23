@@ -45,11 +45,9 @@ describe('Testing the adding of a new category and item.',
                            , 
                             error=>
                                 {console.log("** 1. bis Error while retrieving all span elements:",error);}
-                        );                           
-                       
-                        
-                        
-;
+                        );   
                     } 
                 );
-            });
+                
+            }
+        );
