@@ -1,3 +1,5 @@
+<!--TODO: ability to click enter to submit the data-->
+
 <div id="displayArea">
     <div id="clickToAddCategory">
         <form>
@@ -32,7 +34,8 @@
 
     <div id="displayCategories">
         <ul>
-            <li *ngFor="let category of categories" id={{category.name}}{{category.id}} value={{category.id}}
+            <li *ngFor="let category of categories" id={{category.name}}{{category.id}} 
+            name="aCategory" value={{category.id}}
                 aria-label="one item of all available categories">
                 <em class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteCategory(category.id)"></em> 
                 &nbsp; 
@@ -43,7 +46,8 @@
                     <div id=itemsForCategory{{category.id}} class="toggleItem">                        
                         <!-- Displaying the previously registered items --> 
                         <ul style="list-style-type:none">                                                  
-                            <li *ngFor="let item of items_sorted_by_category.get(category.id)" id={{item.name}}{{item.id}}  value={{item.id}}
+                            <li *ngFor="let item of items_sorted_by_category.get(category.id)" 
+                            name="anItem" id={{item.name}}{{item.id}}  value={{item.id}}
                                 aria-label="List displaying the items for a given category" >
                                 <em class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteItem(item.id,category.id)"></em> 
                                 {{item.name}} 

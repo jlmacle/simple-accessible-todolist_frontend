@@ -11,7 +11,7 @@ exports.config = {
   allScriptsTimeout: 11000,
   specs: [
     //'./src/**/*.e2e-spec.ts'
-    './src/e2e_tests/new_category_test.ts'
+    './src/e2e_tests/UserRequirement1.ts'
   ],
   capabilities: {
     browserName: 'chrome'
