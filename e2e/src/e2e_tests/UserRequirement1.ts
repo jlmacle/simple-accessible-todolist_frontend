@@ -30,8 +30,8 @@ describe('Testing the adding of a new category and item.',
                                         let text:string;
 
                                         element.getText().then(
-                                            data => {
-                                                text=data;
+                                            text_data => {
+                                                text=text_data;
                                                 console.log("**Found text:"+text);
                                                 if(text==textToFind){protractor_test_category_is_found=true;console.log("Found: "+textToFind+" Value of protractor_test_category_is_found:"+protractor_test_category_is_found);expect(protractor_test_category_is_found).toBe(true);}
                                             },
@@ -48,6 +48,9 @@ describe('Testing the adding of a new category and item.',
                         );   
                     } 
                 );
-                
+                it('Testing the deletion of the new category',
+                    function(){
+                        
+                    });
             }
         );
