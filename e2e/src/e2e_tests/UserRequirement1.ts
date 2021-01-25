@@ -14,7 +14,7 @@ describe('Testing the addition and deletion of a new category.',
                         browser.driver.get("http://localhost:4200");                        
     	                browser.driver.findElement(by.id("new_category_input_field")).sendKeys("Protractor test category");
                         browser.driver.findElement(by.id("add_category_button")).click();
-                        console.log("At this point, the test category should have been created.");
+                        console.log("**At this point, the test category should have been created.");
                         //The category has been added. The display of the existing categories is being refreshed.
     	                browser.driver.get("http://localhost:4200");                                
                         let aCategory_elements_Promise = browser.driver.findElements(by.name('aCategory')); 
@@ -103,11 +103,11 @@ describe('Testing the addition and deletion of a new category.',
                                                     //3. confirmation of deletion
                                                     browser.driver.get("http://localhost:4200");
                                                     browser.driver.findElements(by.name("aCategory")).then(
-                                                        aCategoryElements=> {
-                                                            console.log("Found "+aCategoryElements.length+" elements in aCategoryElements after deletion.");
-                                                            aCategoryElements.forEach(
-                                                                aCategoryElement =>{
-                                                                    aCategoryElement.getText().then(
+                                                        aCategory_Elements=> {
+                                                            console.log("Found "+aCategory_Elements.length+" elements in aCategoryElements after deletion.");
+                                                            aCategory_Elements.forEach(
+                                                                aCategory_Element =>{
+                                                                    aCategory_Element.getText().then(
                                                                         text_data => {
                                                                             let trimmed_data = text_data.trim();
                                                                             console.log("Category label found: *"+trimmed_data+"*");
