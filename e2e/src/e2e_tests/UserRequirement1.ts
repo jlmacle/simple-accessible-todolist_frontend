@@ -7,10 +7,11 @@ import { browser, by} from "protractor";
 describe('Testing the addition and deletion of a new category.', 
             function(){
                 it('Testing the creation of a new category.', 
-                    function() {
+                    async function() {
                         let textToFind:string = "Protractor test category";
                         let protractor_test_category_is_found:boolean = false;
 
+                        console.log("1. Creation of a category");
                         browser.driver.get("http://localhost:4200");                        
     	                browser.driver.findElement(by.id("new_category_input_field")).sendKeys("Protractor test category");
                         browser.driver.findElement(by.id("add_category_button")).click();
@@ -19,11 +20,11 @@ describe('Testing the addition and deletion of a new category.',
     	                browser.driver.get("http://localhost:4200");                                
                         let aCategory_elements_Promise = browser.driver.findElements(by.name('aCategory')); 
                         
-                        aCategory_elements_Promise.then(
+                        await aCategory_elements_Promise.then(
                             aCategory_elements=>
                             {
-                                console.log("**Retrieved all aCategory elements. Number of elements found: "+aCategory_elements.length);             
-                                if(aCategory_elements.length == 0 ){fail("No categories, the app wasn't started.");}//for the case where the app wasn't started 
+                                console.log("2. Confirmation that the category was created.")
+                                console.log("**Retrieved all aCategory elements. Number of elements found: "+aCategory_elements.length);        
                                 aCategory_elements.forEach(
                                     element => {                                                                                                         
                                         let text:string;
@@ -47,22 +48,24 @@ describe('Testing the addition and deletion of a new category.',
                             error=>
                                 {console.log("**Error while retrieving all aCategory elements:",error);}
                         ); 
+                        expect(protractor_test_category_is_found).toBe(true);
                         
                     } 
                 );
                 it('Testing the deletion of the new category',
-                    function(){
+                    async function(){
+                        console.log("1. Deletion of a category");
                         let testCategoryPositionInTheList:number = 0;
                         let currentCategoryPosition:number = 0;                        
                         let textToFind:string = "Protractor test category";
+                        let isCategoryDeleted:boolean=false;
 
                         browser.driver.get("http://localhost:4200"); 		
 		                //1. Confirmation that the category was created; registration of its position in the list of elements named aCategory    	
                         let aCategoryElements_Promise= browser.driver.findElements(by.name("aCategory"));	
-                        aCategoryElements_Promise.then(
+                        await aCategoryElements_Promise.then(
                             aCategoryElements=>{                                
-                                console.log("**Retrieved all elements named aCategory. Number of elements found: "+aCategoryElements.length);             
-                                if(aCategoryElements.length == 0) {fail("No categories, the app wasn't started.");}//for the case where the app wasn't started
+                                console.log("**Retrieved all elements named aCategory. Number of elements found: "+aCategoryElements.length);                                
                                 //Finding the position of the test category
                                 aCategoryElements.forEach(
 									aCategoryElement=>{
@@ -71,7 +74,6 @@ describe('Testing the addition and deletion of a new category.',
                                         aCategoryElement.getText().then(
                                             text=>{
                                                 let trimmed_text = text.trim();
-                                                console.log("Found text: *"+trimmed_text+"* in an element named aCategory.");
                                                 if (trimmed_text==textToFind) {
                                                     testCategoryPositionInTheList = currentCategoryPosition;
                                                     console.log("Found the text:"+text+" in position: "+testCategoryPositionInTheList);					
@@ -101,6 +103,7 @@ describe('Testing the addition and deletion of a new category.',
                                                         }
                                                     );
                                                     //3. confirmation of deletion
+                                                    console.log("2. Confirmation that the category was deleted.");
                                                     browser.driver.get("http://localhost:4200");
                                                     browser.driver.findElements(by.name("aCategory")).then(
                                                         aCategory_Elements=> {
@@ -119,7 +122,7 @@ describe('Testing the addition and deletion of a new category.',
                                                                             }
                                                                             else{
                                                                                 //otherwise the test is successful 
-                                                                                expect(true);
+                                                                                isCategoryDeleted = true;
                                                                             }
                                                                         }, 
                                                                         error => {
@@ -145,7 +148,8 @@ describe('Testing the addition and deletion of a new category.',
                                     error=>{console.log("Error while retrieving the aCategoryElements_Promise: ",error);}
                         		);
 							}
-						);               
+                        );    
+                        expect(isCategoryDeleted).toBe(true);           
                     }
                 );
             }   
