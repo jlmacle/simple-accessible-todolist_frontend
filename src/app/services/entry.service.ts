@@ -23,7 +23,7 @@ export class EntryService {
   }
     
   deleteCategory(id:number):Promise<any>{
-    let url = Variables.base_url+"/categories/"+id;
+    let url = Variables.base_url+"/category/"+id;
     console.log("HTTP DELETE to: "+url);
     return this.http.delete(url).toPromise();    
   }
@@ -43,7 +43,7 @@ export class EntryService {
   }
 
   deleteItem(id:number):Promise<any>{
-    let url = Variables.base_url+"/items/"+id;
+    let url = Variables.base_url+"/item/"+id;
     console.log("HTTP DELETE to: "+url);
     return this.http.delete(url).toPromise();    
   }

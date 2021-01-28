@@ -35,10 +35,11 @@
             <li *ngFor="let category of categories" id={{category.name}}{{category.id}} 
             name="aCategory" value={{category.id}}
                 aria-label="one item of all available categories">
-                <em name="anIconToDeleteACategory" class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteCategory(category.id)"></em> 
+                <em name="anIconToDeleteACategory" class="fas fa-trash-alt" style="font-size:0.65em;" 
+                (click)="deleteCategory(category.id)"></em> 
                 &nbsp; 
                 <!-- Large clickable area, tabfocus, captions   -->
-                <span (click)="foldUnfoldCategory(category.id)" aria-role="clickable area"  aria-roledescription="clickable area that unfolds and folds the items contained in the category">
+                <span (click)="foldUnfoldCategory(category.id)"  aria-roledescription="clickable area that unfolds and folds the items contained in the category">
                      <em class="fas fa-plus-circle" style="font-size:0.65em;"></em>
                     {{category.name}}
                     <div id=itemsForCategory{{category.id}} class="toggleItem">                        
@@ -47,7 +48,8 @@
                             <li *ngFor="let item of items_sorted_by_category.get(category.id)" 
                             name="anItem" id={{item.name}}{{item.id}}  value={{item.id}}
                                 aria-label="List displaying the items for a given category" >
-                                <em class="fas fa-trash-alt" style="font-size:0.65em;" (click)="deleteItem(item.id,category.id)"></em> 
+                                <em class="fas fa-trash-alt" name="anIconToDeleteAnItem" style="font-size:0.65em;"
+                                 (click)="deleteItem(item.id,category.id)"></em> 
                                 {{item.name}} 
                             </li>                            
                         </ul>                    
