@@ -32,8 +32,9 @@ function(){
                 error => {
                     console.log("Error while retrieving the promise with the anItem elements: ", error);
                 }                
-            );                        
-            expect(isTheItemCreated).toBe(true);                      
+            );                
+            if(isTheItemCreated == false) fail("No created item has been found. The test of creation failed.");   
+                               
         });
         
     it("Testing the deletion of an item",
@@ -51,10 +52,10 @@ function(){
                             elementPosition++;
                             anItemElement.getText().then(
                                 text=>{if(text==testItemLabel){positionOfTestItem=elementPosition;console.log("Text found in the element named 'anItem': "+text+" in position: "+positionOfTestItem);}},
-                                error=>{console.log("Error while retrieving the text of an element named 'anItem"),error;}
+                                error=>{console.log("Error while retrieving the text of an element named 'anItem: ",error)}
                             )
                         },
-                        error => {console.log("Error while going through the elements named 'anItem'"), error;}
+                        error => {console.log("Error while going through the elements named 'anItem': ",error)}
                     );
                 },
                 error=>{console.log("Error while retrieving the elements named 'anItem':",error);});
@@ -64,12 +65,14 @@ function(){
             await anIconToDeleteAnItemElements_Promise.then(                  
                 async anIconToDeleteAnItemElements =>{                   
                     console.log("Found "+anIconToDeleteAnItemElements.length+" element(s) in anIconToDeleteAnItemElements");
-                    if(anIconToDeleteAnItemElements.length==0){fail("There are no elements with a trash can icon. The test is failed.");}           
+                    if(anIconToDeleteAnItemElements.length==0){fail("There are no elements with a trash can icon. The test of deletion failed.");}           
                     let elementPosition = 0; 
                     await anIconToDeleteAnItemElements.forEach(
-                        anIconToDeleteAnItemElement => {
+                        async anIconToDeleteAnItemElement => {
                             elementPosition++;
-                            if(elementPosition==positionOfTestItem){anIconToDeleteAnItemElement.click();console.log("Element clicked for deletion.");}
+                            if(elementPosition==positionOfTestItem){
+                                await anIconToDeleteAnItemElement.click();console.log("Element clicked for deletion.");
+                            }
                         },
                         error => {
                             console.log("Error while going through the list of elements named anIconToDeleteAnItem: ", error);
