@@ -25,6 +25,7 @@ describe('Testing the addition and deletion of a new category.',
                             {
                                 console.log("2. Confirmation that the category was created.")
                                 console.log("**Retrieved all aCategory elements. Number of elements found: "+aCategory_elements.length);        
+                                if(aCategory_elements.length==0){fail("No categories were found. There should be at leat 'Misc'. The app wasn't started.");}
                                 aCategory_elements.forEach(
                                     element => {                                                                                                         
                                         let text:string;
@@ -66,6 +67,7 @@ describe('Testing the addition and deletion of a new category.',
                         await aCategoryElements_Promise.then(
                             aCategoryElements=>{                                
                                 console.log("**Retrieved all elements named aCategory. Number of elements found: "+aCategoryElements.length);                                
+                                if(aCategoryElements.length==0){fail("No categories were found. There should be at leat 'Misc'. The app wasn't started.");}
                                 //Finding the position of the test category
                                 aCategoryElements.forEach(
 									aCategoryElement=>{
@@ -84,7 +86,7 @@ describe('Testing the addition and deletion of a new category.',
                                                     //Finding the elements with the name "anIconToDeleteACategory" using a promise
                                                     browser.driver.findElements(by.name("anIconToDeleteACategory")).then(
                                                         anIconToDeleteACategoryElements=>{
-                                                            console.log("Found "+anIconToDeleteACategoryElements.length+" elements with name anIconToDeleteACategory.");
+                                                            console.log("Found "+anIconToDeleteACategoryElements.length+" element(s) with name anIconToDeleteACategory.");
                                                             for(let i=0; i<anIconToDeleteACategoryElements.length; i++){
                                                                 currentCategoryPosition++;   
                                                                 if(currentCategoryPosition==testCategoryPositionInTheList){
