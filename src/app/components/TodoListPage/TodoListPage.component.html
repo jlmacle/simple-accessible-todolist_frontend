@@ -39,7 +39,8 @@
                 (click)="deleteCategory(category.id)"></em> 
                 &nbsp; 
                 <!-- Large clickable area, tabfocus, captions   -->
-                <span (click)="foldUnfoldCategory(category.id)"  aria-roledescription="clickable area that unfolds and folds the items contained in the category">
+                <span (click)="foldUnfoldCategory(category.id)"  
+                id="foldUnfoldArea" aria-roledescription="clickable area that unfolds and folds the items contained in the category">
                      <em class="fas fa-plus-circle" style="font-size:0.65em;"></em>
                     {{category.name}}
                     <div id=itemsForCategory{{category.id}} class="toggleItem">                        
