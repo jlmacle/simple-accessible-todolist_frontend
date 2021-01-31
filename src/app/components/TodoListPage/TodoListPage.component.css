@@ -2,6 +2,7 @@
 #displayArea{    
     background: rgb(255,255,255,0.5);
     font-size: xx-large;
+    height: 100vh;
 }
 
 #credits{
