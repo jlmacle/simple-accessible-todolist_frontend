@@ -35,13 +35,13 @@
             <li *ngFor="let category of categories" id={{category.name}}{{category.id}} 
             name="aCategory" value={{category.id}}
                 aria-label="one item of all available categories">
-                <em name="anIconToDeleteACategory" class="fas fa-trash-alt" style="font-size:0.65em;" 
-                (click)="deleteCategory(category.id)"></em> 
+                <em name="anIconToDeleteACategory" tabindex="0"  class="fas fa-trash-alt" style="font-size:0.65em;" 
+                (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)"></em> 
                 &nbsp; 
                 <!-- Large clickable area, tabfocus, captions   -->
-                <span (click)="foldUnfoldCategory(category.id)"  
+                <span (click)="foldUnfoldCategory(category.id)"  (keydown.enter)="foldUnfoldCategory(category.id)"
                 id="foldUnfoldArea" aria-roledescription="clickable area that unfolds and folds the items contained in the category">
-                     <em class="fas fa-plus-circle" style="font-size:0.65em;"></em>
+                     <em class="fas fa-plus-circle" tabindex="0" style="font-size:0.65em;"></em>
                     {{category.name}}
                     <div id=itemsForCategory{{category.id}} class="toggleItem">                        
                         <!-- Displaying the previously registered items --> 
@@ -49,8 +49,8 @@
                             <li *ngFor="let item of items_sorted_by_category.get(category.id)" 
                             name="anItem" id={{item.name}}{{item.id}}  value={{item.id}}
                                 aria-label="List displaying the items for a given category" >
-                                <em class="fas fa-trash-alt" name="anIconToDeleteAnItem" style="font-size:0.65em;"
-                                 (click)="deleteItem(item.id,category.id)"></em> 
+                                <em class="fas fa-trash-alt" tabindex="0" name="anIconToDeleteAnItem" style="font-size:0.65em;"
+                                 (click)="deleteItem(item.id,category.id)"  (keydown.enter)="deleteItem(item.id,category.id)"></em> 
                                 {{item.name}} 
                             </li>                            
                         </ul>                    
@@ -69,6 +69,7 @@
         </ul>
     </div>
         <div id="dedicace">For the lovelies.</div>
+        <app-around-sdgs-communication></app-around-sdgs-communication>
     </div>
-
+    
 

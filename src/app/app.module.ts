@@ -10,6 +10,7 @@ import { ToDoListPageComponent } from './components/TodoListPage/TodoListPage.co
 import  {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AroundSDGsCommunicationComponent } from './components/around-sdgs-communication/around-sdgs-communication.component';
 
 const routes: Routes =[
   {path: '.', component:ToDoListPageComponent}
@@ -18,7 +19,8 @@ const routes: Routes =[
 @NgModule({
   declarations: [
     AppComponent,
-    ToDoListPageComponent
+    ToDoListPageComponent,
+    AroundSDGsCommunicationComponent
   ],
   imports: [
     BrowserModule,
