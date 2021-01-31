@@ -21,7 +21,7 @@
             </select>      
             <!-- Input for the item to add to the selected category -->
             <input [(ngModel)]="item_input_name" name="item_input_name" id="item_input_name"
-            type="text" aria-label="Name of the item to add" (keydown.enter)="addItem(selected_category_id)"
+            type="text" aria-label="Item to add" (keydown.enter)="addItem(selected_category_id)"
             required/>                        
             <input type="submit"  value="Add an item to the category" 
             aria-label="Button to click to add an item to this category" id="add_item_button"
@@ -35,21 +35,26 @@
             <li *ngFor="let category of categories" id={{category.name}}{{category.id}} 
             name="aCategory" value={{category.id}}
                 aria-label="one item of all available categories">
-                <em name="anIconToDeleteACategory" tabindex="0"  class="fas fa-trash-alt" style="font-size:0.65em;" 
+                <em name="anIconToDeleteACategory" tabindex="0"  class="fas fa-trash-alt" title="Clickable icon to suppress a category"
+                aria-label="Trash can icon" aria-describedby="Trash can icon used to suppress an empty categorys" aria-role="button"   
+                style="font-size:0.65em;" 
                 (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)"></em> 
                 &nbsp; 
                 <!-- Large clickable area, tabfocus, captions   -->
                 <span (click)="foldUnfoldCategory(category.id)"  (keydown.enter)="foldUnfoldCategory(category.id)"
                 id="foldUnfoldArea" aria-roledescription="clickable area that unfolds and folds the items contained in the category">
-                     <em class="fas fa-plus-circle" tabindex="0" style="font-size:0.65em;"></em>
+                     <em class="fas fa-plus-circle" tabindex="0" 
+                     aria-label="Plus sign icon" aria-describedby="Plus sign icon used to display or hide the items of a category"  aria-role="button" style="font-size:0.65em;"></em>
                     {{category.name}}
                     <div id=itemsForCategory{{category.id}} class="toggleItem">                        
                         <!-- Displaying the previously registered items --> 
                         <ul style="list-style-type:none">                                                  
                             <li *ngFor="let item of items_sorted_by_category.get(category.id)" 
                             name="anItem" id={{item.name}}{{item.id}}  value={{item.id}}
-                                aria-label="List displaying the items for a given category" >
-                                <em class="fas fa-trash-alt" tabindex="0" name="anIconToDeleteAnItem" style="font-size:0.65em;"
+                                aria-label="List of items" aria-describedby="List displaying the items for a given category">
+                                <em class="fas fa-trash-alt" tabindex="0" name="anIconToDeleteAnItem" 
+                                aria-label="Trash can icon" aria-describedby="Trash can icon used to delete an item"
+                                aria-role="button" style="font-size:0.65em;"
                                  (click)="deleteItem(item.id,category.id)"  (keydown.enter)="deleteItem(item.id,category.id)"></em> 
                                 {{item.name}} 
                             </li>                            
@@ -64,11 +69,11 @@
     
     <div id="credits"><u>Credits:</u> 
         <ul>
-            <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://fontawesome.com/icons/trash-alt?style=solid" style="color:black;"><em class="fas fa-trash-alt"></em></a> <a aria-label="link to the page where the plus in a circle comes from" href="https://fontawesome.com/v4.7.0/icon/plus-circle"  style="color:black;"><em class="fas fa-plus-circle"></em></a> by FontAwesome, under a <a aria  href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. No changes were made to the icons.</li>
+            <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://fontawesome.com/icons/trash-alt?style=solid" style="color:black;"><em class="fas fa-trash-alt"></em></a> <a aria-label="link to the page where the plus icon comes from" href="https://fontawesome.com/v4.7.0/icon/plus-circle"  style="color:black;"><em class="fas fa-plus-circle"></em></a> by FontAwesome, under a <a aria  href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. No changes were made to the icons.</li>
             <li>Retriever puppies picture by <a aria-label="Credit link to the author of the background picture, Chevanon photography" href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">Chevanon photography.</a></li>
         </ul>
     </div>
-        <div id="dedicace">For the lovelies.</div>
+        <div id="dedicace" >For the lovelies.</div>
         <app-around-sdgs-communication></app-around-sdgs-communication>
     </div>
     
