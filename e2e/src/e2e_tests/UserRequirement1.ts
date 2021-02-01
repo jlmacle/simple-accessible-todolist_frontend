@@ -4,7 +4,7 @@ import { fail } from "assert";
 import { browser, by} from "protractor";
 
 //Code adapted from the java e2e test file
-describe('Testing the addition and deletion of a new category.', 
+xdescribe('Testing the addition and deletion of a new category.', 
             function(){
                 it('Testing the creation of a new category.', 
                     async function() {
