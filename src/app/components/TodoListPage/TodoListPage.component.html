@@ -11,7 +11,7 @@
             aria-required="true"/> 
             <!-- 'required' was raising a required invalid entry issue that was solved with 'aria-required="true"'   -->
             <button  aria-label="Button to click to add the category" 
-            (click)="addCategory()" (keydown.enter)="addCategory()" id="add_category_button">
+            (click)="addCategory()"  id="add_category_button">
                 Add a category
             </button>
         </form>
@@ -30,7 +30,7 @@
             aria-required="true"/>                        
             <input type="submit"  value="Add an item to the category" 
             aria-label="Button to click to add an item to this category" id="add_item_button"
-            (click)="addItem(selected_category_id)" (keydown.enter)="addItem(selected_category_id)"/>
+            (click)="addItem(selected_category_id)"/>
                       
         </form>        
     </div>    
