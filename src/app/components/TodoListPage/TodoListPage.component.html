@@ -7,7 +7,7 @@
         <form>
          <!-- Definition of a new category -->
             <input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
-            type="text" aria-label="Name of the category to add" minlength="1" (keydown.enter)="addCategory()"
+            type="text" aria-label="Name of the category to add" minlength="1" 
             aria-required="true"/> 
             <!-- 'required' was raising a required invalid entry issue that was solved with 'aria-required="true"'   -->
             <button  aria-label="Button to click to add the category" 
@@ -39,7 +39,8 @@
         <ul >
             <li *ngFor="let category of categories" id={{category.name}}{{category.id}} 
             name="aCategory" value={{category.id}}
-                aria-label="one item of all available categories">
+                aria-label="one item of all available categories"
+                style="list-style-type: none;">
                 
                 <em name="anIconToDeleteACategory" tabindex="0"  class="fas fa-trash-alt"   
                 aria-label="Trash can icon" 
