@@ -1,10 +1,15 @@
+<!-- The screen reader NVDA has been used to test the web accessibility  -->
+<!-- Settings used: Vision category: "Enable Highlighting",  -->
+<!-- Tool used: Speech viewer -->
+
 <div id="displayArea">
     <div id="clickToAddCategory">
         <form>
          <!-- Definition of a new category -->
             <input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
             type="text" aria-label="Name of the category to add" minlength="1" (keydown.enter)="addCategory()"
-            required/>
+            aria-required="true"/> 
+            <!-- 'required' was raising a required invalid entry issue that was solved with 'aria-required="true"'   -->
             <button  aria-label="Button to click to add the category" 
             (click)="addCategory()" (keydown.enter)="addCategory()" id="add_category_button">
                 Add a category
@@ -22,7 +27,7 @@
             <!-- Input for the item to add to the selected category -->
             <input [(ngModel)]="item_input_name" name="item_input_name" id="item_input_name"
             type="text" aria-label="Item to add" (keydown.enter)="addItem(selected_category_id)"
-            required/>                        
+            aria-required="true"/>                        
             <input type="submit"  value="Add an item to the category" 
             aria-label="Button to click to add an item to this category" id="add_item_button"
             (click)="addItem(selected_category_id)" (keydown.enter)="addItem(selected_category_id)"/>
@@ -31,14 +36,18 @@
     </div>    
 
     <div id="displayCategories">
-        <ul>
+        <ul >
             <li *ngFor="let category of categories" id={{category.name}}{{category.id}} 
             name="aCategory" value={{category.id}}
                 aria-label="one item of all available categories">
-                <em name="anIconToDeleteACategory" tabindex="0"  class="fas fa-trash-alt" title="Clickable icon to suppress a category"
-                aria-label="Trash can icon" aria-describedby="Trash can icon used to suppress an empty categorys" aria-role="button"   
+                
+                <em name="anIconToDeleteACategory" tabindex="0"  class="fas fa-trash-alt"   
+                aria-label="Trash can icon" 
+                aria-describedby="Trash can icon used to suppress an empty categorys" 
+                aria-role="button" 
                 style="font-size:0.65em;" 
-                (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)"></em> 
+                (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)"></em>
+                 
                 &nbsp; 
                 <!-- Large clickable area, tabfocus, captions   -->
                 <span (click)="foldUnfoldCategory(category.id)"  (keydown.enter)="foldUnfoldCategory(category.id)"

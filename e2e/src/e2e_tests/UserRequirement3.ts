@@ -19,14 +19,24 @@ describe('Testing the user requirement 3 of hiding/displaying an item',
                 anItemsElements_Promise.then(
                     anItemElements=>
                     {
-                        anItemElements.forEach(){
-                            
-                        }
+                        anItemElements.forEach(
+                            anItemElement => {
+                                anItemElement.getText().then(
+                                    text => {
+                                        if(text==testLabelItem) {isItemDisplayed = true;console.log("Success. The test item label has been found: "+text)}
+                                    },
+                                    error =>{
+                                        console.log("Error while retrieving the text of an element named anItem: ",error);
+                                    }
+                                );
+                            }
+                        )
                     },
-                    error=>
-                    {console.log("Error while accessing the data related to the elements named anItem",error)}                    
+                    error=>{console.log("Error while accessing the data related to the elements named anItem",error)}                    
                     );
                 
+                console.log("3. Testing that the created item is displayed and not hidded.")
+                //To finish
 
 
             })
