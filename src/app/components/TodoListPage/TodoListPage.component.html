@@ -4,13 +4,13 @@
 
 <div id="displayArea">
     <div id="clickToAddCategory">
-        <form>
+        <form id="newCategoryForm">
          <!-- Definition of a new category -->
             <input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
-            type="text" aria-label="Name of the category to add" minlength="1" 
+            type="text" aria-label="Name of the category to add" minlength="1" form="newCategoryForm"
             aria-required="true"/> 
             <!-- 'required' was raising a required invalid entry issue that was solved with 'aria-required="true"'   -->
-            <button  aria-label="Button to click to add the category" 
+            <button  aria-label="Button to click to add the category" form="newCategoryForm"
             (click)="addCategory()"  id="add_category_button">
                 Add a category
             </button>
