@@ -84,6 +84,8 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
     let toggledElement = document.getElementById("itemsForCategory"+category_id);
     toggledElement.style.setProperty('visibility',"visible");
     toggledElement.style.setProperty("display","block");
+    let iconForToggling = document.getElementsByName("plus_sign"+category_id);
+    iconForToggling[0].style.setProperty("aria-expanded","true");
   }
 
   foldCategory(category_id:number){
