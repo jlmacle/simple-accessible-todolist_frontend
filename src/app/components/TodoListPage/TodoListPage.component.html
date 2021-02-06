@@ -19,6 +19,7 @@
         <!-- Adding an item -->
         <form>                        
             <select [(ngModel)]="selected_category_id" name="selected_category_id" id="category_to_select_field"
+                    role="combobox"
                     aria-label="When adding an item, name of the category the item is related to." required>  
                 <option value="1" selected disabled>Please select a category</option>
                 <option *ngFor="let category of categories" value={{category.id}}> {{category.name}}
@@ -29,8 +30,9 @@
             type="text" aria-label="Item to add" 
             aria-required="true"/>                        
             <input type="submit"  value="Add an item to the category" 
-            aria-label="Button to click to add an item to this category" id="add_item_button"
+            aria-label="Button to click to add an item to this category" id="add_item_button"              
             (click)="addItem(selected_category_id)"/>
+            <!--TODO: fix the issue with edge that doesn't submit when hitting the enter key-->
                       
         </form>        
     </div>    
@@ -40,33 +42,38 @@
             <li *ngFor="let category of categories" id={{category.name}}{{category.id}} 
             name="aCategory" value={{category.id}}
                 aria-label="one item of all available categories"
-                style="list-style-type: none;">
-                
-                <em name="anIconToDeleteACategory" tabindex="0"  class="fas fa-trash-alt"   
-                aria-label="Trash can icon" 
-                aria-describedby="Trash can icon used to suppress an empty categorys" 
-                aria-role="button" 
-                style="font-size:0.65em;" 
-                (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)"></em>
+                style="list-style-type: none;">                
+                <img name="anIconToDeleteACategory" tabindex="0"  src="./assets/pictures/Ic_delete_48px.png"   
+                id="icon_garbage_can"
+                aria-label="Trash can icon used to suppress an empty category" 
+                alt="Trash can icon used to suppress an empty category"    
+                role="button" aria-pressed="false"
+                (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" (keydown.space)="deleteCategory(category.id)"/>
+                <!--https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role-->
                  
                 &nbsp; 
                 <!-- Large clickable area, tabfocus, captions   -->
-                <span (click)="foldUnfoldCategory(category.id)"  (keydown.enter)="foldUnfoldCategory(category.id)"
+                <span (click)="foldUnfoldCategory(category.id)"  (keydown.enter)="foldUnfoldCategory(category.id)" (keydown.space)="foldUnfoldCategory(category.id)"
                 id="foldUnfoldArea" aria-roledescription="clickable area that unfolds and folds the items contained in the category">
-                     <em class="fas fa-plus-circle" tabindex="0" 
-                     aria-label="Plus sign icon" aria-describedby="Plus sign icon used to display or hide the items of a category"  aria-role="button" style="font-size:0.65em;"></em>
-                    {{category.name}}
+                    <img src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" id="icon_plus" tabindex="0" 
+                     alt="Plus sign icon used to display or hide the items of a category" name="plus_sign{{category.id}}"
+                     aria-label="Plus sign icon used to display or hide the items of a category" 
+                     role="button" aria-expanded="false"  />
+                    <a  aria-label="Category named: {{category.name}}" tabindex="0">{{category.name}}</a>
                     <div id=itemsForCategory{{category.id}} class="toggleItem">                        
                         <!-- Displaying the previously registered items --> 
                         <ul style="list-style-type:none">                                                  
                             <li *ngFor="let item of items_sorted_by_category.get(category.id)" 
                             name="anItem" id={{item.name}}{{item.id}}  value={{item.id}}
                                 aria-label="List of items" aria-describedby="List displaying the items for a given category">
-                                <em class="fas fa-trash-alt" tabindex="0" name="anIconToDeleteAnItem" 
-                                aria-label="Trash can icon" aria-describedby="Trash can icon used to delete an item"
-                                aria-role="button" style="font-size:0.65em;"
-                                 (click)="deleteItem(item.id,category.id)"  (keydown.enter)="deleteItem(item.id,category.id)"></em> 
-                                {{item.name}} 
+                                <img name="anIconToDeleteAnItem" tabindex="0"  src="./assets/pictures/Ic_delete_48px.png"   id="icon_garbage_can"
+                                alt="Trash can icon used to suppress an item in a category" 
+                                aria-label="Trash can icon used to delete an item" 
+                                role="button" aria-pressed="false"
+                                 (click)="deleteItem(item.id,category.id)"  (keydown.enter)="deleteItem(item.id,category.id)"
+                                  (keydown.space)="deleteItem(item.id,category.id)"/>                      
+                               <a  label="Item from the category{{category.name}}" 
+                                tabindex="0">{{item.name}}</a>
                             </li>                            
                         </ul>                    
                     </div>   
@@ -79,11 +86,12 @@
     
     <div id="credits"><u>Credits:</u> 
         <ul>
-            <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://fontawesome.com/icons/trash-alt?style=solid" style="color:black;"><em class="fas fa-trash-alt"></em></a> <a aria-label="link to the page where the plus icon comes from" href="https://fontawesome.com/v4.7.0/icon/plus-circle"  style="color:black;"><em class="fas fa-plus-circle"></em></a> by FontAwesome, under a <a aria  href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. No changes were made to the icons.</li>
+            <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;left:-0.2em"><img id="icon_garbage_can" alt="Icon representing a garbage can." src="./assets/pictures/Ic_delete_48px.png" style="width:1em;height:1em;"/></a>  by Google Inc. is licensed under a <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> License. No changes were made to the icon.</li>
+            <li><a aria-label="link to the page where the plus sign icon comes from"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img id="icon_plus" alt="Icon representing a addition sign." src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" style="position:relative;left:0.2em;"/></a><span style="position:relative;left:0.25em;"> by Font Awesome is licensed under a       </span> <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> License. No changes were made to the icon.</li>
             <li>Retriever puppies picture by <a aria-label="Credit link to the author of the background picture, Chevanon photography" href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">Chevanon photography.</a></li>
         </ul>
     </div>
-        <div id="dedicace" >For the lovelies.</div>
+        <div id="dedicace" (click)=toggleBackground() >For the lovelies.</div>
         <app-around-sdgs-communication></app-around-sdgs-communication>
     </div>
     

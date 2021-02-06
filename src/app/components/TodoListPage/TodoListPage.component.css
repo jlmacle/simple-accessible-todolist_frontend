@@ -6,16 +6,33 @@
 }
 
 #credits{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: medium!important;    
 }
 
 #dedicace{
-    font-family: cursive;   
+    font-family: Comic, sans-serif;  
     font-size: medium!important;
     text-align: right;
     
 }
+
+#icon_plus{
+    width:0.8em;
+    height:0.8em;  
+    position: relative;
+    left:-0.4em;  
+}
+
+#icon_garbage_can{
+    width:1.5em;
+    height:1.5em;   
+    position:relative;
+    bottom:-0.2em; 
+}
+
+
+
 
 #clickToAddCategory{
     text-align: center;
