@@ -25,6 +25,8 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
   categories:Array<Category>;
   all_items:Array<Item>=[];  
   items_sorted_by_category = new Map();
+
+  backgroundPictureIsDiplayed:boolean=false;
   
 
   ngOnInit(): void {
@@ -45,9 +47,9 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
     if (this.category_input_name != "")
     {
       this.entryService.addCategory(category).then(
-        data => {console.log("addCategory() called; category object:",category.id+" , "+category.name);
+        data => {console.log("addCategory() called; category object:",data.id+" , "+data.name);
                 this.getCategories();},
-        error => {console.log("Issue while adding a category.");}      
+        error => {console.log("Issue while adding a category:",error);}      
       );
     }
   }
@@ -64,7 +66,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
       data => {console.log("Category deleted. id:"+id);
               //Calling on getCategories() to display the updated list.
               this.getCategories();},
-      error =>{console.log("Issue while deleting a category.");}
+      error =>{console.log("Issue while deleting a category: ", error);}
     );    
   }
 
@@ -78,6 +80,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
     }    
     
   }
+  
 
   unfoldCategory(category_id:number)
   {
@@ -158,5 +161,21 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
       error =>{console.log("Issue while deleting a category.");}
     );    
   }
+
+  toggleBackground()
+  {
+    let bodyElement = document.getElementById('body');
+    if (this.backgroundPictureIsDiplayed==false) 
+    {      
+      bodyElement.style.setProperty("background-image","url(./assets/pictures/pexels-chevanon-photography-1108099.jpg)");     
+      this.backgroundPictureIsDiplayed = true;
+    }
+    else
+    {
+      bodyElement.style.setProperty("background-image","");  
+      this.backgroundPictureIsDiplayed = false;   
+    }
+  }
+  
 
 }

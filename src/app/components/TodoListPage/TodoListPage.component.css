@@ -6,8 +6,15 @@
 }
 
 #credits{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: medium!important;    
+}
+
+#dedicace{
+    font-family: Comic, sans-serif;  
+    font-size: medium!important;
+    text-align: right;
+    
 }
 
 #icon_plus{
@@ -25,12 +32,7 @@
 }
 
 
-#dedicace{
-    font-family: cursive;   
-    font-size: medium!important;
-    text-align: right;
-    
-}
+
 
 #clickToAddCategory{
     text-align: center;
