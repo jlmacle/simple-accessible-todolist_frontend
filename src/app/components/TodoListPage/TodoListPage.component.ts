@@ -48,7 +48,8 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
     {
       this.entryService.addCategory(category).then(
         data => {console.log("addCategory() called; category object:",data.id+" , "+data.name);
-                this.getCategories();},
+                this.getCategories();
+                this.category_input_name="";},
         error => {console.log("Issue while adding a category:",error);}      
       );
     }
