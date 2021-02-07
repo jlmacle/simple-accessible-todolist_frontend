@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, Testability } from '@angular/core';
 import {Router} from '@angular/router';
 import { Item } from 'src/app/models/item';
 import {Category} from '../../models/category';
@@ -23,23 +23,27 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
 
   //used to display existing categories and items
   categories:Array<Category>;
+  map_category_nextCategory:Map<Category,Category>;
   all_items:Array<Item>=[];  
   items_sorted_by_category = new Map();
 
   backgroundPictureIsDiplayed:boolean=false;
   
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     this.getCategories();
     this.getItems();
   }
   
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: SimpleChanges): void 
+  {
     this.getItems();    
   }
   
 
-  addCategory(){
+  addCategory()
+  {
     //Creating a category object that will be later on translated to JSON and transmitted in an HTTP request.
     let category = new Category();
     //category.id is left undefined
@@ -48,20 +52,50 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
     {
       this.entryService.addCategory(category).then(
         data => {console.log("addCategory() called; category object:",data.id+" , "+data.name);
-                this.getCategories();},
+                this.getCategories();
+                this.category_input_name="";},
         error => {console.log("Issue while adding a category:",error);}      
       );
     }
   }
 
-  getCategories(){
+  getCategories()
+  {
     this.entryService.getCategories().then(
-      data => {this.categories  = data; console.log("Getting the categories from the promise.");},
-      error => { console.log("Issue with getting the categories from the promise.");}
+      data => {
+                this.categories  = data; 
+                console.log("Getting the categories from the promise.");
+                this.createCategoryMap();
+                console.log("Category map created.");
+              },
+      error => {console.log("Issue with getting the categories from the promise: ", error);}
     )
   }
 
-  deleteCategory(id:number){
+  createCategoryMap()
+  {
+    this.map_category_nextCategory = new Map<Category,Category>();
+    let firstCategory:Category=undefined;
+    let categoryArray:Array<Category>=new Array<Category>();
+    let index:number=0;
+    this.categories.forEach(category =>
+      {
+        categoryArray.push(category);
+        if(index==0) 
+        { 
+          firstCategory=category;
+          this.map_category_nextCategory.set(category,undefined);
+        }
+        else{this.map_category_nextCategory.set(category,categoryArray[index-1])}
+        index++;        
+      })
+      //setting the first category as value of the last key
+      this.map_category_nextCategory.set(categoryArray[categoryArray.length-1],firstCategory);
+      console.log("this.map_category_nextCategory: ",this.map_category_nextCategory);
+  }
+
+  deleteCategory(id:number)
+  {
     this.entryService.deleteCategory(id).then(
       data => {console.log("Category deleted. id:"+id);
               //Calling on getCategories() to display the updated list.
