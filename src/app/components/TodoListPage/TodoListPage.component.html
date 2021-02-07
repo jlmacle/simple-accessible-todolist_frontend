@@ -19,8 +19,8 @@
         <!-- Adding an item -->
         <form>                        
             <select [(ngModel)]="selected_category_id" name="selected_category_id" id="category_to_select_field"
-                    role="combobox"
-                    aria-label="When adding an item, name of the category the item is related to." required>  
+                    
+                    aria-label="When adding an item, name of the category the item is related to." aria-required="true">  
                 <option value="1" selected disabled>Please select a category</option>
                 <option *ngFor="let category of categories" value={{category.id}}> {{category.name}}
                 </option>                
@@ -38,13 +38,13 @@
     </div>    
 
     <div id="displayCategories">
-        <ul >
+        <ul ><!-- Structural directive: *ngFor   https://angular.io/api/common/NgForOf    -->
             <li *ngFor="let category of categories" id={{category.name}}{{category.id}} 
             name="aCategory" value={{category.id}}
                 aria-label="one item of all available categories"
                 style="list-style-type: none;">                
                 <img name="anIconToDeleteACategory" tabindex="0"  src="./assets/pictures/Ic_delete_48px.png"   
-                id="icon_garbage_can"
+                class="icon_garbage_can"
                 aria-label="Trash can icon used to suppress an empty category" 
                 alt="Trash can icon used to suppress an empty category"    
                 role="button" aria-pressed="false"
@@ -53,10 +53,11 @@
                  
                 &nbsp; 
                 <!-- Large clickable area, tabfocus, captions   -->
-                <span (click)="foldUnfoldCategory(category.id)"  (keydown.enter)="foldUnfoldCategory(category.id)" (keydown.space)="foldUnfoldCategory(category.id)"
-                id="foldUnfoldArea" aria-roledescription="clickable area that unfolds and folds the items contained in the category">
-                    <img src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" id="icon_plus" tabindex="0" 
-                     alt="Plus sign icon used to display or hide the items of a category" name="plus_sign{{category.id}}"
+                <span (click)="foldUnfoldCategory(category.id)"  (keydown.enter)="foldUnfoldCategory(category.id)" 
+                (keydown.space)="foldUnfoldCategory(category.id)" class="foldUnfoldClickArea"
+                aria-roledescription="clickable area that unfolds and folds the items contained in the category">
+                    <img src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" class="icon_plus" tabindex="0" 
+                     alt="Plus sign icon used to display or hide the items of a category" id="plus_sign{{category.id}}"
                      aria-label="Plus sign icon used to display or hide the items of a category" 
                      role="button" aria-expanded="false"  />
                     <a  aria-label="Category named: {{category.name}}" tabindex="0">{{category.name}}</a>
@@ -66,7 +67,8 @@
                             <li *ngFor="let item of items_sorted_by_category.get(category.id)" 
                             name="anItem" id={{item.name}}{{item.id}}  value={{item.id}}
                                 aria-label="List of items" aria-describedby="List displaying the items for a given category">
-                                <img name="anIconToDeleteAnItem" tabindex="0"  src="./assets/pictures/Ic_delete_48px.png"   id="icon_garbage_can"
+                                <img name="anIconToDeleteAnItem" tabindex="0"  src="./assets/pictures/Ic_delete_48px.png"   
+                                class="icon_garbage_can"
                                 alt="Trash can icon used to suppress an item in a category" 
                                 aria-label="Trash can icon used to delete an item" 
                                 role="button" aria-pressed="false"
@@ -86,8 +88,8 @@
     
     <div id="credits"><u>Credits:</u> 
         <ul>
-            <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;left:-0.2em"><img id="icon_garbage_can" alt="Icon representing a garbage can." src="./assets/pictures/Ic_delete_48px.png" style="width:1em;height:1em;"/></a>  by Google Inc. is licensed under a <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> License. No changes were made to the icon.</li>
-            <li><a aria-label="link to the page where the plus sign icon comes from"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img id="icon_plus" alt="Icon representing a addition sign." src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" style="position:relative;left:0.2em;"/></a><span style="position:relative;left:0.25em;"> by Font Awesome is licensed under a       </span> <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> License. No changes were made to the icon.</li>
+            <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;left:-0.2em"><img class="icon_garbage_can" alt="Icon representing a garbage can." src="./assets/pictures/Ic_delete_48px.png" style="width:1em;height:1em;"/></a>  by Google Inc. is licensed under a <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> License. No changes were made to the icon.</li>
+            <li><a aria-label="link to the page where the plus sign icon comes from"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img class="icon_plus" alt="Icon representing a addition sign." src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" style="position:relative;left:0.2em;"/></a><span style="position:relative;left:0.25em;"> by Font Awesome is licensed under a       </span> <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> License. No changes were made to the icon.</li>
             <li>Retriever puppies picture by <a aria-label="Credit link to the author of the background picture, Chevanon photography" href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">Chevanon photography.</a></li>
         </ul>
     </div>
