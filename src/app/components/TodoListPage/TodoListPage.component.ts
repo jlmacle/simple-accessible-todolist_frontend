@@ -190,7 +190,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
               this.getItems();
               this.unfoldCategory(category_id);
             },
-      error =>{console.log("Issue while deleting a category.");}
+      error =>{console.log("Issue while deleting a category: ", error);}
     );    
   }
 
