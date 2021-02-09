@@ -39,6 +39,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void 
   {
     this.getItems();    
+    this.createCategoryMap();
   }
   
 
@@ -75,22 +76,19 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
   createCategoryMap()
   {
     this.map_category_nextCategory = new Map<Category,Category>();
-    let firstCategory:Category=undefined;
     let categoryArray:Array<Category>=new Array<Category>();
     let index:number=0;
     this.categories.forEach(category =>
       {
-        categoryArray.push(category);
-        if(index==0) 
-        { 
-          firstCategory=category;
-          this.map_category_nextCategory.set(category,undefined);
-        }
-        else{this.map_category_nextCategory.set(category,categoryArray[index-1])}
-        index++;        
-      })
-      //setting the first category as value of the last key
-      this.map_category_nextCategory.set(categoryArray[categoryArray.length-1],firstCategory);
+        categoryArray.push(category);           
+      });
+      for(let i=0;i<categoryArray.length;i++)
+        {
+          if ( i<(categoryArray.length-1) ){this.map_category_nextCategory.set(categoryArray[i], categoryArray[i+1]);} 
+          else {this.map_category_nextCategory.set(categoryArray[i],categoryArray[0]);}
+          index++;
+        };      
+      
       console.log("this.map_category_nextCategory: ",this.map_category_nextCategory);
   }
 
