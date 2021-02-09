@@ -15,8 +15,8 @@ exports.config = {
     './src/e2e_tests/UserRequirement2.ts' 
   ],
   capabilities: {
-    browserName: 'chrome'
-    //browserName: 'firefox',
+    //browserName: 'chrome',
+    browserName: 'firefox',
     //browserName: 'edge'
   },
   directConnect: true,

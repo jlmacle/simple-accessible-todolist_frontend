@@ -16,6 +16,8 @@
     font-family: Comic, sans-serif;  
     font-size: medium!important;
     text-align: right;
+    position:relative;
+    right:1em;
     
 }
 
@@ -57,4 +59,5 @@
 #new_category_input_field {
     margin-left: 2em;    
 }
+
 
