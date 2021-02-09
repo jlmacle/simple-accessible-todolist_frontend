@@ -2,12 +2,14 @@
 #displayArea{    
     background: rgb(255,255,255,0.5);
     font-size: xx-large;
-    height: 90vh;
+    height: max-content;
 }
 
 #credits{
     font-family: Arial, sans-serif;
     font-size: medium!important;    
+    position: relative;
+    left:1em;
 }
 
 #dedicace{
@@ -31,9 +33,9 @@
     bottom:-0.2em; 
 }
 
-
-
-
+#category_to_select_field{
+    border-radius: 1rem;
+}
 #clickToAddCategory{
     text-align: center;
     font-size: 2em;
