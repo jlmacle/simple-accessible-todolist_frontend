@@ -8,6 +8,8 @@
 #credits{
     font-family: Arial, sans-serif;
     font-size: medium!important;    
+    position: relative;
+    left:1em;
 }
 
 #dedicace{
