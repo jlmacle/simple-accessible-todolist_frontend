@@ -27,9 +27,6 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
   all_items:Array<Item>=[];  
   items_sorted_by_category = new Map();
 
-  backgroundPictureIsDiplayed:boolean=false;
-  
-
   ngOnInit(): void 
   {
     this.getCategories();
@@ -194,20 +191,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
     );    
   }
 
-  toggleBackground()
-  {
-    let bodyElement = document.getElementById('body');
-    if (this.backgroundPictureIsDiplayed==false) 
-    {      
-      bodyElement.style.setProperty("background-image","url(./assets/pictures/pexels-chevanon-photography-1108099.jpg)");     
-      this.backgroundPictureIsDiplayed = true;
-    }
-    else
-    {
-      bodyElement.style.setProperty("background-image","");  
-      this.backgroundPictureIsDiplayed = false;   
-    }
-  }
+  
   
 
 }
