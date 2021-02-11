@@ -3,36 +3,41 @@
 <!-- Tool used: Speech viewer -->
 
 <div id="displayArea">
-    <div id="clickToAddCategory">
-        <form id="newCategoryForm">
-         <!-- Definition of a new category -->
-            <input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
-            type="text" aria-label="Name of the category to add" minlength="1" form="newCategoryForm"
-            aria-required="true"/> 
-           
-            <button  aria-label="Button to click to add the category" form="newCategoryForm"
-            (click)="addCategory()"  id="add_category_button">
-                Add a category
-            </button>
-        </form>
+    <div id="clickToAddCategory" role="main">
+        <!-- https://www.w3.org/TR/wai-aria-practices-1.1/#aria_lh_form  -->
+        <label for="newCategoryForm"> <h1 id="h1_form">Please use this form to add a new category.</h1>
+            <form id="newCategoryForm" role="form">
+            <!-- Definition of a new category -->
+                <input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
+                type="text" aria-label="Name of the category to add" minlength="1" form="newCategoryForm"
+                aria-required="true"/> 
+            
+                <button  aria-label="Button to click to add the category" form="newCategoryForm"
+                (click)="addCategory()"  id="add_category_button">
+                    Add a category
+                </button>
+            </form>
+    </label>
 
         <!-- Adding an item -->
-        <form>                        
-            <select [(ngModel)]="selected_category_id" name="selected_category_id" id="category_to_select_field"
-                    
-                    aria-label="When adding an item, name of the category the item is related to." aria-required="true">  
-                <option value="1" selected disabled>Please select a category</option>
-                <option *ngFor="let category of categories" value={{category.id}}> {{category.name}}
-                </option>                
-            </select>      
-            <!-- Input for the item to add to the selected category -->
-            <input [(ngModel)]="item_input_name" name="item_input_name" id="item_input_name"
-            type="text" aria-label="Item to add" 
-            aria-required="true"/>                        
-            <input type="submit"  value="Add an item to the category" 
-            aria-label="Button to click to add an item to this category" id="add_item_button"              
-            (click)="addItem(selected_category_id)"/>
-        </form>        
+        <label for="newItemForm"> <h1 id="h1_form">This form is for adding a new item.</h1>
+            <form id="newItemForm" role="form" >                        
+                <select [(ngModel)]="selected_category_id" name="selected_category_id" id="category_to_select_field"
+                        role="listbox"
+                        aria-label="When adding an item, name of the category the item is related to." aria-required="true">  
+                    <option value="1" selected disabled>Please select a category</option>
+                    <option *ngFor="let category of categories" value={{category.id}}> {{category.name}}
+                    </option>                
+                </select>      
+                <!-- Input for the item to add to the selected category -->
+                <input [(ngModel)]="item_input_name" name="item_input_name" id="item_input_name"
+                type="text" aria-label="Item to add" 
+                aria-required="true"/>                        
+                <input type="submit"  value="Add an item to the category" 
+                aria-label="Button to click to add an item to this category" id="add_item_button"              
+                (click)="addItem(selected_category_id)"/>
+            </form>        
+        </label>
     </div>    
    
     <div id="displayCategories">
@@ -87,7 +92,7 @@
         
     </div>
     <a href="#displayArea"></a>
-    <div id="credits"><u>Credits:</u> 
+    <div id="credits" role="contentinfo"> <u>Credits:</u> 
         <ul>
             <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;left:-0.2em"><img class="icon_garbage_can" alt="Icon representing a garbage can." src="./assets/pictures/Ic_delete_48px.png" style="width:1em;height:1em;"/></a>  by Google Inc. is licensed under a <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> license. No changes were made to the icon.</li>
             <li><a aria-label="link to the page where the plus sign icon comes from"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img class="icon_plus" alt="Icon representing a addition sign." src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" style="position:relative;left:0.2em;"/></a><span style="position:relative;left:0.25em;"> by Font Awesome is licensed under a&nbsp; </span> <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> license. No changes were made to the icon.</li>

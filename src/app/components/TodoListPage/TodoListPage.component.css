@@ -1,11 +1,33 @@
 
-#displayArea{    
+#displayArea
+{    
     background: rgb(255,255,255,0.5);
     font-size: xx-large;
     height: max-content;
+    width: auto;
 }
 
-#credits{
+#h1_form
+{
+    font-size:x-large;
+    font-weight: normal;
+    margin: 0;
+    position: relative;
+    top:1.5em;
+}
+
+#newCategoryForm
+{
+    max-height:1em;
+}
+
+#new_category_input_field 
+{
+    margin-left: 2em;   
+}
+
+#credits
+{
     font-family: Arial, sans-serif;
     font-size: medium!important;    
     position: relative;
@@ -14,29 +36,34 @@
 
 
 
-.icon_plus{
+.icon_plus
+{
     width:0.8em;
     height:0.8em;  
     position: relative;
     left:-0.4em;  
 }
 
-.icon_garbage_can{
+.icon_garbage_can
+{
     width:1.5em;
     height:1.5em;   
     position:relative;
     bottom:-0.2em; 
 }
 
-#category_to_select_field{
+#category_to_select_field
+{
     border-radius: 1rem;
 }
-#clickToAddCategory{
+#clickToAddCategory
+{
     text-align: center;
     font-size: 2em;
 }
 
-.toggleItem{    
+.toggleItem
+{    
     visibility: visible;
     display: block;
     position:relative;
@@ -44,13 +71,12 @@
 }
 
 
-.foldUnfoldClickArea {
+.foldUnfoldClickArea 
+{
        
     border-radius: 1rem;
 }
 
-#new_category_input_field {
-    margin-left: 2em;    
-}
+
 
 
