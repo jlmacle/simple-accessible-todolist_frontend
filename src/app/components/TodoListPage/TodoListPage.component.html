@@ -20,9 +20,9 @@
             <form id="newItemForm" role="form" >                        
                 <select [(ngModel)]="selected_category_id" name="selected_category_id" id="category_to_select_field"
                         role="listbox"
-                        aria-label="Listbox with the existing categories" aria-required="true">  
-                    <option value="1" selected disabled>Please select a category</option>
-                    <option *ngFor="let category of categories" value={{category.id}}> {{category.name}}
+                        aria-label="Listbox with the existing categories" aria-required="true" aria-expanded="false">  
+                    <option role="menuitem" value="1" selected disabled>Please select a category</option>
+                    <option role="menuitem" *ngFor="let category of categories" value={{category.id}}> {{category.name}}
                     </option>                
                 </select>      
                 <br/>
@@ -51,18 +51,18 @@
                 <img name="anIconToDeleteACategory" tabindex="0"  src="./assets/pictures/Ic_delete_48px.png"   
                 class="icon_garbage_can"                
                 alt="Trash can icon used to suppress an empty category"    
-                role="button" aria-pressed="false"
+                role="button" 
                 (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" (keydown.space)="deleteCategory(category.id)"/>
                 <!--https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role-->
                  
                 &nbsp; 
                 <!-- Large clickable area, tabfocus, captions   -->
                 <span (click)="foldUnfoldCategory(category.id)"  (keydown.enter)="foldUnfoldCategory(category.id)" 
-                (keydown.space)="foldUnfoldCategory(category.id)" class="foldUnfoldClickArea"
-                aria-roledescription="clickable area that unfolds and folds the items contained in the category">
+                (keydown.space)="foldUnfoldCategory(category.id)" class="foldUnfoldClickArea">
+                
                     <img src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" class="icon_plus" tabindex="0" 
                      alt="Plus sign icon used to display or hide the items of a category" id="plus_sign{{category.id}}"
-                     role="button" aria-haspopup="true"  aria-expanded="false"  />
+                     role="button" aria-expanded="false"  />
                     <a  aria-label="Category named: {{category.name}}" tabindex="0">{{category.name}}</a>
                     <div id=itemsForCategory{{category.id}} class="toggleItem">                        
                         <!-- Displaying the previously registered items --> 
@@ -74,7 +74,7 @@
                                 class="icon_garbage_can"
                                 alt="Trash can icon used to suppress an item in a category" 
                                 aria-label="Trash can icon used to delete an item" 
-                                role="button" aria-pressed="false"
+                                role="button" 
                                  (click)="deleteItem(item.id,category.id)"  (keydown.enter)="deleteItem(item.id,category.id)"
                                   (keydown.space)="deleteItem(item.id,category.id)"/>                      
                                <a  label="Item from the category{{category.name}}" 
