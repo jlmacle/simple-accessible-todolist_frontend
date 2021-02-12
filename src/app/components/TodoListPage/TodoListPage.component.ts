@@ -37,6 +37,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
   {
     this.getItems();    
     this.createCategoryMap();
+    
   }
   
 
@@ -116,14 +117,16 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
     let toggledElement = document.getElementById("itemsForCategory"+category_id);
     toggledElement.style.setProperty('visibility',"visible");
     toggledElement.style.setProperty("display","block");
-    let iconForToggling = document.getElementsByName("plus_sign"+category_id);
-    iconForToggling[0].style.setProperty("aria-expanded","true");
+    let iconForTogglingElement = document.getElementById("plus_sign"+category_id);  
+    iconForTogglingElement.setAttribute("aria-expanded","true");    
   }
 
   foldCategory(category_id:number){
     let toggledElement = document.getElementById("itemsForCategory"+category_id);
     toggledElement.style.setProperty('visibility',"hidden");
     toggledElement.style.setProperty("display","none");
+    let iconForTogglingElement = document.getElementById("plus_sign"+category_id);   
+    iconForTogglingElement.setAttribute("aria-expanded","false");
   }
 
   addItem(categoryId:number){
@@ -136,6 +139,8 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
       this.entryService.addItem(item, categoryId).then(
         data => {
           console.log("Item Added to category id: "+categoryId);
+          let iconForTogglingElement = document.getElementById("plus_sign"+categoryId);  
+          iconForTogglingElement.setAttribute("aria-expanded","true"); 
           this.getItems();
           this.router.navigate(['.']);
           this.item_input_name = '';   
