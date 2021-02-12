@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges, Testability } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import {Router} from '@angular/router';
 import { Item } from 'src/app/models/item';
 import {Category} from '../../models/category';
@@ -129,6 +129,16 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
     iconForTogglingElement.setAttribute("aria-expanded","false");
   }
 
+  setAriaExpandedToTrue(elementId){
+    let element = document.getElementById(elementId);
+    element.setAttribute("aria-expanded","true");
+  }
+
+  setAriaExpandedTFalse(elementId){
+    let element = document.getElementById(elementId);
+    element.setAttribute("aria-expanded","false");
+  }
+
   addItem(categoryId:number){
     console.log("Add item for the category: "+categoryId);
     let item = new Item();
@@ -139,8 +149,7 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
       this.entryService.addItem(item, categoryId).then(
         data => {
           console.log("Item Added to category id: "+categoryId);
-          let iconForTogglingElement = document.getElementById("plus_sign"+categoryId);  
-          iconForTogglingElement.setAttribute("aria-expanded","true"); 
+          this.setAriaExpandedToTrue("plus_sign"+categoryId);         
           this.getItems();
           this.router.navigate(['.']);
           this.item_input_name = '';   
@@ -186,10 +195,10 @@ export class ToDoListPageComponent implements OnInit, OnChanges {
   }
 
   deleteItem(item_id:number, category_id:number){
-    this.entryService.deleteItem(item_id).then(
+    this.entryService.deleteItem(item_id).then( 
       data => {console.log("Item deleted. id:"+item_id);
               //Calling on getItems() to display the updated list.
-              this.getItems();
+              this.getItems();                           
               this.unfoldCategory(category_id);
             },
       error =>{console.log("Issue while deleting a category: ", error);}
