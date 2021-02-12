@@ -3,41 +3,44 @@
 <!-- Tool used: Speech viewer -->
 
 <div id="displayArea">
-    <div id="clickToAddCategory" role="main">
+    <div id="additionArea" role="main">
         <!-- https://www.w3.org/TR/wai-aria-practices-1.1/#aria_lh_form  -->
-        <label for="newCategoryForm"> <h1 id="h1_form">Please use this form to add a new category.</h1>
+        <label for="newCategoryForm"> <h1 id="h1_form">Please use this form to add a new category.</h1></label>
             <form id="newCategoryForm" role="form">
             <!-- Definition of a new category -->
-                <input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
-                type="text" aria-label="Name of the category to add" minlength="1" form="newCategoryForm"
-                aria-required="true"/> 
-            
-                <button  aria-label="Button to click to add the category" form="newCategoryForm"
+                <label for="new_category_input_field">Name of the category to add:</label><input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
+                type="text" aria-label="Name of the category to add:" minlength="1" form="newCategoryForm"
+                aria-required="true" role="textbox"/>
+                <br/>
+                <button  aria-label="Add a category" form="newCategoryForm"
                 (click)="addCategory()"  id="add_category_button">
                     Add a category
                 </button>
             </form>
-    </label>
+    
 
         <!-- Adding an item -->
-        <label for="newItemForm"> <h1 id="h1_form">This form is for adding a new item.</h1>
+        <label for="newItemForm"> <h1 id="h1_form">The next form is for adding a new item.</h1></label>
             <form id="newItemForm" role="form" >                        
                 <select [(ngModel)]="selected_category_id" name="selected_category_id" id="category_to_select_field"
                         role="listbox"
-                        aria-label="When adding an item, name of the category the item is related to." aria-required="true">  
+                        aria-label="Please select a category" aria-required="true">  
                     <option value="1" selected disabled>Please select a category</option>
                     <option *ngFor="let category of categories" value={{category.id}}> {{category.name}}
                     </option>                
                 </select>      
+                <br/>
                 <!-- Input for the item to add to the selected category -->
+                <label for="item_input_name">Name of the item to add:</label>
                 <input [(ngModel)]="item_input_name" name="item_input_name" id="item_input_name"
                 type="text" aria-label="Item to add" 
-                aria-required="true"/>                        
+                aria-required="true"/>             
+                <br/>           
                 <input type="submit"  value="Add an item to the category" 
                 aria-label="Button to click to add an item to this category" id="add_item_button"              
                 (click)="addItem(selected_category_id)"/>
             </form>        
-        </label>
+        
     </div>    
    
     <div id="displayCategories">
@@ -50,8 +53,7 @@
                 <a href="#{{(map_category_nextCategory.get(category)).name}}{{(map_category_nextCategory.get(category)).id}}" 
                 aria-label="Link to the next category or the first if we reached the end of the list"></a>
                 <img name="anIconToDeleteACategory" tabindex="0"  src="./assets/pictures/Ic_delete_48px.png"   
-                class="icon_garbage_can"
-                aria-label="Trash can icon used to suppress an empty category" 
+                class="icon_garbage_can"                
                 alt="Trash can icon used to suppress an empty category"    
                 role="button" aria-pressed="false"
                 (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" (keydown.space)="deleteCategory(category.id)"/>
@@ -64,7 +66,6 @@
                 aria-roledescription="clickable area that unfolds and folds the items contained in the category">
                     <img src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" class="icon_plus" tabindex="0" 
                      alt="Plus sign icon used to display or hide the items of a category" id="plus_sign{{category.id}}"
-                     aria-label="Plus sign icon used to display or hide the items of a category" 
                      role="button" aria-expanded="false"  />
                     <a  aria-label="Category named: {{category.name}}" tabindex="0">{{category.name}}</a>
                     <div id=itemsForCategory{{category.id}} class="toggleItem">                        

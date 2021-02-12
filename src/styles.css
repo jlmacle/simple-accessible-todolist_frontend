@@ -2,20 +2,33 @@
 body{
     background-color: #eee; /* Choice of contrast for color-blindness and dyslexia.
      Ref: Cunningham, Katie. Accessibility Handbook: Making 508 Compliant Websites. O'Reilly Media.  */
-    color: #111;
-    /* Eventually, suppression of the background for dyslexia web acessibility
-        Ref: ibid.  */
-    background-image: url(./assets/pictures/pexels-chevanon-photography-1108099.jpg);
-    background-size: cover;
+    color: #111;    
     /* Choice of a dyslexia-friendly font */
     font-family: Helvetica, sans-serif;
     
 }
 
-input{
+input
+{
+    border-radius: 2em;
+    position: relative;
+    left: 2em;
+}
+
+button
+{
     border-radius: 2em;
 }
 
-button{
-    border-radius: 2em;
+form
+{    
+    display: inline-block;
+    line-height: 0.25em;
+}
+
+:focus
+{
+    border-width: 0.5em;
+    border-color:#111;
+    
 }
