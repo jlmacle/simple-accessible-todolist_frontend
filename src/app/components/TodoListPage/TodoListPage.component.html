@@ -62,7 +62,7 @@
                 aria-roledescription="clickable area that unfolds and folds the items contained in the category">
                     <img src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" class="icon_plus" tabindex="0" 
                      alt="Plus sign icon used to display or hide the items of a category" id="plus_sign{{category.id}}"
-                     role="button" aria-expanded="false"  />
+                     role="button" aria-haspopup="true"  aria-expanded="false"  />
                     <a  aria-label="Category named: {{category.name}}" tabindex="0">{{category.name}}</a>
                     <div id=itemsForCategory{{category.id}} class="toggleItem">                        
                         <!-- Displaying the previously registered items --> 
