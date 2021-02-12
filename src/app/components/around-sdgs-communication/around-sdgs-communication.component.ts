@@ -7,25 +7,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AroundSDGsCommunicationComponent implements OnInit {
 
-  backgroundPictureIsDiplayed:boolean=false;
+  
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
   toggleBackground()
   {
     let bodyElement = document.getElementById('body');
-    if (this.backgroundPictureIsDiplayed==false) 
+    let displayAreaElement = document.getElementById("displayArea");
+    console.log('bodyElement.style.getPropertyValue("background-image"): *'+bodyElement.style.getPropertyValue("background-image")+"*");
+    if ( bodyElement.style.getPropertyValue("background-image")=='url("./assets/pictures/pexels-chevanon-photography-1108099.jpg")') 
     {      
-      bodyElement.style.setProperty("background-image","url(./assets/pictures/pexels-chevanon-photography-1108099.jpg)");     
-      this.backgroundPictureIsDiplayed = true;
+      displayAreaElement.style.removeProperty("background");
+      bodyElement.style.removeProperty("background-image");
+      bodyElement.style.removeProperty("background-size");
+      
     }
     else
     {
-      bodyElement.style.setProperty("background-image","");  
-      this.backgroundPictureIsDiplayed = false;   
+      displayAreaElement.style.setProperty("background","rgb(255,255,255,0.5)");      
+      bodyElement.style.setProperty("background-image","url(./assets/pictures/pexels-chevanon-photography-1108099.jpg)");  
+      bodyElement.style.setProperty("background-size","cover");   
     }
   }
 
