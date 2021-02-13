@@ -1,9 +1,7 @@
 
-#displayArea
-{       
-    font-size: xx-large;
-    height: max-content;
-    width: auto;
+.border02:focus
+{
+    border: 0.2em solid #111; 
 }
 
 #additionArea
@@ -28,27 +26,17 @@ label{
     left: 1em;          
 }
 
-
-
-#credits
+#category_to_select_field
 {
-    font-family: Arial, sans-serif;
-    font-size: medium!important;    
-    position: relative;
-    left:1em;
+    border-radius: 1rem;
 }
 
-
-
-.icon_plus
-{
-    width:0.8em;
-    height:0.8em;  
-    position: relative;
-    left:-0.4em;  
+#displayArea
+{       
+    font-size: xx-large;
+    height: max-content;
+    width: auto;
 }
-
-
 
 .icon_garbage_can
 {
@@ -58,10 +46,12 @@ label{
     bottom:-0.2em; 
 }
 
-
-#category_to_select_field
+.icon_plus
 {
-    border-radius: 1rem;
+    width:0.8em;
+    height:0.8em;  
+    position: relative;
+    left:-0.4em;  
 }
 
 .toggleItem
@@ -72,9 +62,10 @@ label{
     left:2.3em;
 }
 
-.border02:focus
+#credits
 {
-    border: 0.2em solid #111; 
+    font-family: Arial, sans-serif;
+    font-size: medium!important;    
+    position: relative;
+    left:1em;
 }
-
-

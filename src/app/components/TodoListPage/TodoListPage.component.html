@@ -1,15 +1,16 @@
 <div id="displayArea">
     <div id="additionArea">
         <!-- https://www.w3.org/TR/wai-aria-practices-1.1/#aria_lh_form  -->
-        <label for="newCategoryForm"> <h1 id="h1_form" class="border02" tabindex="0">Please use this form to add a new category.</h1></label>
+        <label for="newCategoryForm" > <h1 id="h1_form" class="border02" tabindex="0">Please use this form to add a new category.</h1></label>
             <form id="newCategoryForm" role="form">
             <!-- Definition of a new category -->
-                <label for="new_category_input_field">Name of the category to add:</label><input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
+                <label for="new_category_input_field" >Name of the category to add:</label>
+                <input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
                 type="text" aria-label="Name of the category to add:" minlength="1" form="newCategoryForm"
-                aria-required="true" role="textbox" autocomplete="off"/>
+                aria-required="true" role="textbox" autocomplete="off" class="border-radius-2"/>
                 <br/>
                 <button  aria-label="Add a category" form="newCategoryForm"
-                (click)="addCategory()"  id="add_category_button" class="text_large">
+                (click)="addCategory()"  id="add_category_button" class="text_large border-radius-2">
                     Add a category
                 </button>
             </form>
@@ -27,13 +28,13 @@
                 </select>      
                 <br/>
                 <!-- Input for the item to add to the selected category -->
-                <label for="item_input_name">Name of the item to add:</label>
+                <label for="item_input_name" class="text_large">Name of the item to add:</label>
                 <input [(ngModel)]="item_input_name" name="item_input_name" id="item_input_name"
-                type="text" aria-label="Item to add" class="text_large"
+                type="text" aria-label="Item to add" class="text_large border-radius-2"
                 aria-required="true" autocomplete="off"/>             
                 <br/>           
                 <input type="submit"  value="Add an item to the category" 
-                id="add_item_button"   class="text_large"           
+                id="add_item_button"   class="text_large border-radius-2"           
                 (click)="addItem(selected_category_id)"/>
             </form>        
         
