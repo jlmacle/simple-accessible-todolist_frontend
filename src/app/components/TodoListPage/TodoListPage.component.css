@@ -25,9 +25,9 @@ label{
     text-align: left;
     color: rgb(0,20,0,1);
     position: relative;
-    left: 1em;
-   
+    left: 1em;          
 }
+
 
 
 #credits
@@ -48,6 +48,8 @@ label{
     left:-0.4em;  
 }
 
+
+
 .icon_garbage_can
 {
     width:1.5em;
@@ -56,11 +58,11 @@ label{
     bottom:-0.2em; 
 }
 
+
 #category_to_select_field
 {
     border-radius: 1rem;
 }
-
 
 .toggleItem
 {    
@@ -70,6 +72,9 @@ label{
     left:2.3em;
 }
 
-
+.border02:focus
+{
+    border: 0.2em solid #111; 
+}
 
 

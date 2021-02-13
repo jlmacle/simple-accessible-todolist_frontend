@@ -13,11 +13,13 @@ input
     border-radius: 2em;
     position: relative;
     left: 2em;
+    
 }
 
 button
 {
     border-radius: 2em;
+   
 }
 
 form
@@ -31,4 +33,9 @@ form
     border-width: 0.5em;
     border-color:#111;
     
+}
+
+.text_large
+{
+    font-size:large;
 }
