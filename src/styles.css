@@ -9,13 +9,17 @@ body{
 }
 
 input
-{
-    border-radius: 2em;
+{   
     position: relative;
-    left: 2em;
+    left: 2em;    
 }
 
 button
+{
+    border-radius: 2em;
+}
+
+.border-radius-2
 {
     border-radius: 2em;
 }
@@ -31,4 +35,9 @@ form
     border-width: 0.5em;
     border-color:#111;
     
+}
+
+.text_large
+{
+    font-size:large;
 }

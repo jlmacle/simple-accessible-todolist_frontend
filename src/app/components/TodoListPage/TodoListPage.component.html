@@ -1,25 +1,26 @@
 <div id="displayArea">
-    <div id="additionArea" role="main">
+    <div id="additionArea">
         <!-- https://www.w3.org/TR/wai-aria-practices-1.1/#aria_lh_form  -->
-        <label for="newCategoryForm"> <h1 id="h1_form">Please use this form to add a new category.</h1></label>
+        <label for="newCategoryForm" > <h1 id="h1_form" class="border02" tabindex="0">Please use this form to add a new category.</h1></label>
             <form id="newCategoryForm" role="form">
             <!-- Definition of a new category -->
-                <label for="new_category_input_field">Name of the category to add:</label><input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
+                <label for="new_category_input_field" >Name of the category to add:</label>
+                <input [(ngModel)]="category_input_name" name="category_input_name" id="new_category_input_field"
                 type="text" aria-label="Name of the category to add:" minlength="1" form="newCategoryForm"
-                aria-required="true" role="textbox"/>
+                aria-required="true" role="textbox" autocomplete="off" class="border-radius-2"/>
                 <br/>
                 <button  aria-label="Add a category" form="newCategoryForm"
-                (click)="addCategory()"  id="add_category_button">
+                (click)="addCategory()"  id="add_category_button" class="text_large border-radius-2">
                     Add a category
                 </button>
             </form>
     
 
         <!-- Adding an item -->
-        <label for="newItemForm"> <h1 id="h1_form">The next form is for adding a new item.</h1></label>
+        <label for="newItemForm"> <h1 id="h1_form" class="border02" tabindex="0">The next form is for adding a new item.</h1></label>
             <form id="newItemForm" role="form" >                        
                 <select [(ngModel)]="selected_category_id" name="selected_category_id" id="category_to_select_field"
-                        role="listbox"
+                        role="listbox" class="text_large"
                         aria-label="Listbox with the existing categories" aria-required="true" aria-expanded="false">  
                     <option role="menuitem" value="1" selected disabled>Please select a category</option>
                     <option role="menuitem" *ngFor="let category of categories" value={{category.id}}> {{category.name}}
@@ -27,13 +28,13 @@
                 </select>      
                 <br/>
                 <!-- Input for the item to add to the selected category -->
-                <label for="item_input_name">Name of the item to add:</label>
+                <label for="item_input_name" class="text_large">Name of the item to add:</label>
                 <input [(ngModel)]="item_input_name" name="item_input_name" id="item_input_name"
-                type="text" aria-label="Item to add" 
-                aria-required="true"/>             
+                type="text" aria-label="Item to add" class="text_large border-radius-2"
+                aria-required="true" autocomplete="off"/>             
                 <br/>           
                 <input type="submit"  value="Add an item to the category" 
-                aria-label="Button to click to add an item to this category" id="add_item_button"              
+                id="add_item_button"   class="text_large border-radius-2"           
                 (click)="addItem(selected_category_id)"/>
             </form>        
         
@@ -47,9 +48,9 @@
                 style="list-style-type: none;">         
                 
                 <a href="#{{(map_category_nextCategory.get(category)).name}}{{(map_category_nextCategory.get(category)).id}}" 
-                aria-label="Link to the next category or the first if we reached the end of the list"></a>
+                aria-label="Click to reach the next category or the first if you reached the end of the list"></a>
                 <img name="anIconToDeleteACategory" tabindex="0"  src="./assets/pictures/Ic_delete_48px.png"   
-                class="icon_garbage_can"                
+                class="icon_garbage_can border02"                
                 alt="Trash can icon used to suppress an empty category"    
                 role="button" 
                 (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" (keydown.space)="deleteCategory(category.id)"/>
@@ -60,10 +61,11 @@
                 <span (click)="foldUnfoldCategory(category.id)"  (keydown.enter)="foldUnfoldCategory(category.id)" 
                 (keydown.space)="foldUnfoldCategory(category.id)" class="foldUnfoldClickArea">
                 
-                    <img src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" class="icon_plus" tabindex="0" 
+                    <img src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" class="icon_plus border02" tabindex="0" 
                      alt="Plus sign icon used to display or hide the items of a category" id="plus_sign{{category.id}}"
                      role="button" aria-expanded="false"  />
-                    <a  aria-label="Category named: {{category.name}}" tabindex="0">{{category.name}}</a>
+                    <span role="listitem" aria-label="Category named: {{category.name}}" tabindex="0" 
+                    class="categoryName border02">{{category.name}}</span>
                     <div id=itemsForCategory{{category.id}} class="toggleItem">                        
                         <!-- Displaying the previously registered items --> 
                         <ul style="list-style-type:none">                                                  
@@ -71,14 +73,14 @@
                             name="anItem" id={{item.name}}{{item.id}}  value={{item.id}}
                                 aria-label="List of items" aria-describedby="List displaying the items for a given category">
                                 <img name="anIconToDeleteAnItem" tabindex="0"  src="./assets/pictures/Ic_delete_48px.png"   
-                                class="icon_garbage_can"
+                                class="icon_garbage_can border02"
                                 alt="Trash can icon used to suppress an item in a category" 
                                 aria-label="Trash can icon used to delete an item" 
                                 role="button" 
                                  (click)="deleteItem(item.id,category.id)"  (keydown.enter)="deleteItem(item.id,category.id)"
                                   (keydown.space)="deleteItem(item.id,category.id)"/>                      
                                <a  label="Item from the category{{category.name}}" 
-                                tabindex="0">{{item.name}}</a>
+                                tabindex="0" class="itemName border02">{{item.name}}</a>
                             </li>                            
                         </ul>                    
                     </div>   
