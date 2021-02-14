@@ -4,12 +4,12 @@
     border: 0.2em solid #111; 
 }
 
-.border03:focus
+.border-03:focus
 {
     border: 0.3em solid #111; 
 }
 
-.border04:focus
+.border-04:focus
 {
     border: 0.4em solid #111; 
 }
@@ -34,7 +34,8 @@
     margin:0;    
 }
 
-label{    
+label
+{    
     text-align: left;
     color: rgb(0,20,0,1);
     position: relative;
@@ -46,7 +47,7 @@ label{
     border-radius: 1rem;
 }
 
-.categoryLine
+.category-line
 {
     line-height: 2em;
 }
