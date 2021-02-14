@@ -10,14 +10,14 @@
                 aria-required="true" role="textbox" autocomplete="off" class="text-large border-radius-2 border-04"/>
                 <br/>
                 <input  value="Add a category" form="newCategoryForm" type="submit"
-                    (click)="addCategory()"  id="add_category_button" class="text-large border-radius-2 border-03"/> 
+                    (click)="addCategory()"  id="add-category-button" class="text-large border-radius-2 border-03"/> 
             </form>
     
 
         <!-- Adding an item -->
         <label for="newItemForm"> <h1 id="h1-form" class="border-02" tabindex="0">The next form is for adding a new item.</h1></label>
             <form id="newItemForm" role="form" >                        
-                <select [(ngModel)]="selected_category_id" name="category_to_select_field" id="category_to_select_field"
+                <select [(ngModel)]="selected_category_id" name="category-to-select-field" id="category-to-select-field"
                         role="listbox" class="text-large border-03"
                         aria-label="Listbox with the existing categories" aria-required="true" aria-expanded="false">  
                     <option role="menuitem" value="1" selected disabled>Please select a category</option>
@@ -26,13 +26,13 @@
                 </select>      
                 <br/>
                 <!-- Input for the item to add to the selected category -->
-                <label for="item-input_name" class="text-large">Name of the item to add:</label>
+                <label for="item-input-name" class="text-large">Name of the item to add:</label>
                 <input [(ngModel)]="item_input_name" name="item-input-name" id="item-input-name"
                 type="text" aria-label="Item to add" class="text-large border-radius-2 border-03"
                 aria-required="true" autocomplete="off"/>             
                 <br/>           
                 <input type="submit"  value="Add an item to the category" 
-                id="add_item_button"   class="text-large border-radius-2 border-03"           
+                id="add-item-button"   class="text-large border-radius-2 border-03"           
                 (click)="addItem(selected_category_id)"/>
             </form>        
         
@@ -48,7 +48,7 @@
                 <a href="#{{(map_category_nextCategory.get(category)).name}}{{(map_category_nextCategory.get(category)).id}}" 
                 aria-label="Click to reach the next category or the first if you reached the end of the list"></a>
                 <img name="anIconToDeleteACategory" tabindex="0"  src="./assets/pictures/Ic_delete_48px.png"   
-                class="icon_garbage_can border-02"                
+                class="icon-garbage-can border-02"                
                 alt="Trash can icon used to suppress an empty category"    
                 role="button" 
                 (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" (keydown.space)="deleteCategory(category.id)"/>
@@ -59,19 +59,19 @@
                 <span (click)="foldUnfoldCategory(category.id)"  (keydown.enter)="foldUnfoldCategory(category.id)" 
                 (keydown.space)="foldUnfoldCategory(category.id)" class="foldUnfoldClickArea">
                 
-                    <img src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" class="icon_plus border-02" tabindex="0" 
+                    <img src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" class="icon-plus border-02" tabindex="0" 
                      alt="Plus sign icon used to display or hide the items of a category" id="plus_sign{{category.id}}"
                      role="button" aria-expanded="false"  />
                     <span role="listitem" aria-label="Category named: {{category.name}}" tabindex="0" 
                     class="categoryName border-02">{{category.name}}</span>
-                    <div id=itemsForCategory{{category.id}} class="toggleItem">                        
+                    <div id=itemsForCategory{{category.id}} class="toggle-item">                        
                         <!-- Displaying the previously registered items --> 
                         <ul style="list-style-type:none">                                                  
                             <li *ngFor="let item of items_sorted_by_category.get(category.id)" 
                             name="anItem" id={{item.name}}{{item.id}}  value={{item.id}}
                                 aria-label="List of items" aria-describedby="List displaying the items for a given category">
                                 <img name="anIconToDeleteAnItem" tabindex="0"  src="./assets/pictures/Ic_delete_48px.png"   
-                                class="icon_garbage_can border-02"
+                                class="icon-garbage-can border-02"
                                 alt="Trash can icon used to suppress an item in a category" 
                                 aria-label="Trash can icon used to delete an item" 
                                 role="button" 
@@ -91,8 +91,8 @@
     <a href="#displayArea"></a>
     <div id="credits" role="contentinfo"> <u>Credits:</u> 
         <ul>
-            <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;"><img class="icon_garbage_can_small" alt="Icon representing a garbage can." src="./assets/pictures/Ic_delete_48px.png"/></a>  The trash can icon by Google Inc. is licensed under a <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> license. No changes were made to the icon.</li>
-            <li><a aria-label="link to the page where the plus sign icon comes from"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img class="icon_plus_small" alt="Icon representing a addition sign." src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a><span style="position:relative;left:0.25em;"> The plus sign icon by Font Awesome is licensed under a&nbsp; </span> <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> license. No changes were made to the icon.</li>
+            <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;"><img class="icon-garbage-can-small" alt="Icon representing a garbage can." src="./assets/pictures/Ic_delete_48px.png"/></a>  The trash can icon by Google Inc. is licensed under a <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> license. No changes were made to the icon.</li>
+            <li><a aria-label="link to the page where the plus sign icon comes from"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img class="icon-plus-small" alt="Icon representing a addition sign." src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a><span style="position:relative;left:0.25em;"> The plus sign icon by Font Awesome is licensed under a&nbsp; </span> <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> license. No changes were made to the icon.</li>
             <li><a aria-label="Link to the source of the retriever puppies picture, by Chevanon photography." href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">Link to the source of the retriever puppies picture, by Chevanon photography.</a></li>
         </ul>
     </div>
