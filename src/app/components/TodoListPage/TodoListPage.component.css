@@ -1,5 +1,5 @@
 
-.border02:focus
+.border-02:focus
 {
     border: 0.2em solid #111; 
 }
@@ -14,13 +14,20 @@
     border: 0.4em solid #111; 
 }
 
-#additionArea
+#display-area
+{       
+    font-size: xx-large;
+    height: max-content;
+    width: auto;
+}
+
+#addition-area
 {
     text-align: center;
     font-size: 2em;
 }
 
-#h1_form
+#h1-form
 {
     font-size:x-large;
     font-weight: normal;
@@ -37,13 +44,6 @@ label{
 #category_to_select_field
 {
     border-radius: 1rem;
-}
-
-#displayArea
-{       
-    font-size: xx-large;
-    height: max-content;
-    width: auto;
 }
 
 .categoryLine
