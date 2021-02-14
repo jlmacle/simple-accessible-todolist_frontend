@@ -42,17 +42,12 @@ label
     left: 1em;          
 }
 
-#category_to_select_field
-{
-    border-radius: 1rem;
-}
-
 .category-line
 {
     line-height: 2em;
 }
 
-.icon_garbage_can
+.icon-garbage-can
 {
     width:1.5em;
     height:1.5em;   
@@ -60,13 +55,13 @@ label
     bottom:-0.3em; 
 }
 
-.icon_garbage_can:focus
+.icon-garbage-can:focus
 {
     position:relative;
     bottom:-0.5em;
 }
 
-.icon_garbage_can_small
+.icon-garbage-can-small
 {
     width:1em;
     height:1em;
@@ -75,7 +70,7 @@ label
     bottom:-0.1em;
 }
 
-.icon_plus
+.icon-plus
 {
     width:0.8em;
     height:0.8em;  
@@ -83,13 +78,13 @@ label
     left:-0.4em;  
 }
 
-.icon_plus:focus
+.icon-plus:focus
 {
     position:relative;
     bottom:-0.2em;
 }
 
-.icon_plus_small
+.icon-plus-small
 {
     width:0.8em;
     height:0.8em;
@@ -98,7 +93,7 @@ label
     bottom:-0.1em;    
 }
 
-.toggleItem
+.toggle-item
 {    
     visibility: visible;
     display: block;
