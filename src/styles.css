@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-body{
+body
+{
     background-color: #eee; /* Choice of contrast for color-blindness and dyslexia.
      Ref: Cunningham, Katie. Accessibility Handbook: Making 508 Compliant Websites. O'Reilly Media.  */
     color: #111;    
@@ -7,15 +8,10 @@ body{
     font-family: Helvetica, sans-serif;    
 }
 
-input
-{   
-    position: relative;
-    left: 2em;    
-}
-
-.border-radius-2
+h2
 {
-    border-radius: 2em;
+    font-size: larger;
+    text-decoration-line: underline;
 }
 
 form
@@ -24,7 +20,37 @@ form
     line-height: 0.25em;
 }
 
+input
+{   
+    position: relative;
+    left: 2em;    
+}
+
 .text-large
 {
     font-size:large;
+}
+.border-radius-2
+{
+    border-radius: 2em;
+}
+
+.width-fit-content
+{
+    width:fit-content;
+}
+
+.border-02:focus
+{
+    border: 0.2em solid #111; 
+}
+
+.border-03:focus
+{
+    border: 0.3em solid #111; 
+}
+
+.border-04:focus
+{
+    border: 0.4em solid #111; 
 }

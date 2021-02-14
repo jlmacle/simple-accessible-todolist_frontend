@@ -18,7 +18,7 @@ export class AroundSDGsCommunicationComponent implements OnInit {
   toggleBackground()
   {
     let bodyElement = document.getElementById('body');
-    let displayAreaElement = document.getElementById("displayArea");
+    let displayAreaElement = document.getElementById("display-area");
     console.log('bodyElement.style.getPropertyValue("background-image"): *'+bodyElement.style.getPropertyValue("background-image")+"*");
     if ( bodyElement.style.getPropertyValue("background-image")=='url("./assets/pictures/pexels-chevanon-photography-1108099.jpg")') 
     {      
