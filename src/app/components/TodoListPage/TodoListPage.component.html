@@ -7,18 +7,18 @@
                 <label for="new-category-input-field" class="text-large">Name of the category to add:</label>
                 <input [(ngModel)]="category_input_name" name="new-category-input-field" id="new-category-input-field"
                 type="text" aria-label="Name of the category to add:" minlength="1" form="new-category-form"
-                aria-required="true" role="textbox" autocomplete="off" class="text-large border-radius-2 border04"/>
+                aria-required="true" role="textbox" autocomplete="off" class="text-large border-radius-2 border-04"/>
                 <br/>
                 <input  value="Add a category" form="newCategoryForm" type="submit"
-                    (click)="addCategory()"  id="add_category_button" class="text-large border-radius-2 border03"/> 
+                    (click)="addCategory()"  id="add_category_button" class="text-large border-radius-2 border-03"/> 
             </form>
     
 
         <!-- Adding an item -->
         <label for="newItemForm"> <h1 id="h1-form" class="border-02" tabindex="0">The next form is for adding a new item.</h1></label>
             <form id="newItemForm" role="form" >                        
-                <select [(ngModel)]="selected_category_id" name="selected_category_id" id="category_to_select_field"
-                        role="listbox" class="text-large border03"
+                <select [(ngModel)]="selected_category_id" name="category_to_select_field" id="category_to_select_field"
+                        role="listbox" class="text-large border-03"
                         aria-label="Listbox with the existing categories" aria-required="true" aria-expanded="false">  
                     <option role="menuitem" value="1" selected disabled>Please select a category</option>
                     <option role="menuitem" *ngFor="let category of categories" value={{category.id}}> {{category.name}}
@@ -26,13 +26,13 @@
                 </select>      
                 <br/>
                 <!-- Input for the item to add to the selected category -->
-                <label for="item_input_name" class="text-large">Name of the item to add:</label>
-                <input [(ngModel)]="item_input_name" name="item_input_name" id="item_input_name"
-                type="text" aria-label="Item to add" class="text-large border-radius-2 border03"
+                <label for="item-input_name" class="text-large">Name of the item to add:</label>
+                <input [(ngModel)]="item_input_name" name="item-input-name" id="item-input-name"
+                type="text" aria-label="Item to add" class="text-large border-radius-2 border-03"
                 aria-required="true" autocomplete="off"/>             
                 <br/>           
                 <input type="submit"  value="Add an item to the category" 
-                id="add_item_button"   class="text-large border-radius-2 border03"           
+                id="add_item_button"   class="text-large border-radius-2 border-03"           
                 (click)="addItem(selected_category_id)"/>
             </form>        
         
@@ -41,7 +41,7 @@
     <div id="displayCategories">
         <ul ><!-- Structural directive: *ngFor   https://angular.io/api/common/NgForOf    -->
             <li *ngFor="let category of categories" id={{category.name}}{{category.id}} 
-            name="aCategory" value={{category.id}} class="categoryLine"
+            name="aCategory" value={{category.id}} class="category-line"
                 aria-label="one item of all available categories"
                 style="list-style-type: none;">         
                 
