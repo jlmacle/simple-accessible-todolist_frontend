@@ -1,18 +1,20 @@
 #navbar
 {
-    list-style-type: none;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-content: center;
     align-items: stretch;
+
+    list-style-type: none;
     background-color:#eee;
-    height: 2em;;
+    height: 2em;
 }
 
 li.navbar
 {
     flex-grow:1;    
+    
     text-align: center;
     font-weight: 700;
     font-size: larger;    

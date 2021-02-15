@@ -1,7 +1,9 @@
 
 
 #display-area
-{       
+{   
+
+    
     font-size: xx-large;
     height: max-content;
     width: auto;
@@ -16,16 +18,15 @@
 .h1-form
 {
     font-size:x-large;
-    font-weight: normal;
-    margin:0;    
+    font-weight: normal;    
+    padding-left: 1em;    
 }
 
 label
 {    
     text-align: left;
-    color: rgb(0,20,0,1);
-    position: relative;
-    left: 1em;          
+    color: rgb(0,20,0,1);            
+    width: auto;    
 }
 
 .category-line
@@ -93,6 +94,11 @@ label
     font-size: medium!important;    
     position: relative;
     left:1em;
+}
+
+.credit-link
+{
+    padding-right: 3em;
 }
 
 .retriever-picture-credit
