@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body
 {
-    background-color: #eee; /* Choice of contrast for color-blindness and dyslexia.
+    background-color:rgb(253, 253, 253); /* Choice of contrast for color-blindness and dyslexia.
      Ref: Cunningham, Katie. Accessibility Handbook: Making 508 Compliant Websites. O'Reilly Media.  */
     color: #111;    
     /* Choice of a dyslexia-friendly font */
@@ -53,4 +53,10 @@ input
 .border-04:focus
 {
     border: 0.4em solid #111; 
+}
+
+.a-black-not-underlined
+{
+    color:black;
+    text-decoration-line: none;
 }
