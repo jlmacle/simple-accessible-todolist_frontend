@@ -11,6 +11,7 @@ import  {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AroundSDGsCommunicationComponent } from './components/around-sdgs-communication/around-sdgs-communication.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 const routes: Routes =[
   {path: '.', component:ToDoListPageComponent}
@@ -20,7 +21,8 @@ const routes: Routes =[
   declarations: [
     AppComponent,
     ToDoListPageComponent,
-    AroundSDGsCommunicationComponent
+    AroundSDGsCommunicationComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,10 @@
+<!-- Screen Reader testing with ChromeVox Chrome extension.
+        Plan to adapt the code for NVDA as well -->
+<app-navbar></app-navbar>
 <div id="display-area">
     <div id="addition-area">
         <!-- https://www.w3.org/TR/wai-aria-practices-1.1/#aria_lh_form  -->
-        <label for="new-category-form" > <h1 id="h1-form" class="border-02" tabindex="0">Please use this form to add a new category.</h1></label>
+        <label for="new-category-form" > <h1 class="h1-form border-02" tabindex="0">Please use this form to add a new category.</h1></label>
             <form id="new-category-form" role="form">
             <!-- Definition of a new category -->
                 <label for="new-category-input-field" class="text-large">Name of the category to add:</label>
@@ -15,12 +18,12 @@
     
 
         <!-- Adding an item -->
-        <label for="newItemForm"> <h1 id="h1-form" class="border-02" tabindex="0">The next form is for adding a new item.</h1></label>
+        <label for="newItemForm"> <h1 class="h1-form border-02" tabindex="0">The next form is for adding a new item.</h1></label>
             <form id="newItemForm" role="form" >                        
                 <select [(ngModel)]="selected_category_id" name="category-to-select-field" id="category-to-select-field"
                         role="listbox" class="text-large border-03"
                         aria-label="Listbox with the existing categories" aria-required="true" aria-expanded="false">  
-                    <option role="menuitem" value="1" selected disabled>Please select a category</option>
+                   
                     <option role="menuitem" *ngFor="let category of categories" value={{category.id}}> {{category.name}}
                     </option>                
                 </select>      
@@ -49,7 +52,7 @@
                 aria-label="Click to reach the next category or the first if you reached the end of the list"></a>
                 <img name="anIconToDeleteACategory" tabindex="0"  src="./assets/pictures/Ic_delete_48px.png"   
                 class="icon-garbage-can border-02"                
-                alt="Trash can icon used to suppress an empty category"    
+                alt="Trash can icon used to suppress an empty category"    aria-label="Trash can icon used to suppress an empty category"
                 role="button" 
                 (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" (keydown.space)="deleteCategory(category.id)"/>
                 <!--https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role-->
@@ -59,9 +62,9 @@
                 <span (click)="foldUnfoldCategory(category.id)"  (keydown.enter)="foldUnfoldCategory(category.id)" 
                 (keydown.space)="foldUnfoldCategory(category.id)" class="foldUnfoldClickArea">
                 
-                    <img src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" class="icon-plus border-02" tabindex="0" 
-                     alt="Plus sign icon used to display or hide the items of a category" id="plus_sign{{category.id}}"
-                     role="button" aria-expanded="false"  />
+                    <img id="plus_sign{{category.id}}" src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png" class="icon-plus border-02" tabindex="0" 
+                     alt="Plus sign icon used to display or hide the items of a category" 
+                     role="button" aria-expanded="false"  aria-label="Plus sign icon used to display or hide the items of a category"/>
                     <span role="listitem" aria-label="Category named: {{category.name}}" tabindex="0" 
                     class="categoryName border-02">{{category.name}}</span>
                     <div id=itemsForCategory{{category.id}} class="toggle-item">                        
@@ -88,12 +91,15 @@
         </ul>
         
     </div>
-    <a href="#displayArea"></a>
-    <div id="credits" role="contentinfo"> <u>Credits:</u> 
+    <a href="#sdg_com" aria-label="Link to go to the Works you might like to know about content"></a>
+    <a href="#navbar" aria-label="Link to go to the navigation menu"></a>
+
+    <div id="credits" role="contentinfo"><h2 tabindex="0" class="border-03">Credits:</h2>
         <ul>
-            <li><a aria-label="link to the page where the garbage can icon comes from"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;"><img class="icon-garbage-can-small" alt="Icon representing a garbage can." src="./assets/pictures/Ic_delete_48px.png"/></a>  The trash can icon by Google Inc. is licensed under a <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> license. No changes were made to the icon.</li>
-            <li><a aria-label="link to the page where the plus sign icon comes from"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img class="icon-plus-small" alt="Icon representing a addition sign." src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a><span style="position:relative;left:0.25em;"> The plus sign icon by Font Awesome is licensed under a&nbsp; </span> <a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">CC BY 4.0</a> license. No changes were made to the icon.</li>
-            <li><a aria-label="Link to the source of the retriever puppies picture, by Chevanon photography." href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">Link to the source of the retriever puppies picture, by Chevanon photography.</a></li>
+            <li tabindex="0"><a aria-label="link to the page where the garbage can icon comes from"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;"><img class="icon-garbage-can-small" alt="Icon representing a garbage can." src="./assets/pictures/Ic_delete_48px.png"/></a>  The trash can icon by Google Inc is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
+            <li tabindex="0"><a aria-label="link to the page where the plus sign icon comes from"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img class="icon-plus-small" alt="Icon representing a addition sign." src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a> The plus sign icon by Font Awesome is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
+            <li tabindex="0"><a aria-label="Link to the source of the retriever puppies picture, by Chevanon photography." href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/" class="a-black-not-underlined">Link to the source of the retriever puppies picture, by Chevanon photography.</a></li>
+            <li tabindex="0"><a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich" class="a-black-not-underlined">Link to the description of the Creative Commons BY 4.0 License</a></li>
         </ul>
     </div>
     
