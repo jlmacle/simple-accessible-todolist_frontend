@@ -2,8 +2,6 @@
 
 #display-area
 {   
-
-    
     font-size: xx-large;
     height: max-content;
     width: auto;
@@ -30,9 +28,14 @@ label
     width: auto;    
 }
 
-.category-line
+.category
 {
     line-height: 2em;
+}
+
+li.no-list-style
+{
+    list-style-type:none;
 }
 
 .icon-garbage-can
@@ -97,9 +100,10 @@ label
     left:1em;
 }
 
-.credit-link
+#credits a 
 {
-    padding-right: 3em;
+    color:black;
+    text-decoration-line: none;    
 }
 
 .retriever-picture-credit

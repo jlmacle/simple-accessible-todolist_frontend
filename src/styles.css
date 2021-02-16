@@ -54,9 +54,3 @@ input
 {
     border: 0.4em solid #111; 
 }
-
-.a-black-not-underlined
-{
-    color:black;
-    text-decoration-line: none;
-}

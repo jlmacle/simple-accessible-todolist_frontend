@@ -20,3 +20,9 @@ li.navbar
     font-weight: 700;
     font-size: larger;    
 }
+
+.navbar a 
+{
+    color:black;
+    text-decoration-line: none;
+}

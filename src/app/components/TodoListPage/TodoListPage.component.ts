@@ -10,7 +10,8 @@ import {EntryService} from '../../services/entry.service';
   styleUrls: ['./TodoListPage.component.css']
 })
 
-export class ToDoListPageComponent implements OnInit, OnChanges {
+export class ToDoListPageComponent implements OnInit, OnChanges 
+{
 
   constructor(private entryService:EntryService, private router:Router) { }
   

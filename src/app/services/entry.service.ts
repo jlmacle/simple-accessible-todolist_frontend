@@ -8,7 +8,8 @@ import {Variables} from '../../environments/variables';
 @Injectable({
   providedIn: 'root'
 })
-export class EntryService {
+export class EntryService 
+{
 
   constructor(private http:HttpClient) { }
 
