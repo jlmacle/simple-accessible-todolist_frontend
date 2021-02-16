@@ -1,7 +1,7 @@
 
 
 #display-area
-{       
+{   
     font-size: xx-large;
     height: max-content;
     width: auto;
@@ -16,21 +16,26 @@
 .h1-form
 {
     font-size:x-large;
-    font-weight: normal;
-    margin:0;    
+    font-weight: normal;    
+    padding-left: 1em;    
+    margin-bottom: 0;
 }
 
 label
 {    
     text-align: left;
-    color: rgb(0,20,0,1);
-    position: relative;
-    left: 1em;          
+    color: rgb(0,20,0,1);            
+    width: auto;    
 }
 
-.category-line
+.category
 {
     line-height: 2em;
+}
+
+li.no-list-style
+{
+    list-style-type:none;
 }
 
 .icon-garbage-can
@@ -93,6 +98,12 @@ label
     font-size: medium!important;    
     position: relative;
     left:1em;
+}
+
+#credits a 
+{
+    color:black;
+    text-decoration-line: none;    
 }
 
 .retriever-picture-credit

@@ -5,7 +5,7 @@ body
      Ref: Cunningham, Katie. Accessibility Handbook: Making 508 Compliant Websites. O'Reilly Media.  */
     color: #111;    
     /* Choice of a dyslexia-friendly font */
-    font-family: Helvetica, sans-serif;    
+    font-family: Helvetica, sans-serif;        
 }
 
 h2
@@ -53,10 +53,4 @@ input
 .border-04:focus
 {
     border: 0.4em solid #111; 
-}
-
-.a-black-not-underlined
-{
-    color:black;
-    text-decoration-line: none;
 }
