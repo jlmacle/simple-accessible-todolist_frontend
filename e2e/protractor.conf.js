@@ -10,9 +10,8 @@ const { SpecReporter, StacktraceOption } = require('jasmine-spec-reporter');
 exports.config = {
   allScriptsTimeout: 11000,
   specs: [
-    //'./src/**/*.e2e-spec.ts'
-    //'./src/e2e_tests/UserRequirement1.ts'
-    //,'./src/e2e_tests/UserRequirement2.ts' 
+    './src/**/*.e2e-spec.ts'
+    
   ],
   capabilities: {
     browserName: 'chrome'
@@ -24,7 +23,7 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function() {}
+    print: function() {/* empty function body */}
   },
   onPrepare() {
     require('ts-node').register({
