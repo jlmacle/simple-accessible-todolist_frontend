@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AccessibleTodoList-FrontEnd"
+    }
+  },
+  "defaultProject": "AccessibleTodoList-FrontEnd",
+  "cli": {
+    "analytics": "7bacbdbf-7ed8-443b-a15c-086215a2c05c"
+  }
 }
