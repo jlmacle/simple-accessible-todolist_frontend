@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
 
+Instructions for running the front-end code are available
+ 1. [Ubuntu](https://javafullstackcode.wordpress.com/2021/02/21/linux-ubuntu-cloning-the-front-end-code-and-configuring-angular/ "[Linux Ubuntu] Cloning the front-end code and configuring Angular")
+ 2. [Windows](https://javafullstackcode.wordpress.com/2021/02/22/windows-cloning-the-front-end-code-and-configuring-angular/https://javafullstackcode.wordpress.com/?p=611&preview=true "[Windows] Cloning the front-end code and configuring Angular")
+ 3. [MacOS](https://javafullstackcode.wordpress.com/?p=611&preview=truehttps://javafullstackcode.wordpress.com/2021/02/21/macos-cloning-the-front-end-code-and-configuring-angular/ "[MacOS] Cloning the front-end code and configuring Angular")
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -13,14 +18,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
