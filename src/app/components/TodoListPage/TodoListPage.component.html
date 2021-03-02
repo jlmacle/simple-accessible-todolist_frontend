@@ -9,15 +9,15 @@
         <!-- https://www.w3.org/TR/wai-aria-practices-1.1/#aria_lh_form  -->
         <!-- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Form_Role --> 
         <label for="new-category-form">
-            <h1 class="h1-form border-02" tabindex="0">Please use this form to add a new category.</h1>
+            <h1 tabindex="0" class="h1-form border-02" >Please use this form to add a new category.</h1>
         </label>       
         <form id="new-category-form">
         <!-- Definition of a new category -->
             <label for="new-category-input-field" class="text-large">Name of the category to add:                
             </label>
-            <input type="text" class="text-large border-04 border-radius-2" [(ngModel)]="category_input_name" 
-                id="new-category-input-field" name="new-category-input-field" form="new-category-form"
-                role="textbox" aria-label="Name of the category to add:" aria-required="true"  
+            <input role="textbox" aria-label="Name of the category to add:" aria-required="true"
+                type="text" class="text-large border-04 border-radius-2" [(ngModel)]="category_input_name" 
+                id="new-category-input-field" name="new-category-input-field" form="new-category-form"                  
                 minlength="1"  autocomplete="off"
             />
             <br/>
@@ -30,14 +30,15 @@
         <label for="newItemForm"> 
             <h1 class="h1-form border-02" tabindex="0">The next form is for adding a new item.</h1>
         </label>     
-        <form id="newItemForm" aria-label="This next form is for adding a new item.">                        
+        <form id="newItemForm">                        
             <select class="text-large border-03" [(ngModel)]="selected_category_id" 
                 id="category-to-select-field" name="category-to-select-field" 
-                role="listbox" aria-label="Listbox with the existing categories" 
+                role="listbox" aria-label="Existing categories" 
                 aria-required="true" aria-expanded="false">  
-                <option role="menuitem" value="1" default aria-disabled="true">Please select an option                    
+                <option aria-disabled="true" role="listitem" value="1" default >Please select an option                    
                 </option>
-                <option role="menuitem" *ngFor="let category of categories" value={{category.id}}> 
+                <option role="listitem"
+                    *ngFor="let category of categories" value={{category.id}}> 
                     {{category.name}}
                 </option>                
             </select>      
@@ -91,7 +92,10 @@
                         src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"                       
                     />
                     <span class="border-02" 
-                        role="listitem" aria-label="Category named: {{category.name}}" tabindex="0">
+                        role="listitem" aria-label="Category named:" <!--test-->
+                        aria-describedby="describedby field" aria-labelledby="labelled by field"
+                        aria-valuetext="value text field"
+                        tabindex="0">
                         {{category.name}}
                     </span>
                     <div class="toggle-item" id=itemsForCategory{{category.id}} >                        
@@ -110,8 +114,8 @@
                                     tabindex="0"  
                                     src="./assets/pictures/Ic_delete_48px.png"                                   
                                  />                      
-                                <span class="itemName border-02" label="Item from the category{{category.name}}" 
-                                    tabindex="0" >
+                                <span class="itemName border-02" 
+                                    role="listitem" aria-label="Item named:" tabindex="0" >
                                     {{item.name}}
                                 </span>
                             </li>                            
@@ -130,7 +134,7 @@
         <ul>
             <li tabindex="0"><a aria-label="link to the page where the garbage can icon comes from"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;"><img class="icon-garbage-can-small" alt="Icon representing a garbage can." src="./assets/pictures/Ic_delete_48px.png"/></a>  The trash can icon by Google Inc is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
             <li tabindex="0"><a aria-label="link to the page where the plus sign icon comes from"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img class="icon-plus-small" alt="Icon representing a addition sign." src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a> The plus sign icon by Font Awesome is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
-            <li tabindex="0"><a aria-label="Link to the source of the retriever puppies picture, by Chevanon photography." href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">Link to the source of the retriever puppies picture, by Chevanon photography.</a></li>
+            <li tabindex="0"><a href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">Link to the source of the retriever puppies picture, by Chevanon photography.</a></li>
             <li tabindex="0"><a aria-label="Link to the description of the Creative Commons BY 4.0 License"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">Link to the description of the Creative Commons BY 4.0 License</a></li>
         </ul>
     </div>
