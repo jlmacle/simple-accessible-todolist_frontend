@@ -1,9 +1,11 @@
 version: 2.1
-
-orbs:
-  pa11yci: nebulab/pa11yci
-
-workflows:
-  cool-workflow:
-    jobs:
-      - pa11yci/a11y-audit
+jobs:
+  build:
+    docker:
+      - image: alpine:3.7
+    steps:
+      - run:
+          name: The First Step
+          command: |
+            echo 'Hello World!'
+            echo 'This is the delivery pipeline'
