@@ -14,14 +14,14 @@
         <!-- Definition of a new category -->
             <label for="new-category-input-field" class="text-large">Name of the category to add:                
             </label>
-            <!-- Aria-label read by NVDA, Orca, Screen Reader Chrome extension -->
+            <!-- Aria-label read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->
             <input role="textbox" aria-label="Name of the category to add: (aria label)" aria-required="true"
                 type="text" class="text-large border-04 border-radius-2" [(ngModel)]="category_input_name" 
                 id="new-category-input-field" name="new-category-input-field" form="new-category-form"                  
                 minlength="1"  autocomplete="off"
             />
             <br/>
-            <!-- Button's value read by NVDA, Orca, Screen Reader Chrome extension -->
+            <!-- Button's value read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->
             <input type="submit" class="text-large border-radius-2 border-03" (click)="addCategory()"
                 id="add-category-button" value="Add the category" 
             /> 
@@ -32,12 +32,12 @@
             <h1 class="h1-form border-02" tabindex="0">The next form is for adding a new item.</h1>
         </label>     
         <form id="newItemForm">            
-        	<!-- aria-label read by NVDA, Orca, Screen Reader Chrome extension -->            
+        	<!-- aria-label read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->            
             <select class="text-large border-03" [(ngModel)]="selected_category_id" 
                 id="category-to-select-field" name="category-to-select-field" 
                 role="listbox" aria-label="Existing categories (aria label)" 
                 aria-required="true" aria-expanded="false">  
-                <!-- Options title read by NVDA, Screen Reader Chrome extension.  
+                <!-- Options title read by NVDA, Screen Reader Chrome extension, VoiceOver 
                     Not read by Orca with actual code -->
                 <option aria-disabled="true" role="listitem" aria-label="Please select an option (aria label)" 
                 	value="0" default >
@@ -76,10 +76,11 @@
                     
                 </a>
                 <!--alt text read by NVDA, Orca, Screen Reader Chrome extension-->
+                <
                 <img class="icon-garbage-can border-02" name="anIconToDeleteACategory"   
                     (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" 
                     (keydown.space)="deleteCategory(category.id)"                                                     
-                    role="button" alt="Trash can icon used to suppress an empty category"   
+                    role="button" alt="Trash can icon used to suppress an empty category (alt text)"   
                     aria-label="Trash can icon used to suppress an empty category (aria label)" tabindex="0"  
                     src="./assets/pictures/Ic_delete_48px.png"                
                 />
