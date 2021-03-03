@@ -14,14 +14,14 @@
         <!-- Definition of a new category -->
             <label for="new-category-input-field" class="text-large">Name of the category to add:                
             </label>
-            <!-- Aria-label read by NVDA, Orca, Screen Reader Chrome extension -->
+            <!-- Aria-label read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->
             <input role="textbox" aria-label="Name of the category to add: (aria label)" aria-required="true"
                 type="text" class="text-large border-04 border-radius-2" [(ngModel)]="category_input_name" 
                 id="new-category-input-field" name="new-category-input-field" form="new-category-form"                  
                 minlength="1"  autocomplete="off"
             />
             <br/>
-            <!-- Button's value read by NVDA, Orca, Screen Reader Chrome extension -->
+            <!-- Button's value read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->
             <input type="submit" class="text-large border-radius-2 border-03" (click)="addCategory()"
                 id="add-category-button" value="Add the category" 
             /> 
@@ -32,14 +32,16 @@
             <h1 class="h1-form border-02" tabindex="0">The next form is for adding a new item.</h1>
         </label>     
         <form id="newItemForm">            
-        	<!-- aria-label read by NVDA, Orca, Screen Reader Chrome extension -->            
+        	<!-- aria-label read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->    
+            <!-- TODO: Collapsible Dropdown design pattern 
+                https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html -->        
             <select class="text-large border-03" [(ngModel)]="selected_category_id" 
                 id="category-to-select-field" name="category-to-select-field" 
                 role="listbox" aria-label="Existing categories (aria label)" 
                 aria-required="true" aria-expanded="false">  
-                <!-- Options title read by NVDA, Screen Reader Chrome extension.  
+                <!-- Options title read by NVDA, Screen Reader Chrome extension, VoiceOver 
                     Not read by Orca with actual code -->
-                <option aria-disabled="true" role="listitem" aria-label="Please select an option (aria label)" 
+                <option aria-disabled="true" role="listitem"  
                 	value="0" default >
                 	Please select an option                    
                 </option>
@@ -75,12 +77,12 @@
                     aria-label="(Hidden) Click to reach the next category or the first if you reached the end of the list (aria label)">
                     
                 </a>
-                <!--alt text read by NVDA, Orca, Screen Reader Chrome extension-->
+                
                 <img class="icon-garbage-can border-02" name="anIconToDeleteACategory"   
                     (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" 
                     (keydown.space)="deleteCategory(category.id)"                                                     
-                    role="button" alt="Trash can icon used to suppress an empty category"   
-                    aria-label="Trash can icon used to suppress an empty category (aria label)" tabindex="0"  
+                    role="button" alt="Trash can icon used to suppress an empty category (alt text)"   
+                    tabindex="0"  
                     src="./assets/pictures/Ic_delete_48px.png"                
                 />
                 <!--https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role-->
@@ -94,20 +96,16 @@
                 
                     <img class="icon-plus border-02" id="plus_sign{{category.id}}" 
                         role="button" aria-expanded="false"
-                        alt="Plus sign icon used to display or hide the items of a category" 
-                        aria-label="Plus sign icon used to display or hide the items of a category (aria label)"
+                        alt="Plus sign icon used to display or hide the items of a category  (alt text)"                        
                         tabindex="0"
                         src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"                       
-                    />
-                    <!-- aria-label read by Orca , not read by NVDA, Screen Reader Chrome extension -->
-                    <!-- aria-valuetext read by Screen Reader Chrome extension  -->
+                    />                    
+                    <!-- Category name read by NVDA, Orca , Screen Reader Chrome extension -->
                     <span class="border-02" 
-                        role="listitem" aria-label="Category named: (aria label)" 
-                        aria-describedby="describedby field" aria-labelledby="labelled by field"
-                        aria-valuetext="Name of a category"
-                        tabindex="0">
-                        <!-- Category name read by NVDA, Screen Reader Chrome extension. !! Not read by Orca -->
-                        {{category.name}}
+                        role="listitem" 
+                        aria-valuetext="{{category.name}} aria value text"                        
+                        tabindex="0">                        
+                        {{category.name}} span text
                     </span>
                     <div class="toggle-item" id=itemsForCategory{{category.id}} >                        
                         <!-- Displaying the previously registered items --> 
@@ -120,16 +118,17 @@
                                     (keydown.enter)="deleteItem(item.id,category.id)"
                                     (keydown.space)="deleteItem(item.id,category.id)"
                                     role="button"
-                                    alt="Trash can icon used to suppress an item in a category" 
-                                    aria-label="Trash can icon used to delete an item (aria label)" 
+                                    alt="Trash can icon used to suppress an item in a category  (alt text)"                                    
                                     tabindex="0"  
                                     src="./assets/pictures/Ic_delete_48px.png"                                   
                                  />  
-                                 <!-- Item value read by NVDA  . !! Not read by Orca, Screen Reader Chrome extension  -->   
-                                 <!-- Aria label read by Orca, Screen Reader Chrome extension-->                 
+                                 <!-- Item value read by NVDA, Orca, Screen Reader Chrome extension  -->   
+                                 <!--  if  aria-label is present, 
+                                    Screen Reader Chrome extension ignores the text between the span elements
+                                    to the benefits of the content of aria-label.  -->               
                                 <span class="itemName border-02" 
-                                    role="listitem" aria-label="Item named:  (aria label)" tabindex="0" >
-                                    {{item.name}}
+                                    role="listitem"  tabindex="0" >
+                                    {{item.name}} span text
                                 </span>
                             </li>                            
                         </ul>                    
@@ -146,8 +145,8 @@
     <div id="credits"><h2 tabindex="0" class="border-03">Credits:</h2>
         <ul>
         	<!-- aria-label read by NVDA,  -->
-            <li tabindex="0"><a aria-label="Page where the garbage can icon comes from  (aria label)"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;"><img class="icon-garbage-can-small" alt="Icon representing a garbage can." src="./assets/pictures/Ic_delete_48px.png"/></a>  The trash can icon by Google Inc is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
-            <li tabindex="0"><a aria-label="Page where the plus sign icon comes from  (aria label)"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img class="icon-plus-small" alt="Icon representing a addition sign." src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a> The plus sign icon by Font Awesome is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
+            <li tabindex="0"><a aria-label="Page where the garbage can icon comes from  (aria label)"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;"><img class="icon-garbage-can-small" alt="Icon representing a garbage can. (alt text)" src="./assets/pictures/Ic_delete_48px.png"/></a>  The trash can icon by Google Inc is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
+            <li tabindex="0"><a aria-label="Page where the plus sign icon comes from  (aria label)"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img class="icon-plus-small" alt="Icon representing a addition sign.  (alt text)" src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a> The plus sign icon by Font Awesome is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
             <li tabindex="0"><a href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">Source of the retriever puppies picture, by Chevanon photography.</a></li>
             <li tabindex="0"><a aria-label="Description of the Creative Commons BY 4.0 License  (aria label)"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">Link to the description of the Creative Commons BY 4.0 License</a></li>
         </ul>
