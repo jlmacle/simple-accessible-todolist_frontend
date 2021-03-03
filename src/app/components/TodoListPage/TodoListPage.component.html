@@ -69,11 +69,13 @@
                 id={{category.name}}{{category.id}} name="aCategory" value={{category.id}} 
                 aria-label="one item of all available categories (aria label)">         
                 
+                <!-- Link aria label read by NVDA, Orca, Screen Reader Chrome extension-->
                 <a 
                     href="#{{(map_category_nextCategory.get(category)).name}}{{(map_category_nextCategory.get(category)).id}}" 
                     aria-label="(Hidden) Click to reach the next category or the first if you reached the end of the list (aria label)">
                     
                 </a>
+                <!--alt text read by NVDA, Orca, Screen Reader Chrome extension-->
                 <img class="icon-garbage-can border-02" name="anIconToDeleteACategory"   
                     (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" 
                     (keydown.space)="deleteCategory(category.id)"                                                     
@@ -97,13 +99,14 @@
                         tabindex="0"
                         src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"                       
                     />
-                    <!-- aria-label read by Orca , not read by NVDA -->
+                    <!-- aria-label read by Orca , not read by NVDA, Screen Reader Chrome extension -->
+                    <!-- aria-valuetext read by Screen Reader Chrome extension  -->
                     <span class="border-02" 
                         role="listitem" aria-label="Category named: (aria label)" 
                         aria-describedby="describedby field" aria-labelledby="labelled by field"
-                        aria-valuetext="value text field"
+                        aria-valuetext="Name of a category"
                         tabindex="0">
-                        <!-- Category name read by NVDA, not read by Orca -->
+                        <!-- Category name read by NVDA, Screen Reader Chrome extension. !! Not read by Orca -->
                         {{category.name}}
                     </span>
                     <div class="toggle-item" id=itemsForCategory{{category.id}} >                        
@@ -121,7 +124,9 @@
                                     aria-label="Trash can icon used to delete an item (aria label)" 
                                     tabindex="0"  
                                     src="./assets/pictures/Ic_delete_48px.png"                                   
-                                 />                      
+                                 />  
+                                 <!-- Item value read by NVDA  . !! Not read by Orca, Screen Reader Chrome extension  -->   
+                                 <!-- Aria label read by Orca, Screen Reader Chrome extension-->                 
                                 <span class="itemName border-02" 
                                     role="listitem" aria-label="Item named:  (aria label)" tabindex="0" >
                                     {{item.name}}
