@@ -1,3 +1,0 @@
-#build scripts
-script: 
-  - ng serve -o & sleep 20 ; npm run test-pa11y;
