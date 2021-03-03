@@ -32,7 +32,9 @@
             <h1 class="h1-form border-02" tabindex="0">The next form is for adding a new item.</h1>
         </label>     
         <form id="newItemForm">            
-        	<!-- aria-label read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->            
+        	<!-- aria-label read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->    
+            <!-- TODO: Collapsible Dropdown design pattern 
+                https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html -->        
             <select class="text-large border-03" [(ngModel)]="selected_category_id" 
                 id="category-to-select-field" name="category-to-select-field" 
                 role="listbox" aria-label="Existing categories (aria label)" 
