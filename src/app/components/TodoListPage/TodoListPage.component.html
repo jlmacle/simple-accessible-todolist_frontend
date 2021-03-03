@@ -1,7 +1,5 @@
 <!-- NB: This code is a work in progress, with imperfections -->
 
-<!-- Screen Reader testing with ChromeVox Chrome extension.
-        Plan to adapt the code for NVDA as well -->
 <!-- ng serve -o --host=192.168.1.100 to run with the local IP specified, in this case 192.168.1.100 -->
 <app-navbar></app-navbar>
 <div id="display-area">
@@ -9,7 +7,7 @@
         <!-- https://www.w3.org/TR/wai-aria-practices-1.1/#aria_lh_form  -->
         <!-- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Form_Role --> 
         <label for="new-category-form">
-        	<!-- Heading read by  -->
+        	<!-- Heading read by NVDA, Orca -->
             <h1 tabindex="0" class="h1-form border-02" >Please use this form to add a new category.</h1>
         </label>       
         <form id="new-category-form">
@@ -17,7 +15,7 @@
             <label for="new-category-input-field" class="text-large">Name of the category to add:                
             </label>
             <!-- Aria-label read by NVDA, Orca -->
-            <input role="textbox" aria-label="Name of the category to add: (aria-label)" aria-required="true"
+            <input role="textbox" aria-label="Name of the category to add: (aria label)" aria-required="true"
                 type="text" class="text-large border-04 border-radius-2" [(ngModel)]="category_input_name" 
                 id="new-category-input-field" name="new-category-input-field" form="new-category-form"                  
                 minlength="1"  autocomplete="off"
@@ -33,12 +31,16 @@
         <label for="newItemForm"> 
             <h1 class="h1-form border-02" tabindex="0">The next form is for adding a new item.</h1>
         </label>     
-        <form id="newItemForm">                        
+        <form id="newItemForm">            
+        	<!-- aria-label read by NVDA, Orca -->            
             <select class="text-large border-03" [(ngModel)]="selected_category_id" 
                 id="category-to-select-field" name="category-to-select-field" 
-                role="listbox" aria-label="Existing categories (aria-label)" 
+                role="listbox" aria-label="Existing categories (aria label)" 
                 aria-required="true" aria-expanded="false">  
-                <option aria-disabled="true" role="listitem" value="1" default >Please select an option                    
+                <!-- Options title read by NVDA,  not read by Orca with actual code -->
+                <option aria-disabled="true" role="listitem" aria-label="Please select an option (aria label)" 
+                	value="0" default >
+                	Please select an option                    
                 </option>
                 <option role="listitem"
                     *ngFor="let category of categories" value={{category.id}}> 
@@ -50,7 +52,7 @@
             <label for="item-input-name" class="text-large">Name of the item to add:</label>
             <input type="text" class="text-large border-03 border-radius-2" [(ngModel)]="item_input_name" 
                 id="item-input-name" name="item-input-name" 
-                aria-label="Name of the item to add: (aria-label)" aria-required="true" autocomplete="off"/>             
+                aria-label="Name of the item to add: (aria label)" aria-required="true" autocomplete="off"/>             
             <br/>           
             <input type="submit"  class="text-large border-radius-2 border-03" 
                 (click)="addItem(selected_category_id)"            
@@ -64,18 +66,18 @@
         <ul ><!-- Structural directive: *ngFor   https://angular.io/api/common/NgForOf    -->
             <li class="category no-list-style" *ngFor="let category of categories" 
                 id={{category.name}}{{category.id}} name="aCategory" value={{category.id}} 
-                aria-label="one item of all available categories (aria-label)">         
+                aria-label="one item of all available categories (aria label)">         
                 
                 <a 
                     href="#{{(map_category_nextCategory.get(category)).name}}{{(map_category_nextCategory.get(category)).id}}" 
-                    aria-label="Click to reach the next category or the first if you reached the end of the list (aria-label)">
+                    aria-label="(Hidden) Click to reach the next category or the first if you reached the end of the list (aria label)">
                     
                 </a>
                 <img class="icon-garbage-can border-02" name="anIconToDeleteACategory"   
                     (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" 
                     (keydown.space)="deleteCategory(category.id)"                                                     
                     role="button" alt="Trash can icon used to suppress an empty category"   
-                    aria-label="Trash can icon used to suppress an empty category (aria-label)" tabindex="0"  
+                    aria-label="Trash can icon used to suppress an empty category (aria label)" tabindex="0"  
                     src="./assets/pictures/Ic_delete_48px.png"                
                 />
                 <!--https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role-->
@@ -90,16 +92,17 @@
                     <img class="icon-plus border-02" id="plus_sign{{category.id}}" 
                         role="button" aria-expanded="false"
                         alt="Plus sign icon used to display or hide the items of a category" 
-                        aria-label="Plus sign icon used to display or hide the items of a category (aria-label)"
+                        aria-label="Plus sign icon used to display or hide the items of a category (aria label)"
                         tabindex="0"
                         src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"                       
                     />
-                    <!--test-->
+                    <!-- aria-label read by Orca , not read by NVDA -->
                     <span class="border-02" 
-                        role="listitem" aria-label="Category named: (aria-label)" 
+                        role="listitem" aria-label="Category named: (aria label)" 
                         aria-describedby="describedby field" aria-labelledby="labelled by field"
                         aria-valuetext="value text field"
                         tabindex="0">
+                        <!-- Category name read by NVDA, not read by Orca -->
                         {{category.name}}
                     </span>
                     <div class="toggle-item" id=itemsForCategory{{category.id}} >                        
@@ -107,19 +110,19 @@
                         <ul>                                                  
                             <li class="no-list-style" *ngFor="let item of items_sorted_by_category.get(category.id)" 
                                 id={{item.name}}{{item.id}} name="anItem"   value={{item.id}}
-                                aria-label="List of items (aria-label)" aria-describedby="List displaying the items for a given category">
+                                aria-label="List of items (aria label)" aria-describedby="List displaying the items for a given category">
                                 <img class="icon-garbage-can border-02" name="anIconToDeleteAnItem" 
                                     (click)="deleteItem(item.id,category.id)"  
                                     (keydown.enter)="deleteItem(item.id,category.id)"
                                     (keydown.space)="deleteItem(item.id,category.id)"
                                     role="button"
                                     alt="Trash can icon used to suppress an item in a category" 
-                                    aria-label="Trash can icon used to delete an item (aria-label)" 
+                                    aria-label="Trash can icon used to delete an item (aria label)" 
                                     tabindex="0"  
                                     src="./assets/pictures/Ic_delete_48px.png"                                   
                                  />                      
                                 <span class="itemName border-02" 
-                                    role="listitem" aria-label="Item named:  (aria-label)" tabindex="0" >
+                                    role="listitem" aria-label="Item named:  (aria label)" tabindex="0" >
                                     {{item.name}}
                                 </span>
                             </li>                            
@@ -131,15 +134,16 @@
         </ul>
         
     </div>
-    <a href="#sdg_com" aria-label="Link to some communication about permaculture (aria-label)"></a>
-    <a href="#navbar" aria-label="Link to go to the navigation menu (aria-label)"></a>
+    <a href="#sdg_com" aria-label="(Hidden) Some communication about permaculture (aria label)"></a>
+    <a href="#navbar" aria-label="(Hidden) Navigation menu  (aria label)"></a>
 
-    <div id="credits" role="contentinfo"><h2 tabindex="0" class="border-03">Credits:</h2>
+    <div id="credits"><h2 tabindex="0" class="border-03">Credits:</h2>
         <ul>
-            <li tabindex="0"><a aria-label="link to the page where the garbage can icon comes from (aria-label)"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;"><img class="icon-garbage-can-small" alt="Icon representing a garbage can." src="./assets/pictures/Ic_delete_48px.png"/></a>  The trash can icon by Google Inc is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
-            <li tabindex="0"><a aria-label="link to the page where the plus sign icon comes from (aria-label)"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img class="icon-plus-small" alt="Icon representing a addition sign." src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a> The plus sign icon by Font Awesome is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
-            <li tabindex="0"><a href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">Link to the source of the retriever puppies picture, by Chevanon photography.</a></li>
-            <li tabindex="0"><a aria-label="Link to the description of the Creative Commons BY 4.0 License (aria-label)"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">Link to the description of the Creative Commons BY 4.0 License</a></li>
+        	<!-- aria-label read by NVDA,  -->
+            <li tabindex="0"><a aria-label="Page where the garbage can icon comes from  (aria label)"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;"><img class="icon-garbage-can-small" alt="Icon representing a garbage can." src="./assets/pictures/Ic_delete_48px.png"/></a>  The trash can icon by Google Inc is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
+            <li tabindex="0"><a aria-label="Page where the plus sign icon comes from  (aria label)"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img class="icon-plus-small" alt="Icon representing a addition sign." src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a> The plus sign icon by Font Awesome is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
+            <li tabindex="0"><a href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">Source of the retriever puppies picture, by Chevanon photography.</a></li>
+            <li tabindex="0"><a aria-label="Description of the Creative Commons BY 4.0 License  (aria label)"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">Link to the description of the Creative Commons BY 4.0 License</a></li>
         </ul>
     </div>
     
