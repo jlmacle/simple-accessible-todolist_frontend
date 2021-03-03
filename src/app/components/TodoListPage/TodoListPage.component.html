@@ -14,14 +14,14 @@
         <!-- Definition of a new category -->
             <label for="new-category-input-field" class="text-large">Name of the category to add:                
             </label>
-            <!-- Aria-label read by NVDA, Orca -->
+            <!-- Aria-label read by NVDA, Orca, Screen Reader Chrome extension -->
             <input role="textbox" aria-label="Name of the category to add: (aria label)" aria-required="true"
                 type="text" class="text-large border-04 border-radius-2" [(ngModel)]="category_input_name" 
                 id="new-category-input-field" name="new-category-input-field" form="new-category-form"                  
                 minlength="1"  autocomplete="off"
             />
             <br/>
-            <!-- Button's value read by NVDA, Orca -->
+            <!-- Button's value read by NVDA, Orca, Screen Reader Chrome extension -->
             <input type="submit" class="text-large border-radius-2 border-03" (click)="addCategory()"
                 id="add-category-button" value="Add the category" 
             /> 
@@ -32,12 +32,13 @@
             <h1 class="h1-form border-02" tabindex="0">The next form is for adding a new item.</h1>
         </label>     
         <form id="newItemForm">            
-        	<!-- aria-label read by NVDA, Orca -->            
+        	<!-- aria-label read by NVDA, Orca, Screen Reader Chrome extension -->            
             <select class="text-large border-03" [(ngModel)]="selected_category_id" 
                 id="category-to-select-field" name="category-to-select-field" 
                 role="listbox" aria-label="Existing categories (aria label)" 
                 aria-required="true" aria-expanded="false">  
-                <!-- Options title read by NVDA,  not read by Orca with actual code -->
+                <!-- Options title read by NVDA, Screen Reader Chrome extension.  
+                    Not read by Orca with actual code -->
                 <option aria-disabled="true" role="listitem" aria-label="Please select an option (aria label)" 
                 	value="0" default >
                 	Please select an option                    
