@@ -14,14 +14,14 @@
         <!-- Definition of a new category -->
             <label for="new-category-input-field" class="text-large">Name of the category to add:                
             </label>
-            <!-- Aria-label read by NVDA, Orca, Screen Reader Chrome extension -->
+            <!-- Aria-label read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->
             <input role="textbox" aria-label="Name of the category to add: (aria label)" aria-required="true"
                 type="text" class="text-large border-04 border-radius-2" [(ngModel)]="category_input_name" 
                 id="new-category-input-field" name="new-category-input-field" form="new-category-form"                  
                 minlength="1"  autocomplete="off"
             />
             <br/>
-            <!-- Button's value read by NVDA, Orca, Screen Reader Chrome extension -->
+            <!-- Button's value read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->
             <input type="submit" class="text-large border-radius-2 border-03" (click)="addCategory()"
                 id="add-category-button" value="Add the category" 
             /> 
@@ -32,13 +32,12 @@
             <h1 class="h1-form border-02" tabindex="0">The next form is for adding a new item.</h1>
         </label>     
         <form id="newItemForm">            
-        	<!-- aria-label read by NVDA, Orca, Screen Reader Chrome extension -->          
-            <!-- TODO: Work on a list box design pattern -->
+        	<!-- aria-label read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->            
             <select class="text-large border-03" [(ngModel)]="selected_category_id" 
                 id="category-to-select-field" name="category-to-select-field" 
                 role="listbox" aria-label="Existing categories (aria label)" 
                 aria-required="true" aria-expanded="false">  
-                <!-- Options title read by NVDA, Screen Reader Chrome extension.  
+                <!-- Options title read by NVDA, Screen Reader Chrome extension, VoiceOver 
                     Not read by Orca with actual code -->
                 <option aria-disabled="true" role="listitem"  
                 	value="0" default >
@@ -76,8 +75,7 @@
                     aria-label="(Hidden) Click to reach the next category or the first if you reached the end of the list (aria label)">
                     
                 </a>
-                <!-- aria label read by NVDA -->
-                <!--alt text read by -->
+                
                 <img class="icon-garbage-can border-02" name="anIconToDeleteACategory"   
                     (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" 
                     (keydown.space)="deleteCategory(category.id)"                                                     
