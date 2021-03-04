@@ -68,8 +68,7 @@
     <div id="displayCategories">
         <ul ><!-- Structural directive: *ngFor   https://angular.io/api/common/NgForOf    -->
             <li class="category no-list-style" *ngFor="let category of categories" 
-                id={{category.name}}{{category.id}} name="aCategory" value={{category.id}} 
-                aria-label="one item of all available categories (aria label)">         
+                id={{category.name}}{{category.id}} name="aCategory" value={{category.id}}  >         
                 
                 <!-- Link aria label read by NVDA, Orca, Screen Reader Chrome extension-->
                 <a 
@@ -102,8 +101,7 @@
                     />                    
                     <!-- Category name read by NVDA, Orca , Screen Reader Chrome extension -->
                     <span class="border-02" 
-                        role="listitem" 
-                        aria-valuetext="{{category.name}} aria value text"                        
+                        role="listitem"                                                
                         tabindex="0">                        
                         {{category.name}} span text
                     </span>
@@ -111,8 +109,7 @@
                         <!-- Displaying the previously registered items --> 
                         <ul>                                                  
                             <li class="no-list-style" *ngFor="let item of items_sorted_by_category.get(category.id)" 
-                                id={{item.name}}{{item.id}} name="anItem"   value={{item.id}}
-                                aria-label="List of items (aria label)" aria-describedby="List displaying the items for a given category">
+                                id={{item.name}}{{item.id}} name="anItem"   value={{item.id}}  >
                                 <img class="icon-garbage-can border-02" name="anIconToDeleteAnItem" 
                                     (click)="deleteItem(item.id,category.id)"  
                                     (keydown.enter)="deleteItem(item.id,category.id)"
