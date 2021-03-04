@@ -1,5 +1,3 @@
-<!-- NB: This code is a work in progress, with imperfections -->
-
 <!-- ng serve -o --host=192.168.1.100 to run with the local IP specified, in this case 192.168.1.100 -->
 <app-navbar></app-navbar>
 <div id="display-area">
@@ -7,21 +5,20 @@
         <!-- https://www.w3.org/TR/wai-aria-practices-1.1/#aria_lh_form  -->
         <!-- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Form_Role --> 
         <label for="new-category-form">
-        	<!-- Heading read by NVDA, Orca -->
+        	
             <h1 tabindex="0" class="h1-form border-02" >Please use this form to add a new category.</h1>
         </label>       
         <form id="new-category-form">
         <!-- Definition of a new category -->
             <label for="new-category-input-field" class="text-large">Name of the category to add:                
-            </label>
-            <!-- Aria-label read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->
-            <input role="textbox" aria-label="Name of the category to add: (aria label)" aria-required="true"
+            </label>            
+            <input role="textbox" aria-label="Name of the category to add, (aria label): " aria-required="true"
                 type="text" class="text-large border-04 border-radius-2" [(ngModel)]="category_input_name" 
                 id="new-category-input-field" name="new-category-input-field" form="new-category-form"                  
                 minlength="1"  autocomplete="off"
             />
             <br/>
-            <!-- Button's value read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->
+            
             <input type="submit" class="text-large border-radius-2 border-03" (click)="addCategory()"
                 id="add-category-button" value="Add the category" 
             /> 
@@ -32,15 +29,11 @@
             <h1 class="h1-form border-02" tabindex="0">The next form is for adding a new item.</h1>
         </label>     
         <form id="newItemForm">            
-        	<!-- aria-label read by NVDA, Orca, Screen Reader Chrome extension, VoiceOver -->    
-            <!-- TODO: Collapsible Dropdown design pattern 
-                https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html -->        
+        	                  
             <select class="text-large border-03" [(ngModel)]="selected_category_id" 
                 id="category-to-select-field" name="category-to-select-field" 
-                role="listbox" aria-label="Existing categories (aria label)" 
-                aria-required="true" aria-expanded="false">  
-                <!-- Options title read by NVDA, Screen Reader Chrome extension, VoiceOver, Narrator 
-                    Not read by Orca with actual code -->
+                role="listbox" aria-label="Existing categories, (aria label):" 
+                aria-required="true" aria-expanded="false">                  
                 <option aria-disabled="true" role="listitem"  
                 	value="1" default >
                 	Please select an option                    
@@ -55,7 +48,7 @@
             <label for="item-input-name" class="text-large">Name of the item to add:</label>
             <input type="text" class="text-large border-03 border-radius-2" [(ngModel)]="item_input_name" 
                 id="item-input-name" name="item-input-name" 
-                aria-label="Name of the item to add: (aria label)" aria-required="true" autocomplete="off"/>             
+                aria-label="Name of the item to add, (aria label):" aria-required="true" autocomplete="off"/>             
             <br/>           
             <input type="submit"  class="text-large border-radius-2 border-03" 
                 (click)="addItem(selected_category_id)"            
@@ -68,12 +61,12 @@
     <div id="displayCategories">
         <ul ><!-- Structural directive: *ngFor   https://angular.io/api/common/NgForOf    -->
             <li class="category no-list-style" *ngFor="let category of categories" 
-                id={{category.name}}{{category.id}} name="aCategory" value={{category.id}}  >         
-                
-                <!-- Link aria label read by NVDA, Orca, Screen Reader Chrome extension-->
+                id={{category.name}}{{category.id}} name="aCategory" value={{category.id}}  >                    
+               
                 <a 
                     href="#{{(map_category_nextCategory.get(category)).name}}{{(map_category_nextCategory.get(category)).id}}" 
-                    aria-label="(Hidden) Click to reach the next category or the first if you reached the end of the list (aria label)">
+                    aria-label="(Hidden), Click to reach the next category or the first 
+                    	if you reached the end of the list (aria label).">
                     
                 </a>
                 
@@ -84,8 +77,7 @@
                     tabindex="0"  
                     src="./assets/pictures/Ic_delete_48px.png"                
                 />
-                <!--https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role-->
-                 
+                                
                 &nbsp; 
                 <!-- Large clickable area, tabfocus   -->
                 <span class="foldUnfoldClickArea" 
@@ -99,7 +91,7 @@
                         tabindex="0"
                         src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"                       
                     />                    
-                    <!-- Category name read by NVDA, Orca , Screen Reader Chrome extension -->
+                   
                     <span class="border-02" 
                         role="listitem"                                                
                         tabindex="0">                        
@@ -118,11 +110,8 @@
                                     alt="Trash can icon used to suppress an item in a category  (alt text)"                                    
                                     tabindex="0"  
                                     src="./assets/pictures/Ic_delete_48px.png"                                   
-                                 />  
-                                 <!-- Item value read by NVDA, Orca, Screen Reader Chrome extension  -->   
-                                 <!--  if  aria-label is present, 
-                                    Screen Reader Chrome extension ignores the text between the span elements
-                                    to the benefits of the content of aria-label.  -->               
+                                 />                                   
+                                   
                                 <span class="itemName border-02" 
                                     role="listitem"  tabindex="0" >
                                     {{item.name}} span text
@@ -136,16 +125,28 @@
         </ul>
         
     </div>
-    <a href="#sdg_com" aria-label="(Hidden) Some communication about permaculture (aria label)"></a>
-    <a href="#navbar" aria-label="(Hidden) Navigation menu  (aria label)"></a>
+    <a href="#sdg_com" aria-label="(Hidden), Some communication about permaculture, (aria label)."></a>
+    <a href="#navbar" aria-label="(Hidden), Navigation menu,  (aria label)."></a>
 
     <div id="credits"><h2 tabindex="0" class="border-03">Credits:</h2>
         <ul>
-        	<!-- aria-label read by NVDA,  -->
-            <li tabindex="0"><a aria-label="Page where the garbage can icon comes from  (aria label)"  href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" style="color:black;"><img class="icon-garbage-can-small" alt="Icon representing a garbage can. (alt text)" src="./assets/pictures/Ic_delete_48px.png"/></a>  The trash can icon by Google Inc is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
-            <li tabindex="0"><a aria-label="Page where the plus sign icon comes from  (aria label)"  href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" style="color:black;"><img class="icon-plus-small" alt="Icon representing a addition sign.  (alt text)" src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a> The plus sign icon by Font Awesome is licensed under a Creative Commons BY 4.0 license. No changes were made to the icon.</li>
+        	
+            <li tabindex="0"><a aria-label="Page where the garbage can icon comes from, (aria label)."  
+            	href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" 
+            	style="color:black;">
+            	<img class="icon-garbage-can-small" alt="Icon representing a garbage can. (alt text)" 
+            	src="./assets/pictures/Ic_delete_48px.png"/></a>  
+            	The trash can icon by Google Inc is licensed under a Creative Commons BY 4.0 license. 
+            	No changes were made to the icon.</li>
+            <li tabindex="0"><a aria-label="Page where the plus sign icon comes from, (aria label)."  
+            	href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" 
+            	style="color:black;"><img class="icon-plus-small" 
+            	alt="Icon representing a addition sign.  (alt text)" 
+            	src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a> 
+            	The plus sign icon by Font Awesome is licensed under a Creative Commons BY 4.0 license. 
+            	No changes were made to the icon.</li>
             <li tabindex="0"><a href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">Source of the retriever puppies picture, by Chevanon photography.</a></li>
-            <li tabindex="0"><a aria-label="Description of the Creative Commons BY 4.0 License  (aria label)"  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">Link to the description of the Creative Commons BY 4.0 License</a></li>
+            <li tabindex="0"><a aria-label="Description of the Creative Commons BY 4.0 License, (aria label)."  href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">Link to the description of the Creative Commons BY 4.0 License</a></li>
         </ul>
     </div>
     
