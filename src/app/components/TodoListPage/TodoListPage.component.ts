@@ -206,6 +206,20 @@ export class ToDoListPageComponent implements OnInit, OnChanges
     );    
   }
 
+  mark_selected(selected_category_id:number)
+  {
+    console.log("mark_selected");
+    let optionElem = document.getElementById("category"+selected_category_id);
+    optionElem.setAttribute("aria-selected","true");
+  }
+
+  mark_unselected(category_id:number)  
+  {
+    console.log("mark_unselected");
+    let optionElem = document.getElementById("category"+category_id);
+    optionElem.setAttribute("aria-selected","false");
+  }
+
   
   
 

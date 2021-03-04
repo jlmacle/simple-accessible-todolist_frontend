@@ -37,9 +37,9 @@
                 	value="1" default >
                 	Please select an option                    
                 </option>
-                <option role="listitem"
-                    *ngFor="let category of categories" value={{category.id}}> 
-                    {{category.name}}
+                <option role="listitem" aria-selected="false"                
+                    *ngFor="let category of categories" value={{category.id}} id="category{{category.id}}" >
+                    {{category.name}} 
                 </option>                
             </select>      
             <br/>
@@ -134,7 +134,7 @@
         <ul>
         	
             <li tabindex="0">
-            	<a aria-label="Page where the garbage can icon comes from, (aria label)"  
+            	<a role="text" aria-label="Page where the garbage can icon comes from, (aria label)"  
 	            	href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" 
 	            	style="color:black;"
 	            >
