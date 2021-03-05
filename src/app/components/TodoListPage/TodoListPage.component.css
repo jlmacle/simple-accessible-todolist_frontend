@@ -100,11 +100,18 @@ li.no-list-style
     left:1em;
 }
 
+#credits h1
+{
+	font-size: x-large!important; 
+}
+
+
 #credits a 
 {
     color:black;
     text-decoration-line: none;    
 }
+
 
 .retriever-picture-credit
 {
