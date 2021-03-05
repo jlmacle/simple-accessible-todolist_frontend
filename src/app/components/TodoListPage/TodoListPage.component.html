@@ -4,8 +4,7 @@
     <div id="addition-area">
         <!-- https://www.w3.org/TR/wai-aria-practices-1.1/#aria_lh_form  -->
         <!-- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Form_Role --> 
-        <label for="new-category-form">
-        	
+        <label for="new-category-form">        	
             <h1 tabindex="0" class="h1-form border-02" >Please use this form to add a new category.</h1>
         </label>       
         <form id="new-category-form">
@@ -26,29 +25,31 @@
 
         <!-- Adding an item -->   
         <label for="newItemForm"> 
-            <h1 class="h1-form border-02" tabindex="0">The next form is for adding a new item.</h1>
+            <h1 tabindex="0" class="h1-form border-02" >The next form is for adding a new item.</h1>
         </label>     
         <form id="newItemForm">            
         	                  
-            <select aria-required="true" aria-expanded="false"
-            	class="text-large border-03" [(ngModel)]="selected_category_id" 
-                id="category-to-select-field" name="category-to-select-field" 
-                role="listbox" aria-label="Existing categories, (aria label)" >                  
-                <option aria-disabled="true" role="listitem"  
+            <select role="listbox" aria-label="Existing categories, (aria label)"
+            	aria-required="true" aria-expanded="false"
+            	class="text-large border-03" 
+            	[(ngModel)]="selected_category_id" id="category-to-select-field" name="category-to-select-field" >                  
+                <option role="listitem" aria-disabled="true"   
                 	value="1" default >
                 	Please select an option                    
                 </option>
-                <option role="listitem"
-                    *ngFor="let category of categories" value={{category.id}}> 
-                    {{category.name}}
+                <option role="listitem" aria-selected="false"                
+                    *ngFor="let category of categories" value={{category.id}} id="category{{category.id}}" >
+                    {{category.name}} 
                 </option>                
             </select>      
             <br/>
             <!-- Input for the item to add to the selected category -->
             <label for="item-input-name" class="text-large">Name of the item to add:</label>
-            <input type="text" class="text-large border-03 border-radius-2" [(ngModel)]="item_input_name" 
-                id="item-input-name" name="item-input-name" 
-                aria-label="Name of the item to add, (aria label)" aria-required="true" autocomplete="off"/>             
+            <input role="textbox" aria-label="Name of the item to add, (aria label)" aria-required="true" 
+            	type="text" class="text-large border-03 border-radius-2" 
+            	[(ngModel)]="item_input_name" id="item-input-name" name="item-input-name" 
+            	autocomplete="off"
+                />             
             <br/>           
             <input type="submit"  class="text-large border-radius-2 border-03" 
                 (click)="addItem(selected_category_id)"            
@@ -60,21 +61,21 @@
    
     <div id="displayCategories">
         <ul ><!-- Structural directive: *ngFor   https://angular.io/api/common/NgForOf    -->
-            <li class="category no-list-style" *ngFor="let category of categories" 
-                id={{category.name}}{{category.id}} name="aCategory" value={{category.id}}  >                    
+            <li class="category no-list-style" 
+            	*ngFor="let category of categories" id={{category.name}}{{category.id}} name="aCategory" 
+            	value={{category.id}}  
+            >                    
                
-                <a 
-                    href="#{{(map_category_nextCategory.get(category)).name}}{{(map_category_nextCategory.get(category)).id}}" 
-                    aria-label="(Hidden), Click to reach the next category or the first 
-                    	if you reached the end of the list (aria label)">
+                <a aria-label="(Hidden), Click to reach the next category or the first 
+                    	if you reached the end of the list (aria label)"
+                    href="#{{(map_category_nextCategory.get(category)).name}}{{(map_category_nextCategory.get(category)).id}}" >
                     
                 </a>
                 
-                <img class="icon-garbage-can border-02" name="anIconToDeleteACategory"   
+                <img role="button" alt="Trash can icon used to suppress an empty category (alt text)" tabindex="0"
+                	class="icon-garbage-can border-02" name="anIconToDeleteACategory"   
                     (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" 
-                    (keydown.space)="deleteCategory(category.id)"                                                     
-                    role="button" alt="Trash can icon used to suppress an empty category (alt text)"   
-                    tabindex="0"  
+                    (keydown.space)="deleteCategory(category.id)"          
                     src="./assets/pictures/Ic_delete_48px.png"                
                 />
                                 
@@ -85,62 +86,68 @@
                     (keydown.enter)="foldUnfoldCategory(category.id)" 
                     (keydown.space)="foldUnfoldCategory(category.id)" >
                 
-                    <img class="icon-plus border-02" id="plus_sign{{category.id}}" 
-                        role="button" aria-expanded="false"
+                    <img role="button" aria-expanded="false"
                         alt="Plus sign icon used to display or hide the items of a category  (alt text)"                        
                         tabindex="0"
+                        class="icon-plus border-02" id="plus_sign{{category.id}}" 
                         src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"                       
                     />                    
                    
-                    <span class="border-02" 
-                        role="listitem"                                                
-                        tabindex="0">                        
+                    <span role="listitem" tabindex="0"
+                    	class="border-02"                                                                         
+                        >                        
                         {{category.name}} span text
                     </span>
                     <div class="toggle-item" id=itemsForCategory{{category.id}} >                        
                         <!-- Displaying the previously registered items --> 
                         <ul>                                                  
-                            <li class="no-list-style" *ngFor="let item of items_sorted_by_category.get(category.id)" 
-                                id={{item.name}}{{item.id}} name="anItem"   value={{item.id}}  >
-                                <img class="icon-garbage-can border-02" name="anIconToDeleteAnItem" 
+                            <li class="no-list-style" 
+                            	*ngFor="let item of items_sorted_by_category.get(category.id)" id={{item.name}}{{item.id}} name="anItem"   
+                            	value={{item.id}}  >                            	
+                                <img  role="button"
+                                    alt="Trash can icon used to suppress an item in a category  (alt text)"                                    
+                                    tabindex="0" 
+                                	class="icon-garbage-can border-02" name="anIconToDeleteAnItem" 
                                     (click)="deleteItem(item.id,category.id)"  
                                     (keydown.enter)="deleteItem(item.id,category.id)"
                                     (keydown.space)="deleteItem(item.id,category.id)"
-                                    role="button"
-                                    alt="Trash can icon used to suppress an item in a category  (alt text)"                                    
-                                    tabindex="0"  
                                     src="./assets/pictures/Ic_delete_48px.png"                                   
                                  />                                   
                                    
-                                <span class="itemName border-02" 
-                                    role="listitem"  tabindex="0" >
+                                <span role="listitem"  tabindex="0"
+                                	class="itemName border-02" 
+                                     >
                                     {{item.name}} span text
                                 </span>
                             </li>                            
                         </ul>                    
                     </div>   
-                </span>
-                            
+                </span>  
             </li>
         </ul>
         
     </div>
-    <a href="#sdg_com" aria-label="(Hidden), Some communication about permaculture, (aria label)"></a>
-    <a href="#navbar" aria-label="(Hidden), Navigation menu,  (aria label)"></a>
+    <a aria-label="(Hidden), Some communication about permaculture, (aria label)" href="#sdg_com" ></a>
+    <a aria-label="(Hidden), Navigation menu,  (aria label)" href="#navbar" ></a>
 
-    <div id="credits"><h2 tabindex="0" class="border-03">Credits:</h2>
+    <div tabindex="0" id="credits"><h2  class="border-03">Credits:</h2>
         <ul>
         	
-            <li tabindex="0"><a aria-label="Page where the garbage can icon comes from, (aria label)"  
-            	href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" 
-            	style="color:black;">
-            	<img class="icon-garbage-can-small" alt="Icon representing a garbage can. (alt text)" 
-            	src="./assets/pictures/Ic_delete_48px.png"/></a>  
-            	The trash can icon by Google Inc is licensed under a Creative Commons BY 4.0 license. 
-            	No changes were made to the icon.</li>
+            <li tabindex="0">
+            	<a role="text" aria-label="Page where the garbage can icon comes from, (aria label)"  
+	            	href="https://search.creativecommons.org/photos/c864d368-a8ef-4833-9a97-3a87c651e009" 
+	            	style="color:black;"
+	            >
+	            	<img alt="Icon representing a garbage can. (alt text)"
+		            	class="icon-garbage-can-small"  
+		            	src="./assets/pictures/Ic_delete_48px.png"/>
+	            </a>  
+	            	The trash can icon by Google Inc is licensed under a Creative Commons BY 4.0 license. 
+	            	No changes were made to the icon.</li>
             <li tabindex="0"><a aria-label="Page where the plus sign icon comes from, (aria label)"  
             	href="https://search.creativecommons.org/photos/176fcf70-baf4-4537-a841-0591fb094d12" 
-            	style="color:black;"><img class="icon-plus-small" 
+            	style="color:black;">
+            	<img class="icon-plus-small" 
             	alt="Icon representing a addition sign.  (alt text)" 
             	src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a> 
             	The plus sign icon by Font Awesome is licensed under a Creative Commons BY 4.0 license. 
