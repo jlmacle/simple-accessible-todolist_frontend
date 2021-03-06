@@ -28,7 +28,7 @@
             <h1 class="h1-form border-02" >The next form is for adding a new item.</h1>
         </label>     
         <form id="newItemForm">            
-        	                  
+        	 <!-- Todo:  https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role-->                 
             <select role="listbox" aria-label="Existing categories, (aria label)"
             	aria-required="true" aria-expanded="false"
             	class="text-large border-03" 
@@ -37,7 +37,7 @@
                 	value="1" default >
                 	Please select an option                    
                 </option>
-                <option role="listitem" aria-selected="false"                
+                <option role="listitem"              
                     *ngFor="let category of categories" value={{category.id}} id="category{{category.id}}" >
                     {{category.name}} 
                 </option>                
