@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import {Router} from '@angular/router';
+import { VirtualTimeScheduler } from 'rxjs';
 import { Item } from 'src/app/models/item';
 import {Category} from '../../models/category';
 import {EntryService} from '../../services/entry.service';
@@ -27,6 +28,9 @@ export class ToDoListPageComponent implements OnInit, OnChanges
   map_category_nextCategory:Map<Category,Category>;
   all_items:Array<Item>=[];  
   items_sorted_by_category = new Map();
+
+  //select states
+  previously_selected_id = 0;
 
   ngOnInit(): void 
   {
@@ -209,18 +213,16 @@ export class ToDoListPageComponent implements OnInit, OnChanges
   mark_selected(selected_category_id:number)
   {
     console.log("mark_selected");
-    let optionElem = document.getElementById("category"+selected_category_id);
+    let optionElem = document.getElementById("category"+this.previously_selected_id);
+    optionElem.setAttribute("aria-selected", "false");
+    optionElem = document.getElementById("category"+selected_category_id);
     optionElem.setAttribute("aria-selected","true");
+    let selectElem = document.getElementById("category-to-select-field");
+    selectElem.setAttribute("aria-activedescendant",'"'+selected_category_id+'"');
+    this.previously_selected_id = selected_category_id;
   }
 
-  mark_unselected(category_id:number)  
-  {
-    console.log("mark_unselected");
-    let optionElem = document.getElementById("category"+category_id);
-    optionElem.setAttribute("aria-selected","false");
-  }
-
-  
+ 
   
 
 }

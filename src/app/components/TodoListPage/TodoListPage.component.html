@@ -28,16 +28,21 @@
             <h1 class="h1-form border-02" >The next form is for adding a new item.</h1>
         </label>     
         <form id="newItemForm">            
-        	 <!-- Todo:  https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role-->                 
+        	 <!-- Todo:  https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role -->                 
             <select role="listbox" aria-label="Existing categories, (aria label)"
-            	aria-required="true" aria-expanded="false"
+            	aria-required="true" aria-expanded="false" aria-activedescendant="0"
             	class="text-large border-03" 
-            	[(ngModel)]="selected_category_id" id="category-to-select-field" name="category-to-select-field" >                  
+            	[(ngModel)]="selected_category_id" id="category-to-select-field" name="category-to-select-field" 
+                (click)="mark_selected(selected_category_id)" 
+                (keydown.arrowdown)="mark_selected(selected_category_id)" 
+                
+                 
+                >                  
                 <option role="listitem" aria-disabled="true"   
-                	value="1" default >
+                	value="0" default id="category0">
                 	Please select an option                    
                 </option>
-                <option role="listitem"              
+                <option role="listitem" aria-selected="false"           
                     *ngFor="let category of categories" value={{category.id}} id="category{{category.id}}" >
                     {{category.name}} 
                 </option>                
