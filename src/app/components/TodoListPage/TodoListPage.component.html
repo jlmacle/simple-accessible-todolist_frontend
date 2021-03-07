@@ -28,16 +28,22 @@
             <h1 class="h1-form border-02" >The next form is for adding a new item.</h1>
         </label>     
         <form id="newItemForm">            
-        	                  
+        	 <!-- Todo:  https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role 
+            Need to understand why the binding with focus or keydown.arrowdown seems ineffective -->                 
             <select role="listbox" aria-label="Existing categories, (aria label)"
-            	aria-required="true" aria-expanded="false"
+            	aria-required="true" aria-expanded="false" aria-activedescendant="0"
             	class="text-large border-03" 
-            	[(ngModel)]="selected_category_id" id="category-to-select-field" name="category-to-select-field" >                  
+            	[(ngModel)]="selected_category_id" id="category-to-select-field" name="category-to-select-field" 
+                (click)="mark_selected(selected_category_id)" 
+                (keydown.arrowdown)="mark_selected(selected_category_id)" 
+                
+                 
+                >                  
                 <option role="listitem" aria-disabled="true"   
-                	value="1" default >
+                	value="0" default id="category0">
                 	Please select an option                    
                 </option>
-                <option role="listitem" aria-selected="false"                
+                <option role="listitem" aria-selected="false"           
                     *ngFor="let category of categories" value={{category.id}} id="category{{category.id}}" >
                     {{category.name}} 
                 </option>                
@@ -72,8 +78,10 @@
                     href="#{{(map_category_nextCategory.get(category)).name}}{{(map_category_nextCategory.get(category)).id}}" >
                     
                 </a>
-                
-                <img role="button" alt="Trash can icon used to suppress an empty category (alt text)" tabindex="0"
+                <!--aria-label added to pass the pa11y testing -->
+                <img role="button" 
+                    alt="Trash can icon used to suppress an empty category (alt text)" tabindex="0"
+                    aria-label="Trash can icon used to suppress an item in a category  (aria-label)"
                 	class="icon-garbage-can border-02" name="anIconToDeleteACategory"   
                     (click)="deleteCategory(category.id)" (keydown.enter)="deleteCategory(category.id)" 
                     (keydown.space)="deleteCategory(category.id)"          
@@ -86,8 +94,9 @@
                     (click)="foldUnfoldCategory(category.id)"  
                     (keydown.enter)="foldUnfoldCategory(category.id)" 
                     (keydown.space)="foldUnfoldCategory(category.id)" >
-                
+                    <!--aria-label added to pass the pa11y testing -->
                     <img role="button" aria-expanded="false"
+                        aria-label="Plus sign icon used to display or hide the items of a category  (aria label)"
                         alt="Plus sign icon used to display or hide the items of a category  (alt text)"                        
                         tabindex="0"
                         class="icon-plus border-02" id="plus_sign{{category.id}}" 
@@ -104,8 +113,10 @@
                         <ul>                                                  
                             <li class="no-list-style" 
                             	*ngFor="let item of items_sorted_by_category.get(category.id)" id={{item.name}}{{item.id}} name="anItem"   
-                            	value={{item.id}}  >                            	
-                                <img  role="button"
+                            	value={{item.id}}  >    
+                                <!--aria-label added to pass the pa11y testing -->                        	
+                                <img  role="button"                                    
+                                    aria-label="Trash can icon used to suppress an item in a category  (aria-label)"
                                     alt="Trash can icon used to suppress an item in a category  (alt text)"                                    
                                     tabindex="0" 
                                 	class="icon-garbage-can border-02" name="anIconToDeleteAnItem" 
