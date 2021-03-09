@@ -158,6 +158,8 @@ export class ToDoListPageComponent implements OnInit, OnChanges
           this.getItems();
           this.router.navigate(['.']);
           this.item_input_name = '';   
+          //resetting default category to Uncategorized
+          this.selected_category_id=1;
       },
         error => {console.log("Error while adding an item: ",error);}
       );
