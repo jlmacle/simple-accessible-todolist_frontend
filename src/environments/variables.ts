@@ -4,8 +4,8 @@ export class Variables
     // another computer on the local network (with IP 192.168.1.101): 
     // C:\Program Files\nodejs\node.exe
 
-    static base_url="http://localhost:8080"; //CORS issue for omitting http://
-    //static base_url="http://192.168.1.100:8080"; //CORS issue for omitting http://
+    //static base_url="http://localhost:8080"; //CORS issue for omitting http://
+    static base_url="http://192.168.1.15:8080"; //CORS issue for omitting http://
 
 }
 
