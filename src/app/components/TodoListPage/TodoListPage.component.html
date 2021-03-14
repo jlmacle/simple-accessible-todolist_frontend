@@ -28,16 +28,16 @@
             <h1 class="h1-form border-02" >The next form is for adding a new item.</h1>
         </label>     
         <form id="newItemForm">            
-        	 <!-- Todo:  https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role 
-            Need to understand why the binding with focus or keydown.arrowdown seems ineffective -->                 
-            <select role="combobox" aria-label="Existing categories, (aria label)"
+        	<!-- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role -->    
+            <!-- (change) functions unless Narrator or NVDA  is on -->             
+            <select role="listbox" aria-label="Existing categories, (aria label)"
             	aria-required="true" aria-expanded="false" aria-activedescendant="0"
             	class="text-large border-03" 
             	[(ngModel)]="selected_category_id" id="category-to-select-field" name="category-to-select-field" 
                 (click)="mark_selected(selected_category_id)" 
-                (keydown.arrowdown)="mark_selected(selected_category_id)" 
-                
-                 
+                (change)="mark_selected(selected_category_id)" 
+                (keydown.enter)="mark_selected(selected_category_id)" 
+                (keydown.space)="mark_selected(selected_category_id)"                 
                 >                  
                 <option role="listitem" aria-disabled="true"   
                 	value="0" default id="category0">
