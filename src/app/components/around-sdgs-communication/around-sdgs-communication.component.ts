@@ -19,7 +19,7 @@ export class AroundSDGsCommunicationComponent implements OnInit
     let bodyElement = document.getElementById('body');
     let displayAreaElement = document.getElementById("display-area");
     console.log('bodyElement.style.getPropertyValue("background-image"): *'+bodyElement.style.getPropertyValue("background-image")+"*");
-    if ( bodyElement.style.getPropertyValue("background-image")=='url("./assets/pictures/pexels-chevanon-photography-1108099.jpg")') 
+    if ( bodyElement.style.getPropertyValue("background-image").includes("photography"))
     {      
       displayAreaElement.style.removeProperty("background");
       bodyElement.style.removeProperty("background-image");
