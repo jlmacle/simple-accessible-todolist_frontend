@@ -30,7 +30,7 @@
         <form id="newItemForm">            
         	 <!-- Todo:  https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role 
             Need to understand why the binding with focus or keydown.arrowdown seems ineffective -->                 
-            <select role="listbox" aria-label="Existing categories, (aria label)"
+            <select role="combobox" aria-label="Existing categories, (aria label)"
             	aria-required="true" aria-expanded="false" aria-activedescendant="0"
             	class="text-large border-03" 
             	[(ngModel)]="selected_category_id" id="category-to-select-field" name="category-to-select-field" 
