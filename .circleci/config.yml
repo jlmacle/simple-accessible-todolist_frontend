@@ -1,20 +1,15 @@
-orbs:
-  pa11yci: nebulab/pa11yci@1.0.0
+# From: https://circleci.com/docs/2.0/getting-started/
+# Should be the latest version of CircleCI pipeline process engine
+# https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-jobs:
-  #Angular server to start
-  build:
-    docker:
-      -image: alpine:3-7
-    steps:
-      run:
-        name: Todo, Angular server to start
-        command: |
-          echo "More to do to start an Angular server"
-
-  #Backend server to start
-
-
-  #Pa11y-ci audit
- 
-
+# Using a package of configuration called an orb
+orbs: 
+    # Declare a dependency on the welcome orb
+    welcome: circle-ci/welcome-orb@0.4.1
+# Orchestrate or schedule a set of jobs
+workflows:
+  #Name the workflow "welcome"
+  welcome: 
+    #Run the welcome/run job in its own container
+    jobs: 
+      - welcome/run
