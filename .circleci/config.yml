@@ -13,7 +13,7 @@ commands:
   front-end-run-command:
     steps:
       - run: pwd
-      - run: ls
+      - run: ls -la
       
 executors:
   back-end-front-end-run-executor:
