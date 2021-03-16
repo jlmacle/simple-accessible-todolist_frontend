@@ -7,10 +7,19 @@ commands:
     steps:
       - run: echo "Running back-end is not ready yet"
       # on back-end repository, not on front-end repository
+
+  front-end-clone-command:
+    steps:
+      - run: git clone https://github.com/jlmacle/AccessibleTodoList_FrontEnd.git
+
+  front-end-install-angular-command:
+    steps:
+      - run: npm install -g @angular/cli  
+
   front-end-run-command:
     steps:
-      - run: npm install -g @angular/cli   
-
+      - run: pwd
+      - run: ls -la
 
 executors:
   back-end-front-end-run-executor:
@@ -26,15 +35,17 @@ jobs:
     front-end-run-job:
       executor:  back-end-front-end-run-executor
       steps:
+        - front-end-clone-command
         # https://circleci.com/docs/2.0/caching/#basic-example-of-dependency-caching
         - restore_cache:
             keys: 
               - angular-cache
-        - front-end-run-command
+        - front-end-install-angular-command
         - save_cache:
             key: angular-cache
             paths:
               - ./node_modules
+        -  front-end-run-command
 
 # Orchestrate or schedule a set of jobs
 workflows:    
