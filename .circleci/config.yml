@@ -19,6 +19,6 @@ jobs:
         - back-end-run-command
 # Orchestrate or schedule a set of jobs
 workflows:    
-    back-end-build-workflow:    
+    back-end-run-workflow:    
       jobs: 
         - back-end-run-job    
