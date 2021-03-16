@@ -20,7 +20,6 @@ commands:
     steps:
       - run: pwd
       - run: ls -la
-
 executors:
   back-end-front-end-run-executor:
     machine: 
