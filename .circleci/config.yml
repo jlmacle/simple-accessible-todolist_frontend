@@ -18,8 +18,9 @@ commands:
 
   front-end-run-command:
     steps:
+      - run: cd AccessibleTodoList_FrontEnd
       - run: pwd
-      - run: ls -la
+
 executors:
   back-end-front-end-run-executor:
     machine: 
@@ -43,7 +44,7 @@ jobs:
         - save_cache:
             key: angular-cache
             paths:
-              - ./node_modules
+              - AccessibleTodoList_FrontEnd/node_modules
         -  front-end-run-command
 
 # Orchestrate or schedule a set of jobs
