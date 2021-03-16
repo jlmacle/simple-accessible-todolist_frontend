@@ -5,12 +5,11 @@ jobs:
   #Angular server to start
   build:
     docker:
-      -image: alpine:3-7
+      - image: alpine:3-7
     steps:
-      run:
-        name: Todo, Angular server to start
-        command: |
-          echo "More to do to start an Angular server"
+      - run:
+          name: Todo, Angular server to start
+          command: echo "More to do to start an Angular server"
 
   #Backend server to start
 
