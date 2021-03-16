@@ -7,7 +7,6 @@ commands:
     steps:
       - run: echo "Running back-end is not ready yet"
       # on back-end repository, not on front-end repository
-<<<<<<< HEAD
   front-end-run-command:
     steps:
       - run: npm install -g @angular/cli   
@@ -15,10 +14,6 @@ commands:
 
 executors:
   back-end-front-end-run-executor:
-=======
-executors:
-  back-end-run-executor:
->>>>>>> f3787b8eb1c8ca8ce111c79c66c11117a46e20a8
     machine: 
       image: ubuntu-1604:202004-01
 
