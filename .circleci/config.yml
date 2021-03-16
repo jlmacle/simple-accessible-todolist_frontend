@@ -3,22 +3,22 @@
 # https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 commands:
-  back-end-build-command:
+  back-end-run-command:
     steps:
-      - run: echo "Building back-end is not ready yet"
+      - run: echo "Running back-end is not ready yet"
       # on back-end repository, not on front-end repository
 executors:
-  back-end-build-executor:
+  back-end-run-executor:
     machine: 
       image: ubuntu-1604:202004-01
 
 jobs:    
-    back-end-build-job: 
-      executor: back-end-build-executor
+    back-end-run-job: 
+      executor: back-end-run-executor
       steps:
-        - back-end-build-command
+        - back-end-run-command
 # Orchestrate or schedule a set of jobs
 workflows:    
     back-end-build-workflow:    
       jobs: 
-        - back-end-build-job
+        - back-end-run-job    
