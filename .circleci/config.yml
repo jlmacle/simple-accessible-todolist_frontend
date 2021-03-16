@@ -12,7 +12,8 @@ commands:
       - run: npm install -g @angular/cli   
   front-end-run-command:
     steps:
-      - run: ng serve -o
+      - run: pwd
+      -
 
 
 executors:
