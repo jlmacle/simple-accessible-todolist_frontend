@@ -2,14 +2,23 @@
 # Should be the latest version of CircleCI pipeline process engine
 # https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-# Using a package of configuration called an orb
-orbs: 
-    # Declare a dependency on the welcome orb
-    welcome: circle-ci/welcome-orb@0.4.1
+commands:
+  back-end-build-command:
+    steps:
+      - run: echo "Building back-end is not ready yet"
+      # on back-end repository, not on front-end repository
+executors:
+  back-end-build-executor:
+    machine: 
+      image: ubuntu-1604:202004-01
+
+jobs:    
+    back-end-build-job: 
+      executor: back-end-build-executor
+      steps:
+        - back-end-build-command
 # Orchestrate or schedule a set of jobs
-workflows:
-  #Name the workflow "welcome"
-  welcome: 
-    #Run the welcome/run job in its own container
-    jobs: 
-      - welcome/run
+workflows:    
+    back-end-build-workflow:    
+      jobs: 
+        - back-end-build-job
