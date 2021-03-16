@@ -19,8 +19,9 @@ commands:
   front-end-run-command:
     steps:
       - run: cd AccessibleTodoList_FrontEnd
-      - run: ng serve -o
-executors:
+      - run: pwd      
+      - run: ls -la
+ executors:
   back-end-front-end-run-executor:
     machine: 
       image: ubuntu-1604:202004-01
