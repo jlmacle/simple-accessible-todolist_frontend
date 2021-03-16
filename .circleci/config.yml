@@ -2,14 +2,46 @@
 # Should be the latest version of CircleCI pipeline process engine
 # https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-# Using a package of configuration called an orb
-orbs: 
-    # Declare a dependency on the welcome orb
-    welcome: circle-ci/welcome-orb@0.4.1
+commands:
+  back-end-run-command:
+    steps:
+      - run: echo "Running back-end is not ready yet"
+      # on back-end repository, not on front-end repository
+  front-end-run-command:
+    steps:
+      - run: npm install -g @angular/cli   
+
+
+executors:
+  back-end-front-end-run-executor:
+    machine: 
+      image: ubuntu-1604:202004-01
+
+jobs:    
+    back-end-run-job: 
+      executor: back-end-front-end-run-executor
+      steps:
+        - back-end-run-command
+
+    front-end-run-job:
+      executor:  back-end-front-end-run-executor
+      steps:
+        # https://circleci.com/docs/2.0/caching/#basic-example-of-dependency-caching
+        - restore_cache:
+            keys: 
+              - angular-cache
+        - front-end-run-command
+        - save_cache:
+            key: angular-cache
+            paths:
+              - ./node_modules
+
 # Orchestrate or schedule a set of jobs
-workflows:
-  #Name the workflow "welcome"
-  welcome: 
-    #Run the welcome/run job in its own container
-    jobs: 
-      - welcome/run
+workflows:    
+    back-end-run-workflow:    
+      jobs: 
+        - back-end-run-job    
+    
+    front-end-run-workflow:
+      jobs:
+        - front-end-run-job
