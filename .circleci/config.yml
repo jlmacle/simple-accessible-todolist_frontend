@@ -1,6 +1,9 @@
 # From: https://circleci.com/docs/2.0/getting-started/
 # Should be the latest version of CircleCI pipeline process engine
 # https://circleci.com/docs/2.0/configuration-reference
+
+# Work in progress. Unfinished.
+
 version: 2.1
 commands:
   back-end-run-command:
@@ -19,7 +22,8 @@ commands:
   front-end-run-command:
     steps:
       - run: cd AccessibleTodoList_FrontEnd
-      - run: pwd
+      - run: pwd      
+      - run: ls -la
 
 executors:
   back-end-front-end-run-executor:
