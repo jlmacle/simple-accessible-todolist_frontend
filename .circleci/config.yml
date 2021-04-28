@@ -1,59 +1,32 @@
-# From: https://circleci.com/docs/2.0/getting-started/
-# Should be the latest version of CircleCI pipeline process engine
-# https://circleci.com/docs/2.0/configuration-reference
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
+#Note: this may lack maturity
 version: 2.1
+
 commands:
-  back-end-run-command:
+  front-end-config-check-command:
     steps:
-      - run: echo "Running back-end is not ready yet"
-      # on back-end repository, not on front-end repository
+      - checkout
+      - run: #Configuration check
+          echo "Starting the configuration check." 
+          && ls
+          && cd src/environments/
+          && grep "//static base_url=\"http://<static_IP>:8080\"" ./variables.ts
 
-  front-end-clone-command:
-    steps:
-      - run: git clone https://github.com/jlmacle/AccessibleTodoList_FrontEnd.git
-
-  front-end-install-angular-command:
-    steps:
-      - run: npm install -g @angular/cli  
-
-  front-end-run-command:
-    steps:
-      - run: cd AccessibleTodoList_FrontEnd/
-      - run: pwd      
-      - run: ls -la
- 
 executors:
-  back-end-front-end-run-executor:
-    machine: 
-      image: ubuntu-1604:202004-01
+  front-end-executor:
+    docker:
+      # primary container
+      # https://hub.docker.com/u/circleci/
+      - image: circleci/openjdk
 
-jobs:    
-    back-end-run-job: 
-      executor: back-end-front-end-run-executor
-      steps:
-        - back-end-run-command
+jobs:
+  front-end-config-check-job:
+    executor: front-end-executor
+    steps:
+      - front-end-config-check-command      
 
-    front-end-run-job:
-      executor:  back-end-front-end-run-executor
-      steps:
-        - front-end-clone-command
-        # https://circleci.com/docs/2.0/caching/#basic-example-of-dependency-caching
-        - restore_cache:
-            keys: 
-              - angular-cache
-        - front-end-install-angular-command
-        - save_cache:
-            key: angular-cache
-            paths:
-              - AccessibleTodoList_FrontEnd/node_modules
-        -  front-end-run-command
-
-# Orchestrate or schedule a set of jobs
-workflows:    
-    back-end-run-workflow:    
-      jobs: 
-        - back-end-run-job    
-    
-    front-end-run-workflow:
-      jobs:
-        - front-end-run-job
+workflows:  
+  front-end-config-check-workflow:
+    jobs:
+      - front-end-config-check-job

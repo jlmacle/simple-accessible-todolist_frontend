@@ -5,7 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {Routes} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodoListPageComponent } from './components/TodoListPage/todo-list-page.component';
+import { TodoListPageComponent } from './components/TodoListPage/TodoListPage.component';
 //imports used while using mat-form-field
 import  {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
