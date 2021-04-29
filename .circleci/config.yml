@@ -30,3 +30,4 @@ workflows:
   front-end-config-check-workflow:
     jobs:
       - front-end-config-check-job
+

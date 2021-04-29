@@ -214,7 +214,7 @@ export class TodoListPageComponent implements OnInit, OnChanges
 
   mark_selected(selected_category_id:number)
   {
-    console.log("mark_selected");
+	console.log("mark_selected");
     let optionElem = document.getElementById("category"+this.previously_selected_id);
     optionElem.setAttribute("aria-selected", "false");
     optionElem = document.getElementById("category"+selected_category_id);
