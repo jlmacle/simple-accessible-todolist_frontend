@@ -1,4 +1,4 @@
-# Replacing the localhost version of the back-end server with the version with hostname in variables.ts
+# Replacing the localhost version of the back-end server with the version with loopback address in variables.ts
 # https://javafullstackcode.wpcomstaging.com/2021/04/28/docker-image-creation-back-end/
 echo "Removing the potential front-end service"
 sudo docker service rm atl-front-end
