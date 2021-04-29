@@ -29,5 +29,5 @@ echo "Building the front-end service"
 sudo docker service create --network atl-network --hostname frontend --publish 4200:80 --name atl-front-end front-end:docker-test 
 
 # Removing build files
-#rm -Rf context/html/assets
-#rm -Rf context/html/*.*
+rm -Rf context/html/assets
+rm -Rf context/html/*.*
