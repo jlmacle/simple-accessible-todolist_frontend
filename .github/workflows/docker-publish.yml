@@ -16,7 +16,7 @@ on:
 
 env:
   # TODO: Change variable to your image's name.
-  IMAGE_NAME: front-end:v0.9
+  IMAGE_NAME: docker.pkg.github.com/jlmacle/accessibletodolist_frontend/front-end:v0.9:latest
 
 jobs:
   # Run tests.
