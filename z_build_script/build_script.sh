@@ -18,7 +18,7 @@ mv -f dist/AccessibleTodoList-FrontEnd/assets z_build_script/context/html
 
 cd z_build_script/context/
 echo "docker build"
-sudo docker build -t docker.pkg.github.com/jlmacle/AccessibleTodoList_FrontEnd/front-end:v0.9 .
+sudo docker build -t front-end:v0.9 .
 
 # Replacing the hostname version of the back-end server with the version with localhost in variables.ts
 cd ..
