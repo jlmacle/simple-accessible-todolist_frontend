@@ -5,7 +5,7 @@ on:
   push:
     # Publish `master` as Docker `latest` image.
     branches:
-      - master,JL
+      - JL,master
 
     # Publish `v1.2.3` tags as releases.
     tags:
@@ -16,8 +16,9 @@ on:
 
 env:
   # TODO: Change variable to your image's name.
-  IMAGE_NAME: front-end:v0.9:latest
 
+  IMAGE_NAME: front-end:v0.9:latest
+  
 jobs:
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
@@ -44,6 +45,7 @@ jobs:
 
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
+    if: github.event_name == 'workflow_dispatch'
 
     permissions:
       contents: read
