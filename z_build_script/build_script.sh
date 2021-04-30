@@ -18,7 +18,7 @@ mv -f dist/AccessibleTodoList-FrontEnd/assets z_build_script/context/html
 
 cd z_build_script/context/
 echo "docker build"
-sudo docker build -t front-end:docker-test .
+sudo docker build -t front-end:v0.9 .
 
 # Replacing the hostname version of the back-end server with the version with localhost in variables.ts
 cd ..
@@ -26,7 +26,7 @@ echo "Front-end server configuration modified from localhost to backend."
 cp -f util/variables.ts ../src/environments/variables.ts
 
 echo "Building the front-end service"
-sudo docker service create --network atl-network --hostname frontend --publish 4200:80 --name atl-front-end front-end:docker-test 
+sudo docker service create --network atl-network --hostname frontend --publish 4200:80 --name atl-front-end front-end:v0.9 
 
 # Removing build files
 rm -Rf context/html/assets
