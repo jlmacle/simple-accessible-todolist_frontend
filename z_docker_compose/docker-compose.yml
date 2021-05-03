@@ -1,6 +1,6 @@
 #Thanks and credits to https://github.com/docker/awesome-compose/blob/master/spring-postgres/docker-compose.yaml
 
-version: "0.9"
+version: "3.4"
 services:
   frontend:
     image: jlmacle/atl-front-end:v0.9
