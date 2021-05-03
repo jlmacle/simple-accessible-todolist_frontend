@@ -27,3 +27,5 @@ cp -f util/variables.ts ../src/environments/variables.ts
 
 echo "Building the front-end service"
 sudo docker service create --network atl-network --hostname frontend --publish 4200:80 --name atl-front-end front-end:v0.9 
+
+#
