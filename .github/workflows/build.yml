@@ -1,6 +1,6 @@
-name: Build
+name: SonarCloud
 on:
-  Workflow dispatch:
+  workflow_dispatch:
   push:
     branches:
       - master
