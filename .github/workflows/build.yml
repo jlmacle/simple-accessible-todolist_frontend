@@ -1,6 +1,6 @@
 name: Build
 on:
-  Workflow dispatch:
+  workflow_dispatch:
   push:
     branches:
       - master
