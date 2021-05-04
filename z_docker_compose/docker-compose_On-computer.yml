@@ -3,12 +3,20 @@
 version: "3.5"
 services:
   postgresql:
-    image: postgres:alpine
+    image: postgres:alpine    
     restart: always      
     networks:
-      - atl-network             
+      - atl-network     
+    environment:
+      # https://hub.docker.com/_/postgres
+      # "The PostgreSQL image uses several environment variables which are easy to miss. 
+      # The only variable required is POSTGRES_PASSWORD, the rest are optional.
+      # Warning: the Docker specific variables will only have an effect if you start the container with a data directory that is empty; 
+      # any pre-existing database will be left untouched on container startup.      
+      - POSTGRES_PASSWORD=test  
     expose:
-      - 5432  
+      - 5432
+  
   backend:
     depends_on:
       - postgresql
@@ -18,10 +26,11 @@ services:
     expose:
       - 8080   
     environment:
-      - DB_URL=jdbc:postgresql://postgresql:5432/test
+      - DB_URL=jdbc:postgresql://postgresql:5432/postgres
       - DB_USERNAME=postgres
+      - DB_PASSWORD=test
     networks:
-      - atl-network    
+      - atl-network  
   
   frontend:
     depends_on:
@@ -33,7 +42,6 @@ services:
      - 4200
     networks:
      - atl-network
-
 networks:
   atl-network: {}
 
