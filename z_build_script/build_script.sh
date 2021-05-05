@@ -13,8 +13,8 @@ ng build
 echo "Website files moving in context folder"
 cd dist/AccessibleTodoList-FrontEnd
 cd ../..
-mv -f dist/AccessibleTodoList-FrontEnd/*.* z_build_script/context/html
-mv -f dist/AccessibleTodoList-FrontEnd/assets z_build_script/context/html
+mv -fu dist/AccessibleTodoList-FrontEnd/*.* z_build_script/context/html
+mv -fu dist/AccessibleTodoList-FrontEnd/assets z_build_script/context/html
 
 cd z_build_script/context/
 echo "docker build"
@@ -25,5 +25,11 @@ cd ..
 echo "Front-end server configuration modified from localhost to backend."
 cp -f util/variables.ts ../src/environments/variables.ts
 
+echo "Building atl-network if necessary"
+sudo docker network create --driver overlay atl-network &> /dev/null
+
+echo "Removing potential nginx service running" 
+sudo service nginx stop
+
 echo "Building the front-end service"
-sudo docker service create --network atl-network --hostname frontend --publish 4200:80 --name atl-front-end front-end:v0.9 
+sudo docker service create --network atl-network --hostname frontend --publish 80:80 --name atl-front-end front-end:v0.9 
