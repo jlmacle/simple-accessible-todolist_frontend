@@ -13,8 +13,8 @@ ng build
 echo "Website files moving in context folder"
 cd dist/AccessibleTodoList-FrontEnd
 cd ../..
-mv -fu dist/AccessibleTodoList-FrontEnd/*.* z_build_script/context/html
-mv -fu dist/AccessibleTodoList-FrontEnd/assets z_build_script/context/html
+cp -Rfu dist/AccessibleTodoList-FrontEnd/*.* z_build_script/context/html
+cp -Rfu dist/AccessibleTodoList-FrontEnd/assets z_build_script/context/html
 
 cd z_build_script/context/
 echo "docker build"
