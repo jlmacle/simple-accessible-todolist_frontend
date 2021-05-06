@@ -2,8 +2,20 @@
 #https://docs.docker.com/compose/compose-file/compose-file-v3/#secrets
 version: "3.5"
 services:
+
+  frontend:
+    depends_on:
+      - backend
+    image: jlmacle/atl-front-end:v0.9
+    ports:
+      - 80:80      
+    networks:
+     - atl-network
+     
   postgresql:
-    image: postgres:alpine    
+    image: postgres:alpine   
+    ports:
+      - 5432:5432
     networks:
       - atl-network     
     environment:
@@ -12,7 +24,8 @@ services:
       # The only variable required is POSTGRES_PASSWORD, the rest are optional.
       # Warning: the Docker specific variables will only have an effect if you start the container with a data directory that is empty; 
       # any pre-existing database will be left untouched on container startup.      
-      - POSTGRES_PASSWORD_FILE=/run/secrets/POSTGRES_PASSWORD      
+      - POSTGRES_PASSWORD_FILE=/run/secrets/POSTGRES_PASSWORD  
+      
   
   backend:
     depends_on:
@@ -21,23 +34,13 @@ services:
     ports:
       - 8080:8080    
     environment:
-      - DB_URL="${PATH}"
-      - DB_USERNAME="${DB_USERNAME_2}"
+      - DB_URL=jdbc:postgresql://postgresql:5432/postgres
+      - POSTGRES_USER_FILE=/run/secrets/POSTGRES_USER
       - POSTGRES_PASSWORD_FILE=/run/secrets/POSTGRES_PASSWORD 
-    
+      
     networks:
       - atl-network  
   
-  frontend:
-    depends_on:
-      - backend
-    image: jlmacle/atl-front-end:v0.9
-    ports:
-      - 0:80        
-    networks:
-     - atl-network
- 
-
 networks:
   atl-network: 
 
