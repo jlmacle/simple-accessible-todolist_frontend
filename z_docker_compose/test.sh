@@ -8,6 +8,11 @@ echo "Suppressing the services if they exist already"
 sudo docker service rm atl-front-end &> /dev/null
 sudo docker service rm atl-back-end &> /dev/null
 sudo docker service rm atl-postgres  &> /dev/null
-sleep 10
+
+
+sudo docker stack deploy -c docker-compose-stack.yml stack
+
+#sudo docker stack deploy -c docker-compose-Azure.yml stack
+#sudo docker-compose up
+
 chromium-browser http://127.0.0.1 &> /dev/null
-sudo docker-compose up
