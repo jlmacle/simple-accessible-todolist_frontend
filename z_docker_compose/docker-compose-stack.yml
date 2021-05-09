@@ -6,10 +6,10 @@ services:
 
   postgresql:
     image: postgres:alpine   
-    ports:
-      - published: 5432
     networks:
       - atl-network  
+    ports:
+      - published: 5432    
     secrets:      
       - POSTGRES_DB
       - POSTGRES_USER
@@ -24,13 +24,15 @@ services:
       - POSTGRES_USER_FILE=/run/secrets/POSTGRES_USER
       - POSTGRES_PASSWORD_FILE=/run/secrets/POSTGRES_PASSWORD          
   
-  backend:
+  backend:  
     depends_on:
       - postgresql
     image: jlmacle/atl-back-end:v0.9
+    networks:
+      - atl-network 
     ports:
       - target: 8080
-        published: 8080      
+        published: 8080           
     secrets:
       - DB_JDBC_ROOT
       - POSTGRES_DB
@@ -40,10 +42,18 @@ services:
       - POSTGRES_DB_FILE=/run/secrets/POSTGRES_DB
       - DB_JDBC_ROOT_FILE=/run/secrets/DB_JDBC_ROOT
       - POSTGRES_USER_FILE=/run/secrets/POSTGRES_USER
-      - POSTGRES_PASSWORD_FILE=/run/secrets/POSTGRES_PASSWORD 
+      - POSTGRES_PASSWORD_FILE=/run/secrets/POSTGRES_PASSWORD       
+    
       
+  frontend:
+    depends_on:
+      - backend
+    image: jlmacle/atl-front-end:v0.9
     networks:
-      - atl-network  
+     - atl-network
+    ports:
+      - 80:80   
+    
 
 secrets:
   DB_JDBC_ROOT:
