@@ -16,7 +16,4 @@ sudo docker network create --driver overlay atl-network &> /dev/null
 
 sudo docker stack deploy -c docker-compose-stack.yml stack
 
-#sudo docker stack deploy -c docker-compose-Azure.yml stack
-#sudo docker-compose up
-
 chromium-browser http://127.0.0.1 &> /dev/null
