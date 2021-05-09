@@ -1,7 +1,9 @@
 # Replacing the localhost version of the back-end server with the version with loopback address in variables.ts
 # https://javafullstackcode.wpcomstaging.com/2021/04/28/docker-image-creation-back-end/
-echo "Removing the potential front-end service"
+echo "Removing potential conflicting services"
 sudo docker service rm atl-front-end &> /dev/null
+sudo docker stack rm stack
+sleep 10
 
 echo "Front-end server configuration from localhost to backend."
 cp -f util/variables_loopback_address.ts ../src/environments/variables.ts
@@ -32,4 +34,4 @@ echo "Removing potential nginx service running"
 sudo service nginx stop
 
 echo "Building the front-end service"
-sudo docker service create --network atl-network --hostname frontend --publish 80:80 --name atl-front-end front-end:v0.9 
+sudo docker service create --network atl-network --hostname frontend --publish published=80,target=80 --name atl-front-end front-end:v0.9 
