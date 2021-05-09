@@ -34,4 +34,4 @@ echo "Removing potential nginx service running"
 sudo service nginx stop
 
 echo "Building the front-end service"
-sudo docker service create --network atl-network --hostname frontend --publish 80:80 --name atl-front-end front-end:v0.9 
+sudo docker service create --network atl-network --hostname frontend --publish published=80,target=80 --name atl-front-end front-end:v0.9 
