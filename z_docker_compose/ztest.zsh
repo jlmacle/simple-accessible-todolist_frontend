@@ -15,10 +15,6 @@ echo "Building atl-network if necessary"
 sudo docker network create --driver overlay atl-network &> /dev/null
 sleep 15
 
-#sudo docker-compose up
-
 sudo docker stack deploy -c docker-compose-stack.yml stack
-
-#sudo docker stack deploy -c docker-compose-Azure.yml stack
 
 chromium-browser http://127.0.0.1 &> /dev/null
