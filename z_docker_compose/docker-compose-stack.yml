@@ -52,8 +52,8 @@ services:
     networks:
      - atl-network
     ports:
-      - 80:80   
-    
+      - target: 80
+        published: 80   
 
 secrets:
   DB_JDBC_ROOT:
