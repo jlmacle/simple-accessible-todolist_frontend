@@ -27,13 +27,8 @@ chromium-browser http://localhost:9000
 sleep 100
 
 #--------------------------------------------------------------------------------------------------------------------
-# Building the Docker image
+# Preparing the build of the Docker image
 #--------------------------------------------------------------------------------------------------------------------
-echo "Removing potential conflicting services"
-sudo docker service rm atl-front-end &> /dev/null
-sudo docker stack rm stack
-sleep 10
-
 cd ..
 echo "ng build"
 ng build
@@ -44,23 +39,10 @@ cd ../..
 cp -Rfu dist/AccessibleTodoList-FrontEnd/*.* z_build_script/context/html
 cp -Rfu dist/AccessibleTodoList-FrontEnd/assets z_build_script/context/html
 
-cd z_build_script/context/
-echo "docker build of a local image"
-sudo docker build -t front-end:v0.9 .
-
-echo "Building atl-network if necessary"
-sudo docker network create --driver overlay atl-network &> /dev/null
-
-echo "Removing potential nginx service running" 
-sudo service nginx stop
-
-echo "Building the front-end service"
-sudo docker service create --network atl-network --hostname frontend --publish published=80,target=80 --name atl-front-end front-end:v0.9
-
 #-----------------------------------------------------------------------------------------------------------------------------
 #  Pushing the code to Git
 #-----------------------------------------------------------------------------------------------------------------------------
-cd ../..
+
 echo "git add ."
 git add .
 echo "git commit: enter a commit message"
@@ -69,12 +51,11 @@ git commit -m "$commit"
 echo "You entered $commit"
 echo "git push"
 git push
-
+sleep 300
 #------------------------------------------------------------------------------------------------------------------------------
 # Testing docker stack with the new image updated on DockerHub
 #------------------------------------------------------------------------------------------------------------------------------
 echo "Testing docker stack with the new image."
-sudo docker pull jlmacle/atl-front-end:v0.9
 
 sudo docker system prune
 #fixed an issue with database initialisation
