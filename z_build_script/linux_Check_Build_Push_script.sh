@@ -24,7 +24,7 @@ sleep 40
 
 echo "Starting a browser to check the result of the analysis."
 chromium-browser http://localhost:9000
-sleep 300
+sleep 100
 
 #--------------------------------------------------------------------------------------------------------------------
 # Building the Docker image
@@ -45,7 +45,7 @@ cp -Rfu dist/AccessibleTodoList-FrontEnd/*.* z_build_script/context/html
 cp -Rfu dist/AccessibleTodoList-FrontEnd/assets z_build_script/context/html
 
 cd z_build_script/context/
-echo "docker build"
+echo "docker build of a local image"
 sudo docker build -t front-end:v0.9 .
 
 echo "Building atl-network if necessary"
@@ -60,13 +60,41 @@ sudo docker service create --network atl-network --hostname frontend --publish p
 #-----------------------------------------------------------------------------------------------------------------------------
 #  Pushing the code to Git
 #-----------------------------------------------------------------------------------------------------------------------------
+cd ../..
 echo "git add ."
 git add .
 echo "git commit: enter a commit message"
 read commit
 git commit -m "$commit"
 echo "You entered $commit"
-echo "Waiting before pushing the code."
-sleep 40 
 echo "git push"
 git push
+
+#------------------------------------------------------------------------------------------------------------------------------
+# Testing docker stack with the new image updated on DockerHub
+#------------------------------------------------------------------------------------------------------------------------------
+echo "Testing docker stack with the new image."
+sudo docker pull jlmacle/atl-front-end:v0.9
+
+sudo docker system prune
+#fixed an issue with database initialisation
+
+echo "Stopping the postgreSQL Ubuntu service if running".
+sudo service postgresql stop
+echo "Stopping the nginx Ubuntu service if running".
+sudo service nginx stop
+
+echo "Suppressing the services if they exist already"
+sudo docker service rm atl-front-end &> /dev/null
+sudo docker service rm atl-back-end &> /dev/null
+sudo docker service rm atl-postgres  &> /dev/null
+
+echo "Building atl-network if necessary"
+sudo docker network create --driver overlay atl-network &> /dev/null
+
+sudo docker stack deploy -c z_docker_compose/docker-compose-stack.yml stack
+echo "Note: the front-end might take a little while to start."
+sleep 200
+chromium-browser http://127.0.0.1 &> /dev/null
+
+
