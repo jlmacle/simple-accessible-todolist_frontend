@@ -1,3 +1,7 @@
+# ** Npm non breakable security fixes
+npm audit
+npm audit fix
+
 # ** Running the code quality **
 echo ""
 echo "** Starting SonarQube and running the code quality analysis **"
