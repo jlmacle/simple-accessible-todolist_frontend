@@ -51,12 +51,11 @@ git commit -m "$commit"
 echo "You entered $commit"
 echo "git push"
 git push
-
+sleep 300
 #------------------------------------------------------------------------------------------------------------------------------
 # Testing docker stack with the new image updated on DockerHub
 #------------------------------------------------------------------------------------------------------------------------------
 echo "Testing docker stack with the new image."
-sudo docker pull jlmacle/atl-front-end:v0.9
 
 sudo docker system prune
 #fixed an issue with database initialisation
