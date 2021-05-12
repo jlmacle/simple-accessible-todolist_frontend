@@ -89,7 +89,7 @@ sudo docker service rm atl-front-end &> /dev/null
 sudo docker service rm atl-back-end &> /dev/null
 sudo docker service rm atl-postgres  &> /dev/null
 
-echo "Building atl-network if necessary"
+echo "Building atl-network"
 sudo docker network create --driver overlay atl-network &> /dev/null
 
 sudo docker stack deploy -c z_docker_compose/docker-compose-stack.yml stack
