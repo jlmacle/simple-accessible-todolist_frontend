@@ -1,4 +1,4 @@
-#sudo docker prune system
+sudo docker system prune
 #fixed an issue with database initialisation
 
 echo "Stopping the postgreSQL Ubuntu service if running".
@@ -15,5 +15,5 @@ echo "Building atl-network if necessary"
 sudo docker network create --driver overlay atl-network &> /dev/null
 
 sudo docker stack deploy -c docker-compose-stack.yml stack
-
+sleep 20
 chromium-browser http://127.0.0.1 &> /dev/null
