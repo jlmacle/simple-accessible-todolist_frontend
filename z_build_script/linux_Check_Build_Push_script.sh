@@ -23,7 +23,7 @@ echo "Waiting for the analysis to be done."
 sleep 40 
 
 echo "Starting a browser to check the result of the analysis."
-chromium-browser http://localhost:9000
+chromium-browser http://localhost:9000 &
 sleep 100
 
 #--------------------------------------------------------------------------------------------------------------------
@@ -76,6 +76,6 @@ sudo docker network create --driver overlay atl-network &> /dev/null
 sudo docker stack deploy -c z_docker_compose/docker-compose-stack.yml stack
 echo "Note: the front-end might take a little while to start."
 sleep 200
-chromium-browser http://127.0.0.1 &> /dev/null
+chromium-browser http://127.0.0.1 &> /dev/null &
 
 
