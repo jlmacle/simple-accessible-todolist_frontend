@@ -446,7 +446,7 @@ class AppComponent {
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(); };
 AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 3, vars: 0, consts: [["id", "title"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "* A Simple Accessible To-Do List *");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "A Simple Accessible To-Do List");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "router-outlet");
     } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterOutlet"]], styles: ["#title[_ngcontent-%COMP%]{\n    font-family: Helvetica, Verdana, Arial, sans-serif;\n    \n    text-align: center;\n    font-size: 3em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBRUE7SUFDSSxrREFBa0QsQ0FBQyxzQ0FBc0M7SUFDekYsd0ZBQXdGO0lBQ3hGLGtCQUFrQjtJQUNsQixjQUFjO0FBQ2xCIiwiZmlsZSI6ImFwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG5cbiN0aXRsZXtcbiAgICBmb250LWZhbWlseTogSGVsdmV0aWNhLCBWZXJkYW5hLCBBcmlhbCwgc2Fucy1zZXJpZjsvKiBDaG9pY2Ugb2YgZHlzbGV4aWEgZnJpZW5kbHkgZm9udHMgKi9cbiAgICAvKiBodHRwOi8vZHlzbGV4aWFoZWxwLnVtaWNoLmVkdS9zaXRlcy9kZWZhdWx0L2ZpbGVzL2dvb2RfZm9udHNfZm9yX2R5c2xleGlhX3N0dWR5LnBkZiAqL1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBmb250LXNpemU6IDNlbTtcbn1cblxuXG4iXX0= */"] });
