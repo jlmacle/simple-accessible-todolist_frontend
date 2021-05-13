@@ -1,30 +1,30 @@
 #-------------------------------------------------------------------------------------------------------------------
 # Checking the potential npm security issues
 #-------------------------------------------------------------------------------------------------------------------
-npm audit
-npm audit fix
+#npm audit
+#npm audit fix
 
 #-------------------------------------------------------------------------------------------------------------------
 # Checking the code quality with SonarQube
 #-------------------------------------------------------------------------------------------------------------------
-echo "Starting the SonarQube server"
-gnome-terminal -- bash -c 'sonar.sh start; sleep 90'
-echo "Waiting for the SonarQube server to start"
-sleep 90
+#echo "Starting the SonarQube server"
+#gnome-terminal -- bash -c 'sonar.sh start; sleep 90'
+#echo "Waiting for the SonarQube server to start"
+#sleep 90
 
-echo "Starting the analysis"
-gnome-terminal -- bash -c 'cd .. ; sonar-scanner \
-  -Dsonar.projectKey=front-end \
-  -Dsonar.sources=. \
-  -Dsonar.host.url=http://localhost:9000 \
-  -Dsonar.login=6fb38c8274cb8efccba8778aef56d226e7550659; sleep 100'
+#echo "Starting the analysis"
+#gnome-terminal -- bash -c 'cd .. ; sonar-scanner \
+#  -Dsonar.projectKey=front-end \
+#  -Dsonar.sources=. \
+#  -Dsonar.host.url=http://localhost:9000 \
+#  -Dsonar.login=6fb38c8274cb8efccba8778aef56d226e7550659; sleep 100'
   
-echo "Waiting for the analysis to be done."
-sleep 40 
+#echo "Waiting for the analysis to be done."
+#sleep 40 
 
-echo "Starting a browser to check the result of the analysis."
-chromium-browser http://localhost:9000
-sleep 100
+#echo "Starting a browser to check the result of the analysis."
+#chromium-browser http://localhost:9000
+#sleep 100
 
 #--------------------------------------------------------------------------------------------------------------------
 # Preparing the build of the Docker image
@@ -76,6 +76,6 @@ sudo docker network create --driver overlay atl-network &> /dev/null
 sudo docker stack deploy -c z_docker_compose/docker-compose-stack.yml stack
 echo "Note: the front-end might take a little while to start."
 sleep 200
-chromium-browser http://127.0.0.1 &> /dev/null
+#chromium-browser http://127.0.0.1 &> /dev/null
 
 
