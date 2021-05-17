@@ -22,20 +22,20 @@ export class TodoListPageComponent implements OnInit, OnChanges
 
   constructor(private entryService:EntryService, private router:Router) { }
   
-  //used to define a new category
+  // Used to define a new category
   categoryInputName='';
 
-  //used to define a new item
+  // Used to define a new item
   selectedCategoryId=1;    
   itemInputName='';
 
-  //used to display existing categories and items
-  categories:Array<Category>;
-  mapCategoryNextCategory:Map<Category,Category>;
-  allItems:Array<Item>=[];  
+  // Used to display existing categories and items
+  categories: Array<Category>;
+  mapCategoryNextCategory: Map<Category,Category>;
+  allItems: Array<Item>=[];  
   itemsSortedByCategory = new Map();
 
-  //select states
+  // Select states
   previouslySelectedId = 0;
 
   ngOnInit(): void 
@@ -46,17 +46,16 @@ export class TodoListPageComponent implements OnInit, OnChanges
   
   ngOnChanges(changes: SimpleChanges): void 
   {
-    this.getItems();    
+    this.getItems();
     this.createCategoryMap();
-    
   }
   
 
-  addCategory()
+  addCategory(): void
   {
-    //Creating a category object that will be later on translated to JSON and transmitted in an HTTP request.
-    let category = new Category();
-    //category.id is left undefined
+    // Creating a category object that will be later on translated to JSON and transmitted in an HTTP request.
+    const category = new Category();
+    // category.id is left undefined
     category.name = this.categoryInputName;
     if (this.categoryInputName !== '')
     {
@@ -69,7 +68,7 @@ export class TodoListPageComponent implements OnInit, OnChanges
     }
   }
 
-  getCategories()
+  getCategories(): void
   {
     this.entryService.getCategories().then(
       data => {
@@ -82,11 +81,11 @@ export class TodoListPageComponent implements OnInit, OnChanges
     )
   }
 
-  createCategoryMap()
+  createCategoryMap(): void
   {
     this.mapCategoryNextCategory = new Map<Category,Category>();
-    let categoryArray:Array<Category>=new Array<Category>();
-    let index:number=0;
+    let categoryArray: Array<Category>=new Array<Category>();
+    let index: number=0;
     this.categories.forEach(category =>
       {
         categoryArray.push(category);           
@@ -101,7 +100,7 @@ export class TodoListPageComponent implements OnInit, OnChanges
       console.log('this.mapCategoryNextCategory: ',this.mapCategoryNextCategory);
   }
 
-  deleteCategory(id:number)
+  deleteCategory(id: number): void
   {
     this.entryService.deleteCategory(id).then(
       data => {console.log('Category deleted. id:'+id);
@@ -111,7 +110,8 @@ export class TodoListPageComponent implements OnInit, OnChanges
     );    
   }
 
-  foldUnfoldCategory(categoryId:number){      
+  foldUnfoldCategory(categoryId:number): void
+  {      
     let toggledElement = document.getElementById('itemsForCategory'+categoryId);    
     if (toggledElement.style.getPropertyValue('visibility')==='hidden'){
       this.unfoldCategory(categoryId);
@@ -123,7 +123,7 @@ export class TodoListPageComponent implements OnInit, OnChanges
   }
   
 
-  unfoldCategory(categoryId:number)
+  unfoldCategory(categoryId: number): void
   {
     let toggledElement = document.getElementById('itemsForCategory'+categoryId);
     toggledElement.style.setProperty('visibility','visible');
@@ -132,7 +132,8 @@ export class TodoListPageComponent implements OnInit, OnChanges
     iconForTogglingElement.setAttribute('aria-expanded','true');    
   }
 
-  foldCategory(categoryId:number){
+  foldCategory(categoryId: number): void
+  {
     let toggledElement = document.getElementById('itemsForCategory'+categoryId);
     toggledElement.style.setProperty('visibility','hidden');
     toggledElement.style.setProperty('display','none');
@@ -140,7 +141,8 @@ export class TodoListPageComponent implements OnInit, OnChanges
     iconForTogglingElement.setAttribute('aria-expanded','false');
   }
 
-  setAriaExpandedToTrue(elementId){
+  setAriaExpandedToTrue(elementId)
+  {
     let element = document.getElementById(elementId);
     element.setAttribute('aria-expanded','true');
   }
@@ -150,10 +152,10 @@ export class TodoListPageComponent implements OnInit, OnChanges
     element.setAttribute('aria-expanded','false');
   }
 
-  addItem(categoryId:number){
+  addItem(categoryId: number){
     console.log('Add item for the category: '+categoryId);
     let item = new Item();
-    item.id=1;//weakness in the code/understanding.
+    item.id=1;// Weakness in the code/understanding.
     item.name = this.itemInputName;
     item.categoryId = categoryId;
     if (item.name !== ''){
@@ -164,7 +166,7 @@ export class TodoListPageComponent implements OnInit, OnChanges
           this.getItems();
           this.router.navigate(['.']);
           this.itemInputName = '';   
-          //resetting default category to Uncategorized
+          // Resetting default category to Uncategorized
           this.selectedCategoryId=1;
     },
         error => {console.log('Error while adding an item: ',error);}
@@ -181,17 +183,17 @@ export class TodoListPageComponent implements OnInit, OnChanges
         this.allItems.forEach(element => {
           console.log('Element in the list', 'id: '+element.id, 'name: '+element.name, 'categoryId: '+element.categoryId);      
         });
-         //Sorting by category id  and storing the items in separated arrays.
+         // Sorting by category id  and storing the items in separated arrays.
         this.itemsSortedByCategory = new Map();
         this.allItems.forEach(item => 
           {
             if (this.itemsSortedByCategory.has(item.categoryId)){              
-              //Getting the array of items already existing for item.categoryId
+              // Getting the array of items already existing for item.categoryId
               (this.itemsSortedByCategory.get(item.categoryId)).push(item);          
 
             }
             else{
-              //Creating a new structure, and adding 
+              // Creating a new structure, and adding 
               let itemsForOneCategory:Array<Item> = [];
               itemsForOneCategory.push(item);
               (this.itemsSortedByCategory).set(item.categoryId,itemsForOneCategory);
@@ -207,10 +209,10 @@ export class TodoListPageComponent implements OnInit, OnChanges
    
   }
 
-  deleteItem(itemId:number, categoryId:number){
+  deleteItem(itemId: number, categoryId:number){
     this.entryService.deleteItem(itemId).then( 
       data => {console.log('Item deleted. id:'+itemId);
-              //Calling on getItems() to display the updated list.
+              // Calling on getItems() to display the updated list.
               this.getItems();                           
               this.unfoldCategory(categoryId);
             },
