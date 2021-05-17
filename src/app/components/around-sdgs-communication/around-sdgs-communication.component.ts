@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-around-sdgs-communication',
-  //'HTML elements in your template that match this selector become instances of the component.'
+  // 'HTML elements in your template that match this selector become instances of the component.'
   // https://angular.io/guide/what-is-angular#components	
   templateUrl: './around-sdgs-communication.component.html',
   // 'An HTML template that instructs Angular how to render the component.'
@@ -21,10 +21,10 @@ export class AroundSDGsCommunicationComponent implements OnInit
     
   }
 
-  toggleBackground()
+  toggleBackground(): void
   {
-    let bodyElement = document.getElementById('body');
-    let displayAreaElement = document.getElementById('display-area');
+    const bodyElement = document.getElementById('body');
+    const displayAreaElement = document.getElementById('display-area');
     console.log('bodyElement.style.getPropertyValue("background-image"): *'+bodyElement.style.getPropertyValue('background-image')+'*');
     if ( bodyElement.style.getPropertyValue('background-image').includes('photography'))
     {      

@@ -11,9 +11,9 @@ import {Variables} from '../../environments/variables';
 export class EntryService 
 {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  addCategory(category:Category): Promise<any>{
+  addCategory(category: Category): Promise<any>{
     const url = Variables.baseUrl+'/category';
     console.log('HTTP POST to: '+url);
     return this.http.post(url,category).toPromise();    
@@ -23,14 +23,14 @@ export class EntryService
     return this.http.get(Variables.baseUrl+'/categories').toPromise();
   }
     
-  deleteCategory(id:number): Promise<any>{
+  deleteCategory(id: number): Promise<any>{
     const url = Variables.baseUrl+'/category/'+id;
     console.log('HTTP DELETE to: '+url);
     return this.http.delete(url).toPromise();    
   }
 
   
-  addItem(item:Item,categoryId:number): Promise<any>{
+  addItem(item: Item,categoryId: number): Promise<any>{
     const url = Variables.baseUrl+'/item/'+categoryId;
     console.log('HTTP POST to: '+url);
     console.log('Item data: Item id:'+item.id+', item name: '+item.name+', item category id'+categoryId);
@@ -43,7 +43,7 @@ export class EntryService
     return this.http.get(url).toPromise();
   }
 
-  deleteItem(id:number): Promise<any>{
+  deleteItem(id: number): Promise<any>{
     const url = Variables.baseUrl+'/item/'+id;
     console.log('HTTP DELETE to: '+url);
     return this.http.delete(url).toPromise();    
