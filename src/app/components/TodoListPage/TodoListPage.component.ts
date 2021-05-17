@@ -7,9 +7,11 @@ import {EntryService} from '../../services/entry.service';
 
 @Component({	
   selector: 'app-TodoListPage', 
-  //HTML elements in your template that match this selector become instances of the component.
+  // "HTML elements in your template that match this selector become instances of the component."
   // https://angular.io/guide/what-is-angular#components	
   templateUrl: './TodoListPage.component.html',
+  // "An HTML template that instructs Angular how to render the component."
+  // https://angular.io/guide/what-is-angular#components
   styleUrls: ['./TodoListPage.component.css']
 })
 
