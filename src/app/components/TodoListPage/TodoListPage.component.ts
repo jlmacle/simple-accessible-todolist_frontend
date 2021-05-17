@@ -6,13 +6,13 @@ import {EntryService} from '../../services/entry.service';
 
 @Component({
   selector: 'app-todo-list-page', 
-  // "HTML elements in your template that match this selector become instances of the component."
+  // 'HTML elements in your template that match this selector become instances of the component.'
   // https://angular.io/guide/what-is-angular#components	
   templateUrl: './TodoListPage.component.html',
-  // "An HTML template that instructs Angular how to render the component."
+  // 'An HTML template that instructs Angular how to render the component.'
   // https://angular.io/guide/what-is-angular#components
   styleUrls: ['./TodoListPage.component.css']
-  // "optional set of CSS styles that define the appearance of the template's HTML elements"
+  // 'optional set of CSS styles that define the appearance of the template's HTML elements'
   // https://angular.io/guide/what-is-angular#components
 })
 
@@ -23,11 +23,11 @@ export class TodoListPageComponent implements OnInit, OnChanges
   constructor(private entryService:EntryService, private router:Router) { }
   
   //used to define a new category
-  categoryInputName="";
+  categoryInputName='';
 
   //used to define a new item
   selectedCategoryId=1;    
-  itemInputName="";
+  itemInputName='';
 
   //used to display existing categories and items
   categories:Array<Category>;
@@ -58,13 +58,13 @@ export class TodoListPageComponent implements OnInit, OnChanges
     let category = new Category();
     //category.id is left undefined
     category.name = this.categoryInputName;
-    if (this.categoryInputName != "")
+    if (this.categoryInputName !== '')
     {
       this.entryService.addCategory(category).then(
-        data => {console.log("addCategory() called; category object:",data.id+" , "+data.name);
+        data => {console.log('addCategory() called; category object:',data.id+' , '+data.name);
                 this.getCategories();
-                this.categoryInputName="";},
-        error => {console.log("Issue while adding a category:",error);}      
+                this.categoryInputName='';},
+        error => {console.log('ssue while adding a category:',error);}      
       );
     }
   }
@@ -74,11 +74,11 @@ export class TodoListPageComponent implements OnInit, OnChanges
     this.entryService.getCategories().then(
       data => {
                 this.categories  = data; 
-                console.log("Getting the categories from the promise.");
+                console.log('Getting the categories from the promise.');
                 this.createCategoryMap();
-                console.log("Category map created.");
+                console.log('Category map created.');
               },
-      error => {console.log("Issue with getting the categories from the promise: ", error);}
+      error => {console.log('Issue with getting the categories from the promise: ', error);}
     )
   }
 
@@ -98,22 +98,22 @@ export class TodoListPageComponent implements OnInit, OnChanges
           index++;
         };      
       
-      console.log("this.mapCategoryNextCategory: ",this.mapCategoryNextCategory);
+      console.log('this.mapCategoryNextCategory: ',this.mapCategoryNextCategory);
   }
 
   deleteCategory(id:number)
   {
     this.entryService.deleteCategory(id).then(
-      data => {console.log("Category deleted. id:"+id);
+      data => {console.log('Category deleted. id:'+id);
               //Calling on getCategories() to display the updated list.
               this.getCategories();},
-      error =>{console.log("Issue while deleting a category: ", error);}
+      error =>{console.log('Issue while deleting a category: ', error);}
     );    
   }
 
   foldUnfoldCategory(categoryId:number){      
-    let toggledElement = document.getElementById("itemsForCategory"+categoryId);    
-    if (toggledElement.style.getPropertyValue('visibility')=='hidden'){
+    let toggledElement = document.getElementById('itemsForCategory'+categoryId);    
+    if (toggledElement.style.getPropertyValue('visibility')==='hidden'){
       this.unfoldCategory(categoryId);
     }
     else{
@@ -125,61 +125,61 @@ export class TodoListPageComponent implements OnInit, OnChanges
 
   unfoldCategory(categoryId:number)
   {
-    let toggledElement = document.getElementById("itemsForCategory"+categoryId);
-    toggledElement.style.setProperty('visibility',"visible");
-    toggledElement.style.setProperty("display","block");
-    let iconForTogglingElement = document.getElementById("plus_sign"+categoryId);  
-    iconForTogglingElement.setAttribute("aria-expanded","true");    
+    let toggledElement = document.getElementById('itemsForCategory'+categoryId);
+    toggledElement.style.setProperty('visibility','visible');
+    toggledElement.style.setProperty('display','block');
+    let iconForTogglingElement = document.getElementById('plus_sign'+categoryId);  
+    iconForTogglingElement.setAttribute('aria-expanded','true');    
   }
 
   foldCategory(categoryId:number){
-    let toggledElement = document.getElementById("itemsForCategory"+categoryId);
-    toggledElement.style.setProperty('visibility',"hidden");
-    toggledElement.style.setProperty("display","none");
-    let iconForTogglingElement = document.getElementById("plus_sign"+categoryId);   
-    iconForTogglingElement.setAttribute("aria-expanded","false");
+    let toggledElement = document.getElementById('itemsForCategory'+categoryId);
+    toggledElement.style.setProperty('visibility','hidden');
+    toggledElement.style.setProperty('display','none');
+    let iconForTogglingElement = document.getElementById('plus_sign'+categoryId);   
+    iconForTogglingElement.setAttribute('aria-expanded','false');
   }
 
   setAriaExpandedToTrue(elementId){
     let element = document.getElementById(elementId);
-    element.setAttribute("aria-expanded","true");
+    element.setAttribute('aria-expanded','true');
   }
 
   setAriaExpandedTFalse(elementId){
     let element = document.getElementById(elementId);
-    element.setAttribute("aria-expanded","false");
+    element.setAttribute('aria-expanded','false');
   }
 
   addItem(categoryId:number){
-    console.log("Add item for the category: "+categoryId);
+    console.log('Add item for the category: '+categoryId);
     let item = new Item();
     item.id=1;//weakness in the code/understanding.
     item.name = this.itemInputName;
     item.categoryId = categoryId;
-    if (item.name != ""){
+    if (item.name !== ''){
       this.entryService.addItem(item, categoryId).then(
         data => {
-          console.log("Item Added to category id: "+categoryId);
-          this.setAriaExpandedToTrue("plus_sign"+categoryId);         
+          console.log('Item Added to category id: '+categoryId);
+          this.setAriaExpandedToTrue('plus_sign'+categoryId);         
           this.getItems();
           this.router.navigate(['.']);
           this.itemInputName = '';   
           //resetting default category to Uncategorized
           this.selectedCategoryId=1;
     },
-        error => {console.log("Error while adding an item: ",error);}
+        error => {console.log('Error while adding an item: ',error);}
       );
     }
   }
 
   getItems(){
-    let goal = "the list of items.";
+    let goal = 'the list of items.';
     this.entryService.getItems().then(      
       (data) => {
-        this.allItems=data;console.log("Getting the list of items:");
-        console.log("Get items: Display of the list of items. Found: "+this.allItems.length);
+        this.allItems=data;console.log('Getting the list of items:');
+        console.log('Get items: Display of the list of items. Found: '+this.allItems.length);
         this.allItems.forEach(element => {
-          console.log("Element in the list", "id: "+element.id, "name: "+element.name, "categoryId: "+element.categoryId);      
+          console.log('Element in the list', 'id: '+element.id, 'name: '+element.name, 'categoryId: '+element.categoryId);      
         });
          //Sorting by category id  and storing the items in separated arrays.
         this.itemsSortedByCategory = new Map();
@@ -197,36 +197,36 @@ export class TodoListPageComponent implements OnInit, OnChanges
               (this.itemsSortedByCategory).set(item.categoryId,itemsForOneCategory);
             }      
           });
-          console.log("this.itemsSortedByCategory",this.itemsSortedByCategory);
+          console.log('this.itemsSortedByCategory',this.itemsSortedByCategory);
 
 
     
     }, 
-      (error) => {console.log("Error getting "+goal)+" : "+error}
+      (error) => {console.log('Error getting '+goal)+' : '+error}
     );
    
   }
 
   deleteItem(itemId:number, categoryId:number){
     this.entryService.deleteItem(itemId).then( 
-      data => {console.log("Item deleted. id:"+itemId);
+      data => {console.log('Item deleted. id:'+itemId);
               //Calling on getItems() to display the updated list.
               this.getItems();                           
               this.unfoldCategory(categoryId);
             },
-      error =>{console.log("Issue while deleting a category: ", error);}
+      error =>{console.log('Issue while deleting a category: ', error);}
     );    
   }
 
   mark_selected(selectedCategoryId:number)
   {
-	console.log("mark_selected");
-    let optionElem = document.getElementById("category"+this.previouslySelectedId);
-    optionElem.setAttribute("aria-selected", "false");
-    optionElem = document.getElementById("category"+selectedCategoryId);
-    optionElem.setAttribute("aria-selected","true");
-    let selectElem = document.getElementById("category-to-select-field");
-    selectElem.setAttribute("aria-activedescendant",'"'+selectedCategoryId+'"');
+	console.log('mark_selected');
+    let optionElem = document.getElementById('category'+this.previouslySelectedId);
+    optionElem.setAttribute('aria-selected', 'false');
+    optionElem = document.getElementById('category'+selectedCategoryId);
+    optionElem.setAttribute('aria-selected','true');
+    let selectElem = document.getElementById('category-to-select-field');
+    selectElem.setAttribute('aria-activedescendant','+selectedCategoryId+');
     this.previouslySelectedId = selectedCategoryId;
   }
 
