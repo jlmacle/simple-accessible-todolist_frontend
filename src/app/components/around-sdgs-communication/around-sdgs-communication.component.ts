@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-around-sdgs-communication',
+  //HTML elements in your template that match this selector become instances of the component.
+  // https://angular.io/guide/what-is-angular#components	
   templateUrl: './around-sdgs-communication.component.html',
   styleUrls: ['./around-sdgs-communication.component.css']
 })
 export class AroundSDGsCommunicationComponent implements OnInit 
-{
+{	// code that drives the component behavior
+	// https://angular.io/guide/what-is-angular#components
 
   constructor() { }
 

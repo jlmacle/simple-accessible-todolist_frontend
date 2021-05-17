@@ -5,14 +5,17 @@ import { Item } from 'src/app/models/item';
 import {Category} from '../../models/category';
 import {EntryService} from '../../services/entry.service';
 
-@Component({
-  selector: 'app-TodoListPage',
+@Component({	
+  selector: 'app-TodoListPage', 
+  //HTML elements in your template that match this selector become instances of the component.
+  // https://angular.io/guide/what-is-angular#components	
   templateUrl: './TodoListPage.component.html',
   styleUrls: ['./TodoListPage.component.css']
 })
 
 export class TodoListPageComponent implements OnInit, OnChanges 
-{
+{	// code that drives the component behavior
+	// https://angular.io/guide/what-is-angular#components
 
   constructor(private entryService:EntryService, private router:Router) { }
   
