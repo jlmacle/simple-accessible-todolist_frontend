@@ -12,7 +12,8 @@ import {EntryService} from '../../services/entry.service';
 })
 
 export class TodoListPageComponent implements OnInit, OnChanges 
-{
+{	// code that drives the component behavior
+	// https://angular.io/guide/what-is-angular#components
 
   constructor(private entryService:EntryService, private router:Router) { }
   

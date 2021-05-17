@@ -7,8 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoListPageComponent } from './components/TodoListPage/TodoListPage.component';
 //imports used while using mat-form-field
-import  {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
+//import  {MatFormFieldModule} from '@angular/material/form-field';
+//import {MatSelectModule} from '@angular/material/select';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AroundSDGsCommunicationComponent } from './components/around-sdgs-communication/around-sdgs-communication.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -29,8 +29,8 @@ const routes: Routes =[
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
+    //MatFormFieldModule,
+    //MatSelectModule,
     BrowserAnimationsModule
     
   ],
