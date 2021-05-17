@@ -75,7 +75,7 @@
                 <a aria-label="(Hidden), Click to reach the next category or the first 
                     	if you reached the end of the list (aria label)"
                     aria-relevant="text"
-                    href="#{{(map_category_nextCategory.get(category)).name}}{{(map_category_nextCategory.get(category)).id}}" >
+                    href="#{{(mapCategoryNextCategory.get(category)).name}}{{(mapCategoryNextCategory.get(category)).id}}" >
                     
                 </a>
                 <!--aria-label added to pass the pa11y testing -->
@@ -106,7 +106,7 @@
                     <span role="listitem" tabindex="0"
                     	class="border-02"                                                                         
                         >                        
-                        {{category.name}}gg
+                        {{category.name}}
                     </span>
                     <div class="toggle-item" id=itemsForCategory{{category.id}} >                        
                         <!-- Displaying the previously registered items --> 
