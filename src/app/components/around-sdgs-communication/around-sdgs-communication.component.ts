@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   // "An HTML template that instructs Angular how to render the component."
   // https://angular.io/guide/what-is-angular#components
   styleUrls: ['./around-sdgs-communication.component.css']
+  // "optional set of CSS styles that define the appearance of the template's HTML elements"
+  // https://angular.io/guide/what-is-angular#components
 })
 export class AroundSDGsCommunicationComponent implements OnInit 
 {	// code that drives the component behavior
