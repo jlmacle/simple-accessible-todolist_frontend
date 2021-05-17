@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TodoListPageComponent } from './todo-list-page.component';
+import {TodoListPageComponent} from './todo-list-page.component';
 
 describe('AddCategoryComponent', () => {
   let component: TodoListPageComponent;
@@ -8,9 +8,9 @@ describe('AddCategoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TodoListPageComponent ]
+      declarations: [TodoListPageComponent],
     })
-    .compileComponents();
+        .compileComponents();
   }));
 
   beforeEach(() => {
