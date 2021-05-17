@@ -1,18 +1,19 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import {Router} from '@angular/router';
-import { VirtualTimeScheduler } from 'rxjs';
 import { Item } from 'src/app/models/item';
 import {Category} from '../../models/category';
 import {EntryService} from '../../services/entry.service';
 
-@Component({	
-  selector: 'app-TodoListPage', 
+@Component({
+  selector: 'app-todo-list-page', 
   // "HTML elements in your template that match this selector become instances of the component."
   // https://angular.io/guide/what-is-angular#components	
   templateUrl: './TodoListPage.component.html',
   // "An HTML template that instructs Angular how to render the component."
   // https://angular.io/guide/what-is-angular#components
   styleUrls: ['./TodoListPage.component.css']
+  // "optional set of CSS styles that define the appearance of the template's HTML elements"
+  // https://angular.io/guide/what-is-angular#components
 })
 
 export class TodoListPageComponent implements OnInit, OnChanges 
@@ -22,20 +23,20 @@ export class TodoListPageComponent implements OnInit, OnChanges
   constructor(private entryService:EntryService, private router:Router) { }
   
   //used to define a new category
-  category_input_name="";
+  categoryInputName="";
 
   //used to define a new item
-  selected_category_id=1;    
-  item_input_name="";
+  selectedCategoryId=1;    
+  itemInputName="";
 
   //used to display existing categories and items
   categories:Array<Category>;
-  map_category_nextCategory:Map<Category,Category>;
-  all_items:Array<Item>=[];  
-  items_sorted_by_category = new Map();
+  mapCategoryNextCategory:Map<Category,Category>;
+  allItems:Array<Item>=[];  
+  itemsSortedByCategory = new Map();
 
   //select states
-  previously_selected_id = 0;
+  previouslySelectedId = 0;
 
   ngOnInit(): void 
   {
@@ -56,13 +57,13 @@ export class TodoListPageComponent implements OnInit, OnChanges
     //Creating a category object that will be later on translated to JSON and transmitted in an HTTP request.
     let category = new Category();
     //category.id is left undefined
-    category.name = this.category_input_name;
-    if (this.category_input_name != "")
+    category.name = this.categoryInputName;
+    if (this.categoryInputName != "")
     {
       this.entryService.addCategory(category).then(
         data => {console.log("addCategory() called; category object:",data.id+" , "+data.name);
                 this.getCategories();
-                this.category_input_name="";},
+                this.categoryInputName="";},
         error => {console.log("Issue while adding a category:",error);}      
       );
     }
@@ -83,7 +84,7 @@ export class TodoListPageComponent implements OnInit, OnChanges
 
   createCategoryMap()
   {
-    this.map_category_nextCategory = new Map<Category,Category>();
+    this.mapCategoryNextCategory = new Map<Category,Category>();
     let categoryArray:Array<Category>=new Array<Category>();
     let index:number=0;
     this.categories.forEach(category =>
@@ -92,12 +93,12 @@ export class TodoListPageComponent implements OnInit, OnChanges
       });
       for(let i=0;i<categoryArray.length;i++)
         {
-          if ( i<(categoryArray.length-1) ){this.map_category_nextCategory.set(categoryArray[i], categoryArray[i+1]);} 
-          else {this.map_category_nextCategory.set(categoryArray[i],categoryArray[0]);}
+          if ( i<(categoryArray.length-1) ){this.mapCategoryNextCategory.set(categoryArray[i], categoryArray[i+1]);} 
+          else {this.mapCategoryNextCategory.set(categoryArray[i],categoryArray[0]);}
           index++;
         };      
       
-      console.log("this.map_category_nextCategory: ",this.map_category_nextCategory);
+      console.log("this.mapCategoryNextCategory: ",this.mapCategoryNextCategory);
   }
 
   deleteCategory(id:number)
@@ -110,32 +111,32 @@ export class TodoListPageComponent implements OnInit, OnChanges
     );    
   }
 
-  foldUnfoldCategory(category_id:number){      
-    let toggledElement = document.getElementById("itemsForCategory"+category_id);    
+  foldUnfoldCategory(categoryId:number){      
+    let toggledElement = document.getElementById("itemsForCategory"+categoryId);    
     if (toggledElement.style.getPropertyValue('visibility')=='hidden'){
-      this.unfoldCategory(category_id);
+      this.unfoldCategory(categoryId);
     }
     else{
-      this.foldCategory(category_id);
+      this.foldCategory(categoryId);
     }    
     
   }
   
 
-  unfoldCategory(category_id:number)
+  unfoldCategory(categoryId:number)
   {
-    let toggledElement = document.getElementById("itemsForCategory"+category_id);
+    let toggledElement = document.getElementById("itemsForCategory"+categoryId);
     toggledElement.style.setProperty('visibility',"visible");
     toggledElement.style.setProperty("display","block");
-    let iconForTogglingElement = document.getElementById("plus_sign"+category_id);  
+    let iconForTogglingElement = document.getElementById("plus_sign"+categoryId);  
     iconForTogglingElement.setAttribute("aria-expanded","true");    
   }
 
-  foldCategory(category_id:number){
-    let toggledElement = document.getElementById("itemsForCategory"+category_id);
+  foldCategory(categoryId:number){
+    let toggledElement = document.getElementById("itemsForCategory"+categoryId);
     toggledElement.style.setProperty('visibility',"hidden");
     toggledElement.style.setProperty("display","none");
-    let iconForTogglingElement = document.getElementById("plus_sign"+category_id);   
+    let iconForTogglingElement = document.getElementById("plus_sign"+categoryId);   
     iconForTogglingElement.setAttribute("aria-expanded","false");
   }
 
@@ -153,7 +154,7 @@ export class TodoListPageComponent implements OnInit, OnChanges
     console.log("Add item for the category: "+categoryId);
     let item = new Item();
     item.id=1;//weakness in the code/understanding.
-    item.name = this.item_input_name;
+    item.name = this.itemInputName;
     item.categoryId = categoryId;
     if (item.name != ""){
       this.entryService.addItem(item, categoryId).then(
@@ -162,10 +163,10 @@ export class TodoListPageComponent implements OnInit, OnChanges
           this.setAriaExpandedToTrue("plus_sign"+categoryId);         
           this.getItems();
           this.router.navigate(['.']);
-          this.item_input_name = '';   
+          this.itemInputName = '';   
           //resetting default category to Uncategorized
-          this.selected_category_id=1;
-      },
+          this.selectedCategoryId=1;
+    },
         error => {console.log("Error while adding an item: ",error);}
       );
     }
@@ -175,28 +176,28 @@ export class TodoListPageComponent implements OnInit, OnChanges
     let goal = "the list of items.";
     this.entryService.getItems().then(      
       (data) => {
-        this.all_items=data;console.log("Getting the list of items:");
-        console.log("Get items: Display of the list of items. Found: "+this.all_items.length);
-        this.all_items.forEach(element => {
+        this.allItems=data;console.log("Getting the list of items:");
+        console.log("Get items: Display of the list of items. Found: "+this.allItems.length);
+        this.allItems.forEach(element => {
           console.log("Element in the list", "id: "+element.id, "name: "+element.name, "categoryId: "+element.categoryId);      
         });
          //Sorting by category id  and storing the items in separated arrays.
-        this.items_sorted_by_category = new Map();
-        this.all_items.forEach(item => 
+        this.itemsSortedByCategory = new Map();
+        this.allItems.forEach(item => 
           {
-            if (this.items_sorted_by_category.has(item.categoryId)){              
+            if (this.itemsSortedByCategory.has(item.categoryId)){              
               //Getting the array of items already existing for item.categoryId
-              (this.items_sorted_by_category.get(item.categoryId)).push(item);          
+              (this.itemsSortedByCategory.get(item.categoryId)).push(item);          
 
             }
             else{
               //Creating a new structure, and adding 
-              let items_for_one_category:Array<Item> = [];
-              items_for_one_category.push(item);
-              (this.items_sorted_by_category).set(item.categoryId,items_for_one_category);
+              let itemsForOneCategory:Array<Item> = [];
+              itemsForOneCategory.push(item);
+              (this.itemsSortedByCategory).set(item.categoryId,itemsForOneCategory);
             }      
           });
-          console.log("this.items_sorted_by_category",this.items_sorted_by_category);
+          console.log("this.itemsSortedByCategory",this.itemsSortedByCategory);
 
 
     
@@ -206,30 +207,27 @@ export class TodoListPageComponent implements OnInit, OnChanges
    
   }
 
-  deleteItem(item_id:number, category_id:number){
-    this.entryService.deleteItem(item_id).then( 
-      data => {console.log("Item deleted. id:"+item_id);
+  deleteItem(itemId:number, categoryId:number){
+    this.entryService.deleteItem(itemId).then( 
+      data => {console.log("Item deleted. id:"+itemId);
               //Calling on getItems() to display the updated list.
               this.getItems();                           
-              this.unfoldCategory(category_id);
+              this.unfoldCategory(categoryId);
             },
       error =>{console.log("Issue while deleting a category: ", error);}
     );    
   }
 
-  mark_selected(selected_category_id:number)
+  mark_selected(selectedCategoryId:number)
   {
 	console.log("mark_selected");
-    let optionElem = document.getElementById("category"+this.previously_selected_id);
+    let optionElem = document.getElementById("category"+this.previouslySelectedId);
     optionElem.setAttribute("aria-selected", "false");
-    optionElem = document.getElementById("category"+selected_category_id);
+    optionElem = document.getElementById("category"+selectedCategoryId);
     optionElem.setAttribute("aria-selected","true");
     let selectElem = document.getElementById("category-to-select-field");
-    selectElem.setAttribute("aria-activedescendant",'"'+selected_category_id+'"');
-    this.previously_selected_id = selected_category_id;
+    selectElem.setAttribute("aria-activedescendant",'"'+selectedCategoryId+'"');
+    this.previouslySelectedId = selectedCategoryId;
   }
-
- 
-  
 
 }
