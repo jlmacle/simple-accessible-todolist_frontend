@@ -14,7 +14,7 @@ export class EntryService
   constructor(private http:HttpClient) { }
 
   addCategory(category:Category):Promise<any>{
-    let url = Variables.baseUrl+'/category';
+    const url = Variables.baseUrl+'/category';
     console.log('HTTP POST to: '+url);
     return this.http.post(url,category).toPromise();    
   }
@@ -24,27 +24,27 @@ export class EntryService
   }
     
   deleteCategory(id:number):Promise<any>{
-    let url = Variables.baseUrl+'/category/'+id;
+    const url = Variables.baseUrl+'/category/'+id;
     console.log('HTTP DELETE to: '+url);
     return this.http.delete(url).toPromise();    
   }
 
   
   addItem(item:Item,categoryId:number):Promise<any>{
-    let url = Variables.baseUrl+'/item/'+categoryId;
+    const url = Variables.baseUrl+'/item/'+categoryId;
     console.log('HTTP POST to: '+url);
     console.log('Item data: Item id:'+item.id+', item name: '+item.name+', item category id'+categoryId);
     return this.http.post(url,item).toPromise();
   }
 
   getItems():Promise<any>{
-    let url = Variables.baseUrl+'/items';
+    const url = Variables.baseUrl+'/items';
     console.log('HTTP GET to: '+url);
     return this.http.get(url).toPromise();
   }
 
   deleteItem(id:number):Promise<any>{
-    let url = Variables.baseUrl+'/item/'+id;
+    const url = Variables.baseUrl+'/item/'+id;
     console.log('HTTP DELETE to: '+url);
     return this.http.delete(url).toPromise();    
   }
