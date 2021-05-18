@@ -23,7 +23,7 @@ export class AroundSDGsCommunicationComponent implements OnInit {	// code that d
   toggleBackground(): void {
     const bodyElement = document.getElementById('body');
     const displayAreaElement = document.getElementById('display-area');
-    console.log('bodyElement.style.getPropertyValue("background-image"): *'+bodyElement.style.getPropertyValue('background-image')+'*');
+    console.log('bodyElement.style.getPropertyValue("background-image"): *' + bodyElement.style.getPropertyValue('background-image') + '*');
     if ( bodyElement.style.getPropertyValue('background-image').includes('photography')) {
       displayAreaElement.style.removeProperty('background');
       bodyElement.style.removeProperty('background-image');

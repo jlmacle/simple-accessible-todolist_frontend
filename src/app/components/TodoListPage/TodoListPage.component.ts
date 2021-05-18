@@ -150,21 +150,21 @@ export class TodoListPageComponent implements OnInit, OnChanges {	// code that d
   }
 
   addItem(categoryId: number): void {
-    console.log('Add item for the category: '+categoryId);
+    console.log('Add item for the category: ' + categoryId);
     const item = new Item();
-    item.id = 1;// Weakness in the code/understanding.
+    item.id = 1; // Weakness in the code/understanding.
     item.name = this.itemInputName;
     item.categoryId = categoryId;
     if (item.name !== '') {
       this.entryService.addItem(item, categoryId).then(
           (data) => {
-            console.log('Item Added to category id: '+categoryId);
-            this.setAriaExpandedToTrue('plus_sign'+categoryId);
+            console.log('Item Added to category id: ' + categoryId);
+            this.setAriaExpandedToTrue('plus_sign' + categoryId);
             this.getItems();
             this.router.navigate(['.']);
             this.itemInputName = '';
             // Resetting default category to Uncategorized
-            this.selectedCategoryId=1;
+            this.selectedCategoryId = 1;
           },
           (error) => {
             console.log('Error while adding an item: ', error);
@@ -177,10 +177,10 @@ export class TodoListPageComponent implements OnInit, OnChanges {	// code that d
     const goal = 'the list of items.';
     this.entryService.getItems().then(
         (data) => {
-          this.allItems=data; console.log('Getting the list of items:');
-          console.log('Get items: Display of the list of items. Found: '+this.allItems.length);
+          this.allItems = data; console.log('Getting the list of items:');
+          console.log('Get items: Display of the list of items. Found: ' + this.allItems.length);
           this.allItems.forEach((element) => {
-            console.log('Element in the list', 'id: '+element.id, 'name: '+element.name, 'categoryId: '+element.categoryId);
+            console.log('Element in the list', 'id: ' + element.id, 'name: ' + element.name, 'categoryId: ' + element.categoryId);
           });
           // Sorting by category id  and storing the items in separated arrays.
           this.itemsSortedByCategory = new Map();
@@ -197,21 +197,19 @@ export class TodoListPageComponent implements OnInit, OnChanges {	// code that d
           });
           console.log('this.itemsSortedByCategory', this.itemsSortedByCategory);
         },
-        (error) => {
-          console.log('Error getting '+goal)+' : '+error;
-        },
+        (error) => { console.log('Error getting ' + goal) + ' : ' + error; },
     );
   }
 
   deleteItem(itemId: number, categoryId: number): void {
     this.entryService.deleteItem(itemId).then(
         (data) => {
-          console.log('Item deleted. id:'+itemId);
+          console.log('Item deleted. id:' + itemId);
           // Calling on getItems() to display the updated list.
           this.getItems();
           this.unfoldCategory(categoryId);
         },
-        (error) =>{
+        (error) => {
           console.log('Issue while deleting a category: ', error);
         },
     );
@@ -219,9 +217,9 @@ export class TodoListPageComponent implements OnInit, OnChanges {	// code that d
 
   mark_selected(selectedCategoryId: number): void {
     console.log('mark_selected');
-    let optionElem = document.getElementById('category'+this.previouslySelectedId);
+    let optionElem = document.getElementById('category' + this.previouslySelectedId);
     optionElem.setAttribute('aria-selected', 'false');
-    optionElem = document.getElementById('category'+selectedCategoryId);
+    optionElem = document.getElementById('category' + selectedCategoryId);
     optionElem.setAttribute('aria-selected', 'true');
     const selectElem = document.getElementById('category-to-select-field');
     selectElem.setAttribute('aria-activedescendant', '+selectedCategoryId+');
