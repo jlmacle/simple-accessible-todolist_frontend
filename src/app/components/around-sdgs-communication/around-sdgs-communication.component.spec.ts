@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AroundSDGsCommunicationComponent } from './around-sdgs-communication.component';
+import {AroundSDGsCommunicationComponent} from './around-sdgs-communication.component';
 
 describe('AroundSDGsCommunicationComponent', () => {
   let component: AroundSDGsCommunicationComponent;
@@ -8,9 +8,9 @@ describe('AroundSDGsCommunicationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AroundSDGsCommunicationComponent ]
+      declarations: [AroundSDGsCommunicationComponent],
     })
-    .compileComponents();
+        .compileComponents();
   }));
 
   beforeEach(() => {

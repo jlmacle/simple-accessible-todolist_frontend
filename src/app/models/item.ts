@@ -1,6 +1,5 @@
-export class Item 
-{
-    id:number;
-    name:string;
-    categoryId:number;
+export class Item {
+    id: number;
+    name: string;
+    categoryId: number;
 }
