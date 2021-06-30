@@ -619,7 +619,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Variables", function() { return Variables; });
 class Variables {
 }
-Variables.baseUrl = 'http://127.0.0.1:8080'; // CORS issue for omitting http://
+Variables.baseUrl = 'http://localhost:8080'; // CORS issue for omitting http://
 
 
 /***/ }),
