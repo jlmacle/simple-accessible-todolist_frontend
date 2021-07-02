@@ -620,7 +620,7 @@ __webpack_require__.r(__webpack_exports__);
 class Variables {
 }
 //static baseUrl = 'http://127.0.0.1:8080'; // CORS issue for omitting http://
-Variables.baseUrl = 'https://test-atl.azurewebsites.net'; // Useful for configuration check.
+Variables.baseUrl = 'https://test-atl.azurewebsites.net:8080'; // Useful for configuration check.
 
 
 /***/ }),
