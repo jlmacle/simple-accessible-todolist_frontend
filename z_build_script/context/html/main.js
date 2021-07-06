@@ -107,6 +107,7 @@ function TodoListPageComponent_li_28_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r1.items_sorted_by_category.get(category_r3.id));
 } }
 class TodoListPageComponent {
+    // https://angular.io/guide/what-is-angular#components
     constructor(entryService, router) {
         this.entryService = entryService;
         this.router = router;
@@ -371,7 +372,11 @@ TodoListPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'app-TodoListPage',
+                // "HTML elements in your template that match this selector become instances of the component."
+                // https://angular.io/guide/what-is-angular#components	
                 templateUrl: './TodoListPage.component.html',
+                // "An HTML template that instructs Angular how to render the component."
+                // https://angular.io/guide/what-is-angular#components
                 styleUrls: ['./TodoListPage.component.css']
             }]
     }], function () { return [{ type: _services_entry_service__WEBPACK_IMPORTED_MODULE_3__["EntryService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }]; }, null); })();
@@ -479,11 +484,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "vY5A");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "Sy1n");
 /* harmony import */ var _components_TodoListPage_TodoListPage_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/TodoListPage/TodoListPage.component */ "AvF/");
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/form-field */ "kmnG");
-/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/select */ "d3UM");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser/animations */ "R1ws");
-/* harmony import */ var _components_around_sdgs_communication_around_sdgs_communication_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/around-sdgs-communication/around-sdgs-communication.component */ "s7kU");
-/* harmony import */ var _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/navbar/navbar.component */ "hrlM");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/platform-browser/animations */ "R1ws");
+/* harmony import */ var _components_around_sdgs_communication_around_sdgs_communication_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/around-sdgs-communication/around-sdgs-communication.component */ "s7kU");
+/* harmony import */ var _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/navbar/navbar.component */ "hrlM");
 
 
 
@@ -492,8 +495,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 //imports used while using mat-form-field
-
-
+//import  {MatFormFieldModule} from '@angular/material/form-field';
+//import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -509,37 +512,37 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector
             _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"],
-            _angular_material_form_field__WEBPACK_IMPORTED_MODULE_7__["MatFormFieldModule"],
-            _angular_material_select__WEBPACK_IMPORTED_MODULE_8__["MatSelectModule"],
-            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["BrowserAnimationsModule"]
+            //MatFormFieldModule,
+            //MatSelectModule,
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"]
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
         _components_TodoListPage_TodoListPage_component__WEBPACK_IMPORTED_MODULE_6__["TodoListPageComponent"],
-        _components_around_sdgs_communication_around_sdgs_communication_component__WEBPACK_IMPORTED_MODULE_10__["AroundSDGsCommunicationComponent"],
-        _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_11__["NavbarComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+        _components_around_sdgs_communication_around_sdgs_communication_component__WEBPACK_IMPORTED_MODULE_8__["AroundSDGsCommunicationComponent"],
+        _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_9__["NavbarComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"],
-        _angular_material_form_field__WEBPACK_IMPORTED_MODULE_7__["MatFormFieldModule"],
-        _angular_material_select__WEBPACK_IMPORTED_MODULE_8__["MatSelectModule"],
-        _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["BrowserAnimationsModule"]] }); })();
+        //MatFormFieldModule,
+        //MatSelectModule,
+        _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"],
         args: [{
                 declarations: [
                     _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
                     _components_TodoListPage_TodoListPage_component__WEBPACK_IMPORTED_MODULE_6__["TodoListPageComponent"],
-                    _components_around_sdgs_communication_around_sdgs_communication_component__WEBPACK_IMPORTED_MODULE_10__["AroundSDGsCommunicationComponent"],
-                    _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_11__["NavbarComponent"]
+                    _components_around_sdgs_communication_around_sdgs_communication_component__WEBPACK_IMPORTED_MODULE_8__["AroundSDGsCommunicationComponent"],
+                    _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_9__["NavbarComponent"]
                 ],
                 imports: [
                     _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                     _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                     _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
                     _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"],
-                    _angular_material_form_field__WEBPACK_IMPORTED_MODULE_7__["MatFormFieldModule"],
-                    _angular_material_select__WEBPACK_IMPORTED_MODULE_8__["MatSelectModule"],
-                    _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["BrowserAnimationsModule"]
+                    //MatFormFieldModule,
+                    //MatSelectModule,
+                    _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"]
                 ],
                 providers: [],
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
@@ -563,6 +566,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class NavbarComponent {
+    // https://angular.io/guide/what-is-angular#components
     constructor() { }
     ngOnInit() {
     }
@@ -591,7 +595,11 @@ NavbarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'app-navbar',
+                // "HTML elements in your template that match this selector become instances of the component."
+                // https://angular.io/guide/what-is-angular#components	
                 templateUrl: './navbar.component.html',
+                // "An HTML template that instructs Angular how to render the component."
+                // https://angular.io/guide/what-is-angular#components
                 styleUrls: ['./navbar.component.css']
             }]
     }], function () { return []; }, null); })();
@@ -709,6 +717,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class AroundSDGsCommunicationComponent {
+    // https://angular.io/guide/what-is-angular#components
     constructor() { }
     ngOnInit() {
     }
@@ -729,7 +738,7 @@ class AroundSDGsCommunicationComponent {
     }
 }
 AroundSDGsCommunicationComponent.ɵfac = function AroundSDGsCommunicationComponent_Factory(t) { return new (t || AroundSDGsCommunicationComponent)(); };
-AroundSDGsCommunicationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AroundSDGsCommunicationComponent, selectors: [["app-around-sdgs-communication"]], decls: 15, vars: 0, consts: [["id", "sdg_com"], [1, "border-03"], ["target", "_blank", "href", "https://www.youtube.com/watch?v=MYMIbLoxW8U&feature=youtu.be", "rel", "noopener"], ["target", "_blank", "href", "https://www.youtube.com/watch?v=EFFFt6G6YNU", "rel", "noopener"], ["tabindex", "_blank", "href", "https://sharethemeal.org", "rel", "noopener"], ["aria-label", "(Hidden), Navigation menu, (aria label)", "href", "#navbar"], ["role", "doc-dedication", "aria-roledescription", "Work dedicated to my children.", "tabindex", "0", "id", "dedicace", 3, "click"], ["aria-label", "Link to go to the navigation menu  (aria label)", "href", "#navbar"]], template: function AroundSDGsCommunicationComponent_Template(rf, ctx) { if (rf & 1) {
+AroundSDGsCommunicationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AroundSDGsCommunicationComponent, selectors: [["app-around-sdgs-communication"]], decls: 15, vars: 0, consts: [["id", "sdg_com"], [1, "border-03"], ["target", "_blank", "href", "https://www.youtube.com/watch?v=MYMIbLoxW8U&feature=youtu.be", "rel", "noopener"], ["target", "_blank", "href", "https://www.youtube.com/watch?v=EFFFt6G6YNU", "rel", "noopener"], ["tabindex", "_blank", "href", "https://www.youtube.com/playlist?list=PLNdMkGYdEqOCgePyiAyBT0sh7zlr7xhz3", "rel", "noopener"], ["aria-label", "(Hidden), Navigation menu, (aria label)", "href", "#navbar"], ["role", "doc-dedication", "aria-roledescription", "Work dedicated to my children.", "tabindex", "0", "id", "dedicace", 3, "click"], ["aria-label", "Link to go to the navigation menu  (aria label)", "href", "#navbar"]], template: function AroundSDGsCommunicationComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Works you might like to know about: ");
@@ -743,7 +752,7 @@ AroundSDGsCommunicationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "a", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, " Supporting the World Food Programme, with as little as 80 cents for a meal. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, " India's Water Revolution ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "a", 5);
@@ -757,7 +766,11 @@ AroundSDGsCommunicationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'app-around-sdgs-communication',
+                //"HTML elements in your template that match this selector become instances of the component."
+                // https://angular.io/guide/what-is-angular#components	
                 templateUrl: './around-sdgs-communication.component.html',
+                // "An HTML template that instructs Angular how to render the component."
+                // https://angular.io/guide/what-is-angular#components
                 styleUrls: ['./around-sdgs-communication.component.css']
             }]
     }], function () { return []; }, null); })();
