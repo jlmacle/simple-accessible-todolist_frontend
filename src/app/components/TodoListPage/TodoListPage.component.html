@@ -1,4 +1,4 @@
-<!-- ng serve -o --host=192.168.1.100 to run with the local IP specified, in this case 192.168.1.100 -->
+
 <app-navbar></app-navbar>
 <div id="display-area">
     <div id="addition-area">
@@ -11,8 +11,9 @@
         <!-- Definition of a new category -->
             <label for="new-category-input-field" class="text-large">Name of the category to add:                
             </label>            
+            <!-- https://angular.io/guide/forms -->
             <input role="textbox" aria-label="Name of the category to add, (aria label) " aria-required="true"
-                type="text" class="text-large border-04 border-radius-2" [(ngModel)]="category_input_name" 
+                type="text" class="text-large border-04 border-radius-2" [(ngModel)]="categoryInputName" 
                 id="new-category-input-field" name="new-category-input-field" form="new-category-form"                  
                 minlength="1"  autocomplete="off"
             />
@@ -33,11 +34,11 @@
             <select role="listbox" aria-label="Existing categories, (aria label)" 
             	aria-required="true" aria-expanded="false" aria-activedescendant="0"
             	class="text-large border-03" 
-            	[(ngModel)]="selected_category_id" id="category-to-select-field" name="category-to-select-field" 
-                (click)="mark_selected(selected_category_id)" 
-                (change)="mark_selected(selected_category_id)" 
-                (keydown.enter)="mark_selected(selected_category_id)" 
-                (keydown.space)="mark_selected(selected_category_id)"                 
+            	[(ngModel)]="selectedCategoryId" id="category-to-select-field" name="category-to-select-field" 
+                (click)="mark_selected(selectedCategoryId)" 
+                (change)="mark_selected(selectedCategoryId)" 
+                (keydown.enter)="mark_selected(selectedCategoryId)" 
+                (keydown.space)="mark_selected(selectedCategoryId)"                 
                 >                  
                 <option role="listitem" aria-disabled="true"   
                 	value="0" default id="category0">
@@ -45,7 +46,7 @@
                 </option>
                 <option role="listitem" aria-selected="false"           
                     *ngFor="let category of categories" value={{category.id}} id="category{{category.id}}" >
-                    {{category.name}} 
+                    {{category.name}}
                 </option>                
             </select>      
             <br/>
@@ -53,12 +54,12 @@
             <label for="item-input-name" class="text-large">Name of the item to add:</label>
             <input role="textbox" aria-label="Name of the item to add, (aria label)" aria-required="true" 
             	type="text" class="text-large border-03 border-radius-2" 
-            	[(ngModel)]="item_input_name" id="item-input-name" name="item-input-name" 
+            	[(ngModel)]="itemInputName" id="item-input-name" name="item-input-name" 
             	autocomplete="off"
                 />             
             <br/>           
             <input type="submit"  class="text-large border-radius-2 border-03" 
-                (click)="addItem(selected_category_id)"            
+                (click)="addItem(selectedCategoryId)"            
                 id="add-item-button" value="Add the item to the category"         
             />
         </form>      
@@ -66,7 +67,7 @@
     </div>    
    
     <div id="displayCategories">
-        <ul ><!-- Structural directive: *ngFor   https://angular.io/api/common/NgForOf    -->
+        <ul >
             <li class="category no-list-style" 
             	*ngFor="let category of categories" id={{category.name}}{{category.id}} name="aCategory" 
             	value={{category.id}}  
@@ -75,7 +76,7 @@
                 <a aria-label="(Hidden), Click to reach the next category or the first 
                     	if you reached the end of the list (aria label)"
                     aria-relevant="text"
-                    href="#{{(map_category_nextCategory.get(category)).name}}{{(map_category_nextCategory.get(category)).id}}" >
+                    href="#{{(mapCategoryNextCategory.get(category)).name}}{{(mapCategoryNextCategory.get(category)).id}}" >
                     
                 </a>
                 <!--aria-label added to pass the pa11y testing -->
@@ -112,7 +113,7 @@
                         <!-- Displaying the previously registered items --> 
                         <ul>                                                  
                             <li class="no-list-style" 
-                            	*ngFor="let item of items_sorted_by_category.get(category.id)" id={{item.name}}{{item.id}} name="anItem"   
+                            	*ngFor="let item of itemsSortedByCategory.get(category.id)" id={{item.name}}{{item.id}} name="anItem"   
                             	value={{item.id}}  >    
                                 <!--aria-label added to pass the pa11y testing -->                        	
                                 <img  role="button"                                    

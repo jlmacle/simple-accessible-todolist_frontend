@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/jl/Documents/ATL/AccessibleTodoList_FrontEnd/src/polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! C:\_Synchronized_Code\ATL\AccessibleTodoList_FrontEnd\src\polyfills.ts */"hN/g");
 
 
 /***/ }),
@@ -38,7 +38,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * Learn more in https://angular.io/guide/browser-support
  */
-/***************************************************************************************************
+/** *************************************************************************************************
  * BROWSER POLYFILLS
  */
 /** IE10 and IE11 requires the following for NgClass support on SVG elements */
@@ -72,11 +72,11 @@ __webpack_require__.r(__webpack_exports__);
  *  (window as any).__Zone_enable_cross_context_check = true;
  *
  */
-/***************************************************************************************************
+/** *************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
  // Included with Angular CLI.
-/***************************************************************************************************
+/** *************************************************************************************************
  * APPLICATION IMPORTS
  */
 
