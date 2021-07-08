@@ -8,8 +8,8 @@ services:
     image: postgres:alpine   
     networks:
       - atl-network  
-    ports:
-      - published: 5432    
+    expose:
+      - 5432    
     secrets:      
       - POSTGRES_DB
       - POSTGRES_USER
