@@ -36,7 +36,7 @@ sleep 100
 #--------------------------------------------------------------------------------------------------------------------
 cd ..
 echo "ng build"
-ng build
+ng build --prod
 
 echo "Website files moving in context folder"
 cd dist/AccessibleTodoList-FrontEnd
