@@ -6,8 +6,6 @@ echo "ng build"
 ng build --prod
 
 echo "Website files moving in context folder"
-cd dist/AccessibleTodoList-FrontEnd
-cd ../..
 cp -Rfu dist/AccessibleTodoList-FrontEnd/*.* z_build_script/context/html
 cp -Rfu dist/AccessibleTodoList-FrontEnd/assets z_build_script/context/html
 
@@ -15,14 +13,16 @@ cp -Rfu dist/AccessibleTodoList-FrontEnd/assets z_build_script/context/html
 #  Building the new image
 #-----------------------------------------------------------------------------------------------------------------------------
 
+cd z_build_script/context
 sudo docker build -t atl-front-end:v0.9 .
+cd ../..
 
 #------------------------------------------------------------------------------------------------------------------------------
 # Testing docker stack with the new image updated on DockerHub
 #------------------------------------------------------------------------------------------------------------------------------
 echo "Testing docker stack with the new image."
 
-sudo docker system prune
+sudo docker system prune -f
 #fixed an issue with database initialisation
 
 echo "Stopping the postgreSQL Ubuntu service if running".
