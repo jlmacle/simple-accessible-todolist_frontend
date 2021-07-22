@@ -27,7 +27,7 @@ services:
   backend:  
     depends_on:
       - postgresql
-    image: jlmacle/atl-back-end:v0.9
+    image: docker.io/jlmacle/atl-back-end:v0.9
     networks:
       - atl-network 
     ports:
@@ -48,7 +48,7 @@ services:
   frontend:
     depends_on:
       - backend
-    image: jlmacle/atl-front-end:v0.9
+    image: docker.io/jlmacle/atl-front-end:v0.9
     networks:
      - atl-network
     ports:
