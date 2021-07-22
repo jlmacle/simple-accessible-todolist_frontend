@@ -41,7 +41,7 @@ echo "**** Building atl-network."
 sudo docker network create --driver overlay atl-network &> /dev/null
 
 echo "**** Docker stack deploy."
-sudo docker stack deploy -c z_docker_compose/docker-compose-stack_local-images.yml stack
+sudo docker stack deploy -c z_docker_compose_files/docker-compose-stack_local-images.yml stack
 echo "Note: the front-end might take a little while to start."
 sleep 200
 chromium-browser http://127.0.0.1/index.html &> /dev/null &
