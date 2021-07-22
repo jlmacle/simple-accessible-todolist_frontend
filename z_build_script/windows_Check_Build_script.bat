@@ -4,7 +4,7 @@
 :: Checking potential npm issues
 ::-------------------------------------------------------------------------------------------------------------------
 echo "An opportunity to check potential npm issues."
-echo "**** npm doctor: skipped to avoid breaking changes with ng"
+echo "**** npm doctor: skipped to avoid breaking changes with ng."
 :: start npm doctor
 :: timeout /T 60
 
