@@ -26,6 +26,7 @@ xcopy  .\dist\AccessibleTodoList-FrontEnd\ .\z_build_script\context\html\ /s /e 
 echo ***** Building the Docker image.
 cd .\z_build_script\context\
 docker build -t atl-front-end:v0.9 .
+
 echo --------------------------------------------------------------------------------------------------------------------------------------------
 ::------------------------------------------------------------------------------------------------------------------------------
 :: Testing docker stack with the new image updated on DockerHub
