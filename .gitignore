@@ -1,7 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # SonarQube scanner files
-/.scannerwork
+.scannerwork/
 
 # compiled output
 /dist
