@@ -2,7 +2,8 @@
 # Checking potential npm issues
 #-------------------------------------------------------------------------------------------------------------------
 echo "An opportunity to check potential npm issues."
-npm doctor
+echo "**** npm doctor: skipped to avoid breaking changes with ng."
+# npm doctor
 #-------------------------------------------------------------------------------------------------------------------
 # Checking the potential npm security issues
 #-------------------------------------------------------------------------------------------------------------------

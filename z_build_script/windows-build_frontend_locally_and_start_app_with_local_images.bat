@@ -45,7 +45,7 @@ docker service rm atl-postgres  2> NUL
 echo "Building atl-network."
 docker network create --driver overlay atl-network 2> NUL
 
-docker stack deploy -c ../../z_docker_compose/docker-compose-stack_local-images.yml stack
+docker stack deploy -c ../../z_docker_compose_files/docker-compose-stack_local-images.yml stack
 echo "Note: the front-end might take a little while to start."
 cd ..
 timeout /T 200
