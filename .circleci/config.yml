@@ -11,7 +11,7 @@ commands:
           echo "Starting the configuration check." 
           && ls
           && cd src/environments/
-          && grep "static" ./variables.ts
+          && grep "static baseUrl=" ./variables.ts
           #&& grep "//static baseUrl='https://test-atl.azurewebsites.net:8080';" ./variables.ts
           #&& grep "// static baseUrl='http://<static_IP>:8080';" ./variables.ts
 
