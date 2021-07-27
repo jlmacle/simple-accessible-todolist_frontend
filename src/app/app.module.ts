@@ -6,7 +6,6 @@ import {Routes} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {TodoListPageComponent} from './components/TodoListPage/TodoListPage.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AroundSDGsCommunicationComponent} from './components/around-sdgs-communication/around-sdgs-communication.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 
@@ -25,8 +24,7 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
