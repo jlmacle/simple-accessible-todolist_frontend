@@ -1,12 +1,13 @@
-
+cls
+@echo off
 
 ::-------------------------------------------------------------------------------------------------------------------
 :: Checking potential npm issues
 ::-------------------------------------------------------------------------------------------------------------------
 echo "** An opportunity to check potential npm issues. **"
-echo "**** npm doctor: skipped to avoid breaking changes with ng."
-:: start npm doctor
-:: timeout /T 60
+echo "**** npm doctor
+start npm doctor
+timeout /T 60
 
 ::-------------------------------------------------------------------------------------------------------------------
 :: Checking the potential npm security issues
@@ -45,5 +46,5 @@ echo ---------------------------------------------------------------------------
 ::--------------------------------------------------------------------------------------------------------------------
 :: Docker image build and test
 ::--------------------------------------------------------------------------------------------------------------------
-echo "** Starting the script building the image and testing the application with local inages.**"
-./windows-no_code_quality_test_version-build_frontend_locally_and_start_app_with_local_images.bat
+echo "** Starting the script building the image and testing the application with local images.**"
+windows-no_code_quality_test_version-build_frontend_locally_and_start_app_with_local_images.bat
