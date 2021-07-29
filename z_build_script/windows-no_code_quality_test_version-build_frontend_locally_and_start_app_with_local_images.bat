@@ -1,5 +1,6 @@
+cls
 @echo off
-::cls
+
 
 echo ** Starting Docker Desktop. **
 cmd /c "C:\Program Files\Docker\Docker\Docker Desktop.exe"
