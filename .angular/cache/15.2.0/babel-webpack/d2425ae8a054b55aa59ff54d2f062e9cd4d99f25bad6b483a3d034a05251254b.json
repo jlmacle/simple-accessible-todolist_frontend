@@ -1,1 +1,0 @@
-{"ast":null,"code":"export let Variables = /*#__PURE__*/(() => {\n  class Variables {}\n  Variables.baseUrl = 'http://127.0.0.1:8080'; // CORS issue for omitting http://\n  return Variables;\n})();","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
