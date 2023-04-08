@@ -4,9 +4,7 @@
     <div id="addition-area">
         <!-- https://www.w3.org/TR/wai-aria-practices-1.1/#aria_lh_form  -->
         <!-- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Form_Role --> 
-        <label for="new-category-form">        	
-            <h1 class="h1-form border-02" >Please use this form to add a new category.</h1>
-        </label>       
+        
         <form id="new-category-form">
         <!-- Definition of a new category -->
             <label for="new-category-input-field" class="text-large">Name of the category to add:                
@@ -23,11 +21,8 @@
                 id="add-category-button" value="Add the category" 
             /> 
         </form>   
-
-        <!-- Adding an item -->   
-        <label for="newItemForm"> 
-            <h1 class="h1-form border-02" >The next form is for adding a new item.</h1>
-        </label>     
+        <br>
+        <!-- Adding an item -->          
         <form id="newItemForm">            
         	<!-- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role -->    
             <!-- (change) functions unless Narrator or NVDA  is on -->             
@@ -105,7 +100,7 @@
                     />                    
                    
                     <span role="listitem" tabindex="0"
-                    	class="border-02"                                                                         
+                    	class="border-02"                                                                       
                         >                        
                         {{category.name}}
                     </span>
@@ -164,11 +159,7 @@
             	alt="Icon representing a addition sign.  (alt text)" 
             	src="./assets/pictures/256px-Font_Awesome_5_solid_plus-circle.svg.png"/></a> 
             	The plus sign icon by Font Awesome is licensed under a Creative Commons BY 4.0 license. 
-            	No changes were made to the icon.</li>
-            <li tabindex="0">
-            	<a href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">
-            	Source of the retriever puppies picture, by Chevanon photography.
-            	</a></li>
+            	No changes were made to the icon.</li>            
             <li tabindex="0">
             	<a   
             	href="https://creativecommons.org/licenses/by/4.0/?ref=ccsearch&atype=rich">
