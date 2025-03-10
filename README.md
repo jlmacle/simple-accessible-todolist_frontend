@@ -1,3 +1,7 @@
+For archives and portfolio. <br>
+Being a work done in 2021, some technical aspects are outdated, and some code has been broken by updates. <br>
+<hr>
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
 
 Instructions for running the front-end code are available:
