@@ -174,7 +174,7 @@ export class TodoListPageComponent implements OnInit, OnChanges {	// code that d
   }
 
   getItems(): void {
-    const goal = 'the list of items.';
+    
     this.entryService.getItems().then(
         (data) => {
           this.allItems = data; console.log('Getting the list of items:');
@@ -197,7 +197,7 @@ export class TodoListPageComponent implements OnInit, OnChanges {	// code that d
           });
           console.log('this.itemsSortedByCategory', this.itemsSortedByCategory);
         },
-        (error) => { console.log('Error getting ' + goal) + ' : ' + error; },
+        (error) => { console.log('Error getting the list of items :'+ error); },
     );
   }
 

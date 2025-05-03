@@ -18,7 +18,7 @@ cd ..
 echo **** ng build.
 cmd /c "ng build --configuration production &"
 
-echo **** Website files moving in context folder.
+echo **** Moving website files in context folder.
 xcopy  .\dist\AccessibleTodoList-FrontEnd\ .\z_build_script\context\html\ /s /e /y
 
 ::-----------------------------------------------------------------------------------------------------------------------------
